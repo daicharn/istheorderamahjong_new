@@ -1,13 +1,14 @@
 import {BlockHais} from './BlockHais';
 
 export class BlockHaisList {
-    private blocks: BlockHais[] = [];
+    private readonly blocks: BlockHais[] = [];
 
     constructor(blocks: BlockHais[] = []) {
         this.blocks = blocks;
     }
 
     [Symbol.iterator]() { return this.blocks[Symbol.iterator](); }
+
     push(b: BlockHais) {
          this.blocks.push(b);
     }
@@ -19,7 +20,7 @@ export class BlockHaisList {
     }
 
     count(type: BlockHais["type"]): number{
-        return this.blocks.filter(b => b.type == type).length;
+        return this.blocks.filter(b => b.getType() == type).length;
     }
 
     isStandardHand(mentsu: number){
@@ -27,7 +28,7 @@ export class BlockHaisList {
     }
 
     blockToString(): string {
-        return this.blocks.map(b => `[${b.ids.map(h => h.id).join(",")}]`).join(",");
+        return this.blocks.map(b => `[${b.getHais().map(h => h.getId()).join(",")}]`).join(",");
     }
 
     clone(): BlockHaisList {

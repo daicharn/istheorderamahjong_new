@@ -1,7 +1,7 @@
 import {MANZU, PINZU, SOUZU, JIHAI, BACK} from "./tileDefs";
 
 export class Hai{
-    id: number;
+    private readonly id: number;
 
     constructor(id: number){
         this.id = id;
@@ -39,6 +39,10 @@ export class Hai{
 
     isNumberTile(): boolean {
         return this.type == "MANZU" || this.type === "PINZU" || this.type === "SOUZU";
+    }
+
+    getId(): number {
+        return this.id;
     }
 
     clone(): Hai {
