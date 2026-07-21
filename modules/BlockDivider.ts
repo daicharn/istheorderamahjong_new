@@ -14,24 +14,10 @@ export class BlockDivider extends BlockFinder{
     }
 
     private dedupeBlockHais(blockhaislist: BlockHaisList[]): BlockHaisList[]{
-        const order = {"JANTO": 0, "KOTSU": 1, "SHUNTSU": 2};
-        const normalize = (blocks: BlockHaisList): string =>{
-            const sorted = [...blocks].sort((a, b) => {
-                const t = order[a.getType()] - order[b.getType()];
-                if(t !== 0) return t;
-
-                const aMin = Math.min(...a.getHais().map(h => h.getId()));
-                const bMin = Math.min(...b.getHais().map(h => h.getId()));
-
-                return aMin - bMin;
-            });
-
-            return sorted.map(b => `${b.getType()}:${b.getHais().map(h => h.getId()).join(",")}`).join("|");
-        }
-        
         const unique = new Map<string, BlockHaisList>();
         for(const blocks of blockhaislist){
-            const key = normalize(blocks);
+            blocks.sort();
+            const key = [...blocks].map(b => `${b.getType()}:${b.getHais().map(h => h.getId()).join(",")}`).join("|");
             if(!unique.has(key)){
                 unique.set(key, blocks);
             }
