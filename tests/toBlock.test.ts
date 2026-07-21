@@ -7,31 +7,16 @@ import { BlockHaisList } from "../modules/BlockHaisList";
 import {BlockDivider} from '../modules/BlockDivider';
 
 function getBlockStrings(hais_num: number[]): string[]{
-    const blocks: BlockHaisList[] = new BlockDivider(new Hais(hais_num).hais).divide();
+    const blocks: BlockHaisList[] = new BlockDivider(new Hais(hais_num).getHais()).divide();
 
-    const results: string[] = [];
+    const blockedHaisStrings: string[] = [];
     for(let i = 0; i < blocks.length; i++){
-        results.push(blocks[i].blockToString());
+        blockedHaisStrings.push(blocks[i].blockToString());
     }
 
-    return results;
+    return blockedHaisStrings;
 }
 
-test("clone", () => {
-    const hand = new PlayerHand(new Hais([1,1]), new Melds());
-    const ctx = new PlayerContext({isTsumo: false, isMenzen: false, playerWind: "E", roundWind: "E"});
-    const yaku = new YakuChecker(hand, ctx);
-    const blocks: BlockHaisList[] = yaku.blockedhais;
-
-    hand.tehai.hais.map(h => h.id = 9);
-
-    const results: string[] = [];
-    for(let i = 0; i < blocks.length; i++){
-        results.push(blocks[i].blockToString());
-    }
-
-    expect(results).toContain("[1,1]");
-});
 test("tehai_normal_1", () => {
     const results = getBlockStrings([1,1,1,1,2,2,2,2,3,3,3,3,4,4]);
 

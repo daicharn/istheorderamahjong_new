@@ -2,8 +2,8 @@ import {Hais} from './Hais';
 import {Melds} from './Melds';
 
 export class PlayerHand {
-    tehai: Hais;
-    furo: Melds;
+    private readonly tehai: Hais;
+    private readonly furo: Melds;
 
     constructor(tehai: Hais, furo: Melds){
         this.tehai = tehai;

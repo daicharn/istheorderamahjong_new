@@ -1,15 +1,23 @@
 import {Hai} from "./Hai";
 
 export class BlockHais {
-    type: "JANTO" | "KOTSU" | "SHUNTSU";
-    ids: Hai[]
+    private readonly type: "JANTO" | "KOTSU" | "SHUNTSU";
+    private readonly hais: Hai[]
 
-    constructor(type: "JANTO" | "KOTSU" | "SHUNTSU", ids: Hai[]){
+    constructor(type: "JANTO" | "KOTSU" | "SHUNTSU", hais: Hai[]){
         this.type = type;
-        this.ids = ids;
+        this.hais = hais;
+    }
+
+    getType(): "JANTO" | "KOTSU" | "SHUNTSU" {
+        return this.type;
+    }
+
+    getHais(): Hai[] {
+        return this.hais;
     }
 
     clone(): BlockHais {
-        return new BlockHais(this.type, this.ids.map(h => h.clone()));
+        return new BlockHais(this.type, this.hais.map(h => h.clone()));
     }
 }

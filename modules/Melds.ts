@@ -1,7 +1,7 @@
 import {Meld} from "./Meld";
 
 export class Melds {
-    melds: Meld[] = [];
+    private readonly melds: Meld[] = [];
 
     add(meld: Meld){
         this.melds.push(meld);

@@ -9,7 +9,7 @@ export class BlockDivider extends BlockFinder{
     }
 
     private removeHai(arr: Hai[], target: Hai) {
-        const idx = arr.findIndex(h => h.id === target.id);
+        const idx = arr.findIndex(h => h.getId() === target.getId());
         if(idx !== -1) arr.splice(idx, 1);
     }
 
@@ -17,16 +17,16 @@ export class BlockDivider extends BlockFinder{
         const order = {"JANTO": 0, "KOTSU": 1, "SHUNTSU": 2};
         const normalize = (blocks: BlockHaisList): string =>{
             const sorted = [...blocks].sort((a, b) => {
-                const t = order[a.type] - order[b.type];
+                const t = order[a.getType()] - order[b.getType()];
                 if(t !== 0) return t;
 
-                const aMin = Math.min(...a.ids.map(h => h.id));
-                const bMin = Math.min(...b.ids.map(h => h.id));
+                const aMin = Math.min(...a.getHais().map(h => h.getId()));
+                const bMin = Math.min(...b.getHais().map(h => h.getId()));
 
                 return aMin - bMin;
             });
 
-            return sorted.map(b => `${b.type}:${b.ids.map(h => h.id).join(",")}`).join("|");
+            return sorted.map(b => `${b.getType()}:${b.getHais().map(h => h.getId()).join(",")}`).join("|");
         }
         
         const unique = new Map<string, BlockHaisList>();
@@ -42,7 +42,7 @@ export class BlockDivider extends BlockFinder{
 
     divide(): BlockHaisList[]{
         const results: BlockHaisList[] = [];
-        const arr_hai: Hai[] = this.hais.sort((a, b) => a.id - b.id);
+        const arr_hai: Hai[] = this.hais.sort();
         const blockhaislist: BlockHaisList = new BlockHaisList();
 
         const dfs = (arr: Hai[], blocks: BlockHaisList) => {
@@ -55,7 +55,7 @@ export class BlockDivider extends BlockFinder{
                 const first = arr[j];
 
                 //刻子の処理
-                if(arr.filter(h => h.id === first.id).length >= 3){
+                if(arr.filter(h => h.getId() === first.getId()).length >= 3){
                     const next = arr.slice();
                     this.removeHai(next, first);
                     this.removeHai(next, first);
@@ -67,11 +67,11 @@ export class BlockDivider extends BlockFinder{
                 }
                 //順子の処理
                 if(first.isNumberTile() && first.num <= 7){
-                    const id1 = first.id + 1;
-                    const id2 = first.id + 2;
+                    const id1 = first.getId() + 1;
+                    const id2 = first.getId() + 2;
 
-                    const h1 = arr.find(h => h.id === id1);
-                    const h2 = arr.find(h => h.id === id2);
+                    const h1 = arr.find(h => h.getId() === id1);
+                    const h2 = arr.find(h => h.getId() === id2);
 
                     if(h1 && h2){
                         const next = arr.slice();
@@ -90,10 +90,10 @@ export class BlockDivider extends BlockFinder{
         for(let i = 0; i < arr_hai.length; i++){
             const first = arr_hai[i];
 
-            if(i > 0 && arr_hai[i].id === arr_hai[i - 1].id) continue;
+            if(i > 0 && arr_hai[i].getId() === arr_hai[i - 1].getId()) continue;
 
             //雀頭の処理
-            if(arr_hai.filter(h => h.id === first.id).length >= 2){
+            if(arr_hai.filter(h => h.getId() === first.getId()).length >= 2){
                 const next = arr_hai.slice();
                 this.removeHai(next, first);
                 this.removeHai(next, first);
