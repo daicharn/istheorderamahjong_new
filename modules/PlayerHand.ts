@@ -9,4 +9,8 @@ export class PlayerHand {
         this.tehai = tehai;
         this.furo = furo;
     }
+
+    getTehai(): Hais {
+        return this.tehai;
+    }
 }

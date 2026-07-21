@@ -11,7 +11,7 @@ export class YakuChecker {
     constructor(hand: PlayerHand, ctx: PlayerContext){
         this.hand = hand;
         this.ctx = ctx;
-        this.blockedhaislists = new BlockDivider(this.hand.tehai.getHais()).divide();
+        this.blockedhaislists = new BlockDivider(this.hand.getTehai().getHais()).divide();
     }
 
     get blockedhais(): BlockHaisList[]{
