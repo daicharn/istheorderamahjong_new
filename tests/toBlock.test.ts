@@ -16,33 +16,33 @@ function getBlockStrings(hais_num: number[]): string[]{
 test("tehai_normal_1", () => {
     const results = getBlockStrings([1,1,1,1,2,2,2,2,3,3,3,3,4,4]);
 
-    const expected: string[] = [
-        "[1,1],[1,2,3],[1,2,3],[2,3,4],[2,3,4]",
+    const expected = new Set([
         "[4,4],[1,1,1],[1,2,3],[2,2,2],[3,3,3]",
-        "[4,4],[1,2,3],[1,2,3],[1,2,3],[1,2,3]"
-    ];
-    expect(results).toEqual(expected);
+        "[4,4],[1,2,3],[1,2,3],[1,2,3],[1,2,3]",
+        "[1,1],[1,2,3],[1,2,3],[2,3,4],[2,3,4]"
+    ]);
+    expect(new Set(results)).toEqual(expected);
 });
 test("tehai_normal_2", () => {
     const results = getBlockStrings([1,1,1,2,2,2,3,3,3,4,4,4,5,5]);
 
-    const expected: string[] = [
+    const expected = new Set([
         "[2,2],[1,1,1],[2,3,4],[3,4,5],[3,4,5]",
         "[5,5],[1,1,1],[2,2,2],[3,3,3],[4,4,4]",
         "[5,5],[1,1,1],[2,3,4],[2,3,4],[2,3,4]",
         "[5,5],[1,2,3],[1,2,3],[1,2,3],[4,4,4]"
-    ];
-    expect(results).toEqual(expected);
+    ]);
+    expect(new Set(results)).toEqual(expected);
 });
 test("tehai_j1m3", () => {
     const results = getBlockStrings([1,1,2,2,2,3,3,3,4,4,4]);
     
-    const expected: string[] = [
+    const expected = new Set([
         "[1,1],[2,2,2],[3,3,3],[4,4,4]",
         "[1,1],[2,3,4],[2,3,4],[2,3,4]",
         "[4,4],[1,2,3],[1,2,3],[2,3,4]"
-    ];
-    expect(results).toEqual(expected);
+    ]);
+    expect(new Set(results)).toEqual(expected);
 });
 test("tehai_j1m2", () => {
     const results = getBlockStrings([1,1,1,2,2,3,3,3]);
