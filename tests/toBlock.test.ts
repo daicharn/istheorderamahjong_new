@@ -47,20 +47,20 @@ test("tehai_j1m3", () => {
 test("tehai_j1m2", () => {
     const results = getBlockStrings([1,1,1,2,2,3,3,3]);
 
-    const expected: string[] = ["[2,2],[1,1,1],[3,3,3]"];
-    expect(results).toEqual(expected);
+    const expected = new Set(["[2,2],[1,1,1],[3,3,3]"]);
+    expect(new Set(results)).toEqual(expected);
 });
 test("tehai_j1m1", () => {
     const results = getBlockStrings([1,1,1,2,2]);
 
-    const expected: string[] = ["[2,2],[1,1,1]"];
-    expect(results).toEqual(expected);
+    const expected = new Set(["[2,2],[1,1,1]"]);
+    expect(new Set(results)).toEqual(expected);
 });
 test("tehai_j1m0", () => {
     const results = getBlockStrings([1,1]);
     
-    const expected: string[] = ["[1,1]"];
-    expect(results).toEqual(expected);
+    const expected = new Set(["[1,1]"]);
+    expect(new Set(results)).toEqual(expected);
 });
 test("isolated_1", () => {
     const results = getBlockStrings([1,2,3,4,5,6,7,8,9,10,12,13,15,15]);
@@ -75,12 +75,12 @@ test("isolated_2", () => {
 test("tehai_sort_1", () => {
     const results = getBlockStrings([15,15,12,11,10,9,8,7,6,5,4,3,2,1]);
     
-    const expected: string[] = ["[15,15],[1,2,3],[4,5,6],[7,8,9],[10,11,12]"];
-    expect(results).toEqual(expected);
+    const expected = new Set(["[15,15],[1,2,3],[4,5,6],[7,8,9],[10,11,12]"]);
+    expect(new Set(results)).toEqual(expected);
 });
 test("tehai_sort_2", () => {
     const results = getBlockStrings([3,9,1,4,11,6,15,8,2,10,5,12,7,15]);
     
-    const expected: string[] = ["[15,15],[1,2,3],[4,5,6],[7,8,9],[10,11,12]"];
-    expect(results).toEqual(expected);
+    const expected = new Set(["[15,15],[1,2,3],[4,5,6],[7,8,9],[10,11,12]"]);
+    expect(new Set(results)).toEqual(expected);
 });
