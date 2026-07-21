@@ -13,4 +13,8 @@ export class PlayerHand {
     getTehai(): Hais {
         return this.tehai;
     }
+
+    getFuro(): Melds {
+        return this.furo;
+    }
 }

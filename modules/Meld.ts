@@ -9,4 +9,8 @@ export class Meld {
         this.hais = hais;
         this.type = type;
     }
+
+    getHais(): Hai[] {
+        return this.hais;
+    }
 }
