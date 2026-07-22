@@ -41,6 +41,10 @@ export class Hai{
         return this.type == "MANZU" || this.type === "PINZU" || this.type === "SOUZU";
     }
 
+    isJihaiTile(): boolean {
+        return this.type == "JIHAI";
+    }
+
     getId(): number {
         return this.id;
     }

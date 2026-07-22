@@ -7,6 +7,8 @@ export class Hais{
         this.hais = ids.map(id => new Hai(id));
     }
 
+    [Symbol.iterator]() { return this.hais[Symbol.iterator](); }
+
     //末尾に追加
     push(id: number){
         this.hais.push(new Hai(id));
