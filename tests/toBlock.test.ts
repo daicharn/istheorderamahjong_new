@@ -84,3 +84,9 @@ test("tehai_sort_2", () => {
     const expected = new Set(["[15,15],[1,2,3],[4,5,6],[7,8,9],[10,11,12]"]);
     expect(new Set(results)).toEqual(expected);
 });
+test("tehai_jihai_1", () => {
+    const results = getBlockStrings([28,28,29,29,29,30,30,30,31,31,31,32,32,32]);
+    
+    const expected = new Set(["[28,28],[29,29,29],[30,30,30],[31,31,31],[32,32,32]"]);
+    expect(new Set(results)).toEqual(expected);
+});

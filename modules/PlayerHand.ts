@@ -1,20 +1,20 @@
-import {Hais} from './Hais';
-import {Melds} from './Melds';
+import {Hai} from './Hai';
+import {Meld} from './Meld';
 
 export class PlayerHand {
-    private readonly tehai: Hais;
-    private readonly furo: Melds;
+    private readonly tehai: Hai[];
+    private readonly furo: Meld[];
 
-    constructor(tehai: Hais, furo: Melds){
+    constructor(tehai: Hai[], furo: Meld[]){
         this.tehai = tehai;
         this.furo = furo;
     }
 
-    getTehai(): Hais {
+    getTehai(): Hai[] {
         return this.tehai;
     }
 
-    getFuro(): Melds {
+    getFuro(): Meld[] {
         return this.furo;
     }
 }

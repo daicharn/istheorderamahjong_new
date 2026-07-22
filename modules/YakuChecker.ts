@@ -12,7 +12,7 @@ export class YakuChecker {
     constructor(hand: PlayerHand, ctx: PlayerContext){
         this.hand = hand;
         this.ctx = ctx;
-        this.blockedhaislists = new BlockDivider(this.hand.getTehai().getHais()).divide();
+        this.blockedhaislists = new BlockDivider(this.hand.getTehai()).divide();
     }
 
     get blockedhais(): BlockHaisList[]{
@@ -20,23 +20,31 @@ export class YakuChecker {
     }
 
     //役判定
-    check(): boolean {
-        for(const blockedhaislist of this.blockedhaislists){
-            if(this.isTsuiso(blockedhaislist, this.hand.getFuro())) return true;
-        }
+    check(): Map<string, number> {
+        const yaku_map: Map<string, number> = new Map<string, number>();
 
-        return false;
-    } 
+        if(this.isTsuiso()) yaku_map.set("字一色", 0);
+        if(this.isChinroto()) yaku_map.set("清老頭", 0);
+
+        return yaku_map;
+    }
 
     //字一色の判定
-    isTsuiso(blockedhaislist: BlockHaisList, melds: Melds): boolean {
-        for(const blockhais of blockedhaislist){
-            if(blockhais.getHais()[0].isNumberTile()) return false;
-        }
-        for(const meld of melds){
-            if(meld.getHais()[0].isNumberTile()) return false;
-        }
+    isTsuiso(): boolean {
+        const allTiles = [
+            ...this.hand.getTehai(),
+            ...this.hand.getFuro().flatMap(m => m.getHais())
+        ];
 
-        return true;
+        return allTiles.every(h => h.isJihaiTile());
+    }
+    //清老頭の判定
+    isChinroto(): boolean {
+        const allTiles = [
+            ...this.hand.getTehai(),
+            ...this.hand.getFuro().flatMap(m => m.getHais())
+        ];
+
+        return allTiles.every(h => [1, 9].includes(h.num));
     }
 }
