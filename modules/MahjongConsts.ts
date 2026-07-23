@@ -5,8 +5,22 @@ export const PAI_TYPE_NUM: number = 34;
 
 //鳴きのタイプ
 export enum MeldType{
-    CHI = "CHI",
-    PON = "PON",
-    ANKAN = "ANKAN",
-    MINKAN = "MINKAN"
+    CHI,
+    PON,
+    ANKAN,
+    MINKAN
+}
+//牌のタイプ
+export enum HaiType{
+    MANZU,
+    PINZU,
+    SOUZU,
+    JIHAI,
+    BACK
+}
+//ブロックのタイプ
+export enum BlockType{
+    JANTO,
+    KOTSU,
+    SHUNTSU
 }

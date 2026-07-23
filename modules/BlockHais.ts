@@ -1,15 +1,16 @@
 import {Hai} from "./Hai";
+import { BlockType } from "./MahjongConsts";
 
 export class BlockHais {
-    private readonly type: "JANTO" | "KOTSU" | "SHUNTSU";
+    private readonly type: BlockType;
     private readonly hais: Hai[]
 
-    constructor(type: "JANTO" | "KOTSU" | "SHUNTSU", hais: Hai[]){
+    constructor(type: BlockType, hais: Hai[]){
         this.type = type;
         this.hais = hais;
     }
 
-    getType(): "JANTO" | "KOTSU" | "SHUNTSU" {
+    getType(): BlockType {
         return this.type;
     }
 

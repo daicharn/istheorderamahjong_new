@@ -2,7 +2,7 @@ import {PlayerHand} from './PlayerHand';
 import {PlayerContext} from './PlayerContext';
 import {BlockHaisList} from './BlockHaisList';
 import {BlockDivider} from './BlockDivider';
-import { MeldType } from './MahjongConsts';
+import { BlockType, MeldType } from './MahjongConsts';
 
 export class YakuChecker {
     private readonly hand: PlayerHand;
@@ -46,8 +46,8 @@ export class YakuChecker {
             const id = blockhais.getHais()[0].getId();
             if(windNums.has(id)){
                 foundWinds.add(id);
-                if(blockhais.getType() === "KOTSU") mentsuCount++;
-                if(blockhais.getType() === "JANTO") jantoCount++;
+                if(blockhais.getType() === BlockType.KOTSU) mentsuCount++;
+                if(blockhais.getType() === BlockType.JANTO) jantoCount++;
             }
         }
         for(const meld of this.hand.getFuro()){

@@ -55,8 +55,7 @@ describe("清老頭", () => {
 describe("緑一色", () => {
     test("ryuiso_1", () => {
         const yaku = makeYaku([20,20,21,21,22,22,24,24,24,26,26,26,33,33]);
-
-
+        
         const expected = new Map<number, Map<string, number>>();
         expected.set(0, new Map<string, number>([["緑一色", 0]]));
         expect(yaku.check()).toEqual(expected);
