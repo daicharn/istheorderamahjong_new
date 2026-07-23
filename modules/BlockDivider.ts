@@ -2,6 +2,7 @@ import { Hai } from './Hai';
 import {BlockHais} from './BlockHais';
 import {BlockHaisList} from './BlockHaisList';
 import {BlockFinder} from './BlockFinder';
+import { BlockType } from './MahjongConsts';
 
 export class BlockDivider extends BlockFinder{
     constructor(hais: Hai[]){
@@ -49,7 +50,7 @@ export class BlockDivider extends BlockFinder{
                     this.removeHai(next, first);
                     this.removeHai(next, first);
 
-                    blocks.push(new BlockHais("KOTSU", [first.clone(), first.clone(), first.clone()]));
+                    blocks.push(new BlockHais(BlockType.KOTSU, [first.clone(), first.clone(), first.clone()]));
                     dfs(next, blocks);
                     blocks.pop();
                 }
@@ -67,7 +68,7 @@ export class BlockDivider extends BlockFinder{
                         this.removeHai(next, h1);
                         this.removeHai(next, h2);
 
-                        blocks.push(new BlockHais("SHUNTSU", [first.clone(), h1.clone(), h2.clone()]));
+                        blocks.push(new BlockHais(BlockType.SHUNTSU, [first.clone(), h1.clone(), h2.clone()]));
                         dfs(next, blocks);
                         blocks.pop();
                     }
@@ -87,7 +88,7 @@ export class BlockDivider extends BlockFinder{
                 this.removeHai(next, first);
                 this.removeHai(next, first);
 
-                blockhaislist.push(new BlockHais("JANTO", [first.clone(), first.clone()]));
+                blockhaislist.push(new BlockHais(BlockType.JANTO, [first.clone(), first.clone()]));
                 dfs(next, blockhaislist);
                 blockhaislist.pop();
             }
@@ -98,7 +99,7 @@ export class BlockDivider extends BlockFinder{
         if(haiNumsSet.length === 7){
             const blockhaisChitoi: BlockHaisList = new BlockHaisList();
             for(const num of haiNumsSet){
-                blockhaisChitoi.push(new BlockHais("JANTO", [new Hai(num), new Hai(num)]));
+                blockhaisChitoi.push(new BlockHais(BlockType.JANTO, [new Hai(num), new Hai(num)]));
             }
 
             results.push(blockhaisChitoi)

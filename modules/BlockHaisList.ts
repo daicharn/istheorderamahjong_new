@@ -1,4 +1,5 @@
 import {BlockHais} from './BlockHais';
+import { BlockType } from './MahjongConsts';
 
 export class BlockHaisList {
     private readonly blocks: BlockHais[] = [];
@@ -19,12 +20,12 @@ export class BlockHaisList {
         return this.blocks.length;
     }
 
-    count(type: BlockHais["type"]): number{
+    count(type: BlockType): number{
         return this.blocks.filter(b => b.getType() == type).length;
     }
 
     isStandardHand(mentsu: number){
-        return this.count("JANTO") === 1 && (this.count("KOTSU") + this.count("SHUNTSU")) === mentsu;
+        return this.count(BlockType.JANTO) === 1 && (this.count(BlockType.KOTSU) + this.count(BlockType.SHUNTSU)) === mentsu;
     }
 
     blockToString(): string {
@@ -34,8 +35,8 @@ export class BlockHaisList {
     sort(){
         this.blocks.sort((a, b) => {
             //JANTOのみを先頭に移動する
-            if(a.getType() === "JANTO" && b.getType() !== "JANTO") return -1;
-            if(b.getType() === "JANTO" && a.getType() !== "JANTO") return 1;
+            if(a.getType() === BlockType.JANTO && b.getType() !== BlockType.JANTO) return -1;
+            if(b.getType() === BlockType.JANTO && a.getType() !== BlockType.JANTO) return 1;
 
             //JANTO以外は辞書順でソート
             const aIds = a.getHais().map(h => h.getId()).sort((x, y) => x - y);
