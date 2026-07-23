@@ -90,3 +90,30 @@ test("tehai_jihai_1", () => {
     const expected = new Set(["[28,28],[29,29,29],[30,30,30],[31,31,31],[32,32,32]"]);
     expect(new Set(results)).toEqual(expected);
 });
+test("chitoi_1", () => {
+    const results = getBlockStrings([1,1,4,4,9,9,12,12,16,16,26,26,32,32]);
+    
+    const expected = new Set(["[1,1],[4,4],[9,9],[12,12],[16,16],[26,26],[32,32]"]);
+    expect(new Set(results)).toEqual(expected);
+});
+test("chitoi_2", () => {
+    const results = getBlockStrings([4,4,4,4,9,9,12,12,16,16,26,26,32,32]);
+    
+    expect(results).toEqual([]);
+});
+test("chitoi_3", () => {
+    const results = getBlockStrings([4,4,4,4,9,9,12,12,16,16,26,26,32,32,34,34]);
+    
+    expect(results).toEqual([]);
+});
+test("chitoi_4", () => {
+    const results = getBlockStrings([1,1,2,2,3,3,4,4,5,5,6,6,7,7]);
+    
+    const expected = new Set([
+        "[1,1],[2,3,4],[2,3,4],[5,6,7],[5,6,7]",
+        "[4,4],[1,2,3],[1,2,3],[5,6,7],[5,6,7]",
+        "[7,7],[1,2,3],[1,2,3],[4,5,6],[4,5,6]",
+        "[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7]"
+    ]);
+    expect(new Set(results)).toEqual(expected);
+});

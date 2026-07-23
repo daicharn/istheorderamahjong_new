@@ -31,6 +31,8 @@ export class BlockDivider extends BlockFinder{
         const arr_hai: Hai[] = this.hais.sort();
         const blockhaislist: BlockHaisList = new BlockHaisList();
 
+        if(arr_hai.length > 14) return results;
+
         const dfs = (arr: Hai[], blocks: BlockHaisList) => {
             if(arr.length === 0 && blocks.isStandardHand(Math.floor(arr_hai.length / 3))){
                 results.push(blocks.clone());
@@ -73,6 +75,7 @@ export class BlockDivider extends BlockFinder{
             }
         };
 
+        //通常の面子の組み合わせの判定
         for(let i = 0; i < arr_hai.length; i++){
             const first = arr_hai[i];
 
@@ -88,6 +91,17 @@ export class BlockDivider extends BlockFinder{
                 dfs(next, blockhaislist);
                 blockhaislist.pop();
             }
+        }
+
+        //七対子の判定
+        const haiNumsSet = [...new Set(arr_hai.map(h => h.getId()))];
+        if(haiNumsSet.length === 7){
+            const blockhaisChitoi: BlockHaisList = new BlockHaisList();
+            for(const num of haiNumsSet){
+                blockhaisChitoi.push(new BlockHais("JANTO", [new Hai(num), new Hai(num)]));
+            }
+
+            results.push(blockhaisChitoi)
         }
 
         return this.dedupeBlockHais(results);
