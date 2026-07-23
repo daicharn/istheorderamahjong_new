@@ -1,4 +1,7 @@
+import { Hai } from "./Hai";
+
 interface UserOptions {
+    agariHai: Hai
     isTsumo: boolean;
     isMenzen: boolean;
     playerWind: "E" | "S" | "W" | "N";
@@ -15,6 +18,7 @@ interface UserOptions {
 }
 
 export class PlayerContext{
+    agariHai: Hai;
     isTsumo: boolean;
     isMenzen: boolean;
     playerWind: "E" | "S" | "W" | "N";
@@ -30,6 +34,7 @@ export class PlayerContext{
     houtei: boolean;
 
     constructor(options: UserOptions) {
+        this.agariHai = options.agariHai;
         this.isTsumo = options.isTsumo;
         this.isMenzen =  options.isMenzen;
         this.playerWind = options.playerWind;

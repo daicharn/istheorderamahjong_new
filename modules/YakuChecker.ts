@@ -30,15 +30,17 @@ export class YakuChecker {
 
             if(this.isShosushi(blocks)) yaku_map.set("小四喜", 0);
             if(this.isDaisushi(blocks)) yaku_map.set("大四喜", 0);
+            if(this.isSuankoTanki(blocks)) yaku_map.set("四暗刻単騎", 0);
+            else if(this.isSuanko(blocks)) yaku_map.set("四暗刻", 0);
 
-            yaku_maps.set(index, yaku_map);
+            if(yaku_map.size !== 0) yaku_maps.set(index, yaku_map);
         })
 
         return yaku_maps;
     }
 
-    private countWindBlocks(blockedhaislist: BlockHaisList) {
-        const windNums = new Set([28,29,30,31]);
+    private countTargetBlocks(blockedhaislist: BlockHaisList, target: number[]) {
+        const windNums = new Set(target);
         const foundWinds = new Set<number>();
         let mentsuCount = 0;
         let jantoCount = 0;
@@ -66,7 +68,7 @@ export class YakuChecker {
 
     //小四喜
     private isShosushi(blockedhaislist: BlockHaisList): boolean {
-        const {foundWinds, mentsuCount, jantoCount} = this.countWindBlocks(blockedhaislist);
+        const {foundWinds, mentsuCount, jantoCount} = this.countTargetBlocks(blockedhaislist, [28,29,30,31]);
 
         if(foundWinds.size !== 4) return false;
 
@@ -74,13 +76,12 @@ export class YakuChecker {
     }
     //大四喜
     private isDaisushi(blockedhaislist: BlockHaisList): boolean {
-        const {foundWinds, mentsuCount, jantoCount} = this.countWindBlocks(blockedhaislist);
+        const {foundWinds, mentsuCount, jantoCount} = this.countTargetBlocks(blockedhaislist, [28,29,30,31]);
 
         if(foundWinds.size !== 4) return false;
 
         return mentsuCount === 4 && jantoCount === 0;
     }
-
     //字一色
     private isTsuiso(): boolean {
         const allTiles = [
@@ -111,5 +112,35 @@ export class YakuChecker {
         ];
 
         return allTiles.every(h => greenNums.has(h.getId()));
+    }
+    //四暗刻
+    private isSuanko(blockedhaislist: BlockHaisList): boolean {
+        if(!this.ctx.isMenzen) return false;
+
+        let ankoCount = 0;
+        for(const blockhais of blockedhaislist){
+            if(blockhais.getType() === BlockType.KOTSU){
+                //ロンであり刻子にアガリ牌が含まれている場合暗刻として認めない
+                if(!this.ctx.isTsumo && blockhais.getHais().some(h => h.getId() == this.ctx.agariHai.getId())) continue;
+                ankoCount++;
+            }
+        }
+        for(const meld of this.hand.getFuro()){
+            if(meld.getType() === MeldType.ANKAN) ankoCount++;
+        }
+
+        return ankoCount === 4;
+    }
+    //四暗刻単騎
+    private isSuankoTanki(blockedhaislist: BlockHaisList): boolean {
+        if (!this.isSuanko(blockedhaislist)) return false;
+
+        for(const blockhais of blockedhaislist){
+            if(blockhais.getType() === BlockType.JANTO){
+                if(blockhais.getHais().some(h => h.getId() == this.ctx.agariHai.getId())) return true;
+            }
+        }
+
+        return false;
     }
 }
