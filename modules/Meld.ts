@@ -13,4 +13,8 @@ export class Meld {
     getHais(): Hai[] {
         return this.hais;
     }
+
+    getType(): MeldType {
+        return this.type;
+    }
 }
