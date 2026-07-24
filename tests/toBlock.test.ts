@@ -117,3 +117,10 @@ test("chitoi_4", () => {
     ]);
     expect(new Set(results)).toEqual(expected);
 });
+test("tehai_separation_1", () => {
+    const results = getBlockStrings([1,1,1,2,2,2,13,13,16,16,16,17,18,19]);
+
+    const expected = new Set([
+    ]);
+    expect(new Set(results)).toEqual(expected);
+});

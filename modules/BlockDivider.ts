@@ -1,17 +1,18 @@
 import { Hai } from './Hai';
-import {BlockHais} from './BlockHais';
-import {BlockHaisList} from './BlockHaisList';
-import {BlockFinder} from './BlockFinder';
+import { BlockHais } from './BlockHais';
+import { BlockHaisList } from './BlockHaisList';
 import { BlockType } from './MahjongConsts';
 
-export class BlockDivider extends BlockFinder{
+export class BlockDivider{
+    private readonly hais: Hai[];
+
     constructor(hais: Hai[]){
-        super(hais);
+        this.hais = hais.map(h => h.clone()).sort((a, b) => a.getId() - b.getId());
     }
 
-    private removeHai(arr: Hai[], target: Hai) {
-        const idx = arr.findIndex(h => h.getId() === target.getId());
-        if(idx !== -1) arr.splice(idx, 1);
+    protected removeHai(arr: Hai[], target: Hai) {
+            const idx = arr.findIndex(h => h.getId() === target.getId());
+            if(idx !== -1) arr.splice(idx, 1);
     }
 
     private dedupeBlockHais(blockhaislist: BlockHaisList[]): BlockHaisList[]{
@@ -29,13 +30,12 @@ export class BlockDivider extends BlockFinder{
 
     divide(): BlockHaisList[]{
         const results: BlockHaisList[] = [];
-        const arr_hai: Hai[] = this.hais.sort();
         const blockhaislist: BlockHaisList = new BlockHaisList();
 
-        if(arr_hai.length > 14) return results;
+        if(this.hais.length > 14) return results;
 
         const dfs = (arr: Hai[], blocks: BlockHaisList) => {
-            if(arr.length === 0 && blocks.isStandardHand(Math.floor(arr_hai.length / 3))){
+            if(arr.length === 0 && blocks.isStandardHand(Math.floor(this.hais.length / 3))){
                 results.push(blocks.clone());
                 return;
             }
@@ -77,14 +77,14 @@ export class BlockDivider extends BlockFinder{
         };
 
         //通常の面子の組み合わせの判定
-        for(let i = 0; i < arr_hai.length; i++){
-            const first = arr_hai[i];
+        for(let i = 0; i < this.hais.length; i++){
+            const first = this.hais[i];
 
-            if(i > 0 && arr_hai[i].getId() === arr_hai[i - 1].getId()) continue;
+            if(i > 0 && this.hais[i].getId() === this.hais[i - 1].getId()) continue;
 
             //雀頭の処理
-            if(arr_hai.filter(h => h.getId() === first.getId()).length >= 2){
-                const next = arr_hai.slice();
+            if(this.hais.filter(h => h.getId() === first.getId()).length >= 2){
+                const next = this.hais.slice();
                 this.removeHai(next, first);
                 this.removeHai(next, first);
 
@@ -95,8 +95,8 @@ export class BlockDivider extends BlockFinder{
         }
 
         //七対子の判定
-        const haiNumsSet = [...new Set(arr_hai.map(h => h.getId()))];
-        if(haiNumsSet.length === 7){
+        const haiNumsSet = [...new Set(this.hais.map(h => h.getId()))];
+        if(haiNumsSet.length === 7 && haiNumsSet.every(n => this.hais.filter(h => h.getId() == n).length == 2)){
             const blockhaisChitoi: BlockHaisList = new BlockHaisList();
             for(const num of haiNumsSet){
                 blockhaisChitoi.push(new BlockHais(BlockType.JANTO, [new Hai(num), new Hai(num)]));
