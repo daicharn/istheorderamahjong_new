@@ -120,7 +120,36 @@ test("chitoi_4", () => {
 test("tehai_separation_1", () => {
     const results = getBlockStrings([1,1,1,2,2,2,13,13,16,16,16,17,18,19]);
 
-    const expected = new Set([
-    ]);
+    const expected = new Set([]);
+    expect(new Set(results)).toEqual(expected);
+});
+test("kokushi_1", () => {
+    const results = getBlockStrings([1,9,10,18,19,27,28,29,30,31,32,33,34,35]);
+
+    const expected = new Set([]);
+    expect(new Set(results)).toEqual(expected);
+});
+test("kokushi_2", () => {
+    const results = getBlockStrings([1,9,10,18,19,27,28,29,30,31,32,33,34]);
+
+    const expected = new Set([]);
+    expect(new Set(results)).toEqual(expected);
+});
+test("kokushi_3", () => {
+    const results = getBlockStrings([1,1,9,10,18,19,27,28,29,30,31,32,33,34]);
+
+    const expected = new Set(["[1,1,9,10,18,19,27,28,29,30,31,32,33,34]"]);
+    expect(new Set(results)).toEqual(expected);
+});
+test("kokushi_4", () => {
+    const results = getBlockStrings([1,9,10,18,19,27,28,29,30,31,32,33,34,34]);
+
+    const expected = new Set(["[1,9,10,18,19,27,28,29,30,31,32,33,34,34]"]);
+    expect(new Set(results)).toEqual(expected);
+});
+test("kokushi_5", () => {
+    const results = getBlockStrings([1,9,10,18,19,27,28,28,29,30,31,32,33,34]);
+
+    const expected = new Set(["[1,9,10,18,19,27,28,28,29,30,31,32,33,34]"]);
     expect(new Set(results)).toEqual(expected);
 });

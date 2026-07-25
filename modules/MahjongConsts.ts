@@ -22,5 +22,6 @@ export enum HaiType{
 export enum BlockType{
     JANTO,
     KOTSU,
-    SHUNTSU
+    SHUNTSU,
+    KOKUSHI
 }

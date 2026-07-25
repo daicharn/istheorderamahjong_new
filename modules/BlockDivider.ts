@@ -89,15 +89,27 @@ export class BlockDivider{
             }
         }
 
-        //七対子の判定
+        //手牌から重複をなくしたものを用意
         const haiNumsSet = [...new Set(this.hais.map(h => h.getId()))];
+        //七対子の判定
         if(haiNumsSet.length === 7 && haiNumsSet.every(n => this.hais.filter(h => h.getId() == n).length == 2)){
-            const blockhaisChitoi: BlockHaisList = new BlockHaisList();
+            const blockhaischitoi: BlockHaisList = new BlockHaisList();
             for(const num of haiNumsSet){
-                blockhaisChitoi.push(new BlockHais(BlockType.JANTO, [new Hai(num), new Hai(num)]));
+                blockhaischitoi.push(new BlockHais(BlockType.JANTO, [new Hai(num), new Hai(num)]));
             }
 
-            results.push(blockhaisChitoi)
+            results.push(blockhaischitoi)
+        }
+        //国士無双の判定
+        if(this.hais.every(h => h.isYaochuTile()) && this.hais.length === 14 && haiNumsSet.length === 13){
+            const blockhaiskokushi: BlockHaisList = new BlockHaisList();
+            const haiskokushi: Hai[] = [];
+            for(const hai of this.hais){
+                haiskokushi.push(hai);
+            }
+
+            blockhaiskokushi.push(new BlockHais(BlockType.KOKUSHI, haiskokushi));
+            results.push(blockhaiskokushi);
         }
 
         return this.dedupeBlockHais(results);

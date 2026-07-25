@@ -38,13 +38,22 @@ export class Hai{
         return `${base}back.png`;
     }
 
+    isRoutouTile(): boolean {
+        return this.num === 1 || this.num === 9;
+    }
+
     isNumberTile(): boolean {
-        return this.type == HaiType.MANZU || this.type === HaiType.PINZU || this.type === HaiType.SOUZU;
+        return this.type === HaiType.MANZU || this.type === HaiType.PINZU || this.type === HaiType.SOUZU;
     }
 
     isJihaiTile(): boolean {
-        return this.type == HaiType.JIHAI;
+        return this.type === HaiType.JIHAI;
     }
+
+    isYaochuTile(): boolean {
+        return this.isRoutouTile() || this.isJihaiTile();
+    }
+
 
     getId(): number {
         return this.id;
