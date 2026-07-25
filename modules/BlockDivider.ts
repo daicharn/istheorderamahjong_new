@@ -43,29 +43,29 @@ export class BlockDivider{
             }
 
             for(let j = 0; j < counts.length; j++){
-                const first = counts[j];
-                const firsthai = new Hai(first);
+                const count = arr[j];
+                const hai = new Hai(j + 1);
 
                 //刻子の処理
-                if(first >= 3){
-                    const next = [...arr];
+                if(count >= 3){
+                    let next = [...arr];
                     next[j] -= 3;
 
-                    blocks.push(new BlockHais(BlockType.KOTSU, [firsthai, firsthai, firsthai]));
+                    blocks.push(new BlockHais(BlockType.KOTSU, [hai, hai, hai]));
                     dfs(next, blocks);
                     blocks.pop();
                 }
                 //順子の処理
-                if(counts[j] > 0 && counts[j + 1] > 0 && counts[j + 2] > 0 && firsthai.isNumberTile() && firsthai.num <= 7){
-                    const h1 = new Hai(first + 1);
-                    const h2 = new Hai(first + 2);
+                if(arr[j] > 0 && arr[j + 1] > 0 && arr[j + 2] > 0 && hai.isNumberTile() && hai.num <= 7){
+                    const h2 = new Hai(j + 2);
+                    const h3 = new Hai(j + 3);
 
-                    const next = [...arr];
+                    let next = [...arr];
                     next[j]--;
                     next[j + 1]--;
                     next[j + 2]--;
 
-                    blocks.push(new BlockHais(BlockType.SHUNTSU, [firsthai, h1, h2]));
+                    blocks.push(new BlockHais(BlockType.SHUNTSU, [hai, h2, h3]));
                     dfs(next, blocks);
                     blocks.pop();
                 }
@@ -80,8 +80,8 @@ export class BlockDivider{
 
             //雀頭の処理
             if(this.hais.filter(h => h.getId() === firstid).length >= 2){
-                const next = [...counts];
-                next[firstid - 1]--;
+                let next = [...counts];
+                next[firstid - 1] -= 2;
 
                 blockhaislist.push(new BlockHais(BlockType.JANTO, [this.hais[i].clone(), this.hais[i].clone()]));
                 dfs(next, blockhaislist);
