@@ -1,6 +1,6 @@
 import { Hais } from "../modules/Hais";
 import { BlockHaisList } from "../modules/BlockHaisList";
-import {BlockDivider} from '../modules/BlockDivider';
+import { BlockDivider } from '../modules/BlockDivider';
 
 function getBlockStrings(hais_num: number[]): string[]{
     const blocks: BlockHaisList[] = new BlockDivider(new Hais(hais_num).getHais()).divide();

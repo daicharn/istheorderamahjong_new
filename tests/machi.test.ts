@@ -5,6 +5,8 @@ import { PAI_TYPE_NUM } from '../modules/MahjongConsts';
 import { casesChinitsu } from './machi/chinitsu';
 import { casesChitoitsu } from './machi/chitoitsu';
 import { casesKokushi } from './machi/kokushi';
+import { BlockHaisList } from "../modules/BlockHaisList";
+import { BlockDivider } from '../modules/BlockDivider';
 
 type MachiCase = {
     name: string,
@@ -76,7 +78,7 @@ describe("ランダム", () => {
     test('random', () => {
         let count = new Array(9).fill(0);
 
-        for(let i = 0; i < 1000; i++){
+        for(let i = 0; i < 100; i++){
             const hais = generateRandomTehai(4);
             const index = Math.floor(Math.random() * hais.length);
             hais.splice(index, 1);
@@ -84,6 +86,12 @@ describe("ランダム", () => {
             const machi = getMachi(hais);
             if(machi.length > 0) count[machi.length - 1]++;
             expect(machi).not.toHaveLength(0);
+            //待ちから完成系の手牌を作成して成立するかどうか調べる
+            for(const hai of machi){
+                const hais_agari = [...hais, hai];
+                const blocks: BlockHaisList[] = new BlockDivider(new Hais(hais_agari).getHais()).divide();
+                expect(blocks).not.toHaveLength(0);
+            }
         }
 
         console.log(count);
