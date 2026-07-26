@@ -7,6 +7,7 @@ import { casesChitoitsu } from './machi/chitoitsu';
 import { casesKokushi } from './machi/kokushi';
 import { BlockHaisList } from "../modules/BlockHaisList";
 import { BlockDivider } from '../modules/BlockDivider';
+import { casesMaisuu } from './machi/maisuu';
 
 type MachiCase = {
     name: string,
@@ -64,6 +65,7 @@ const testcases: Map<string, MachiCase[]> = new Map();
 testcases.set("清一色", casesChinitsu);
 testcases.set("七対子", casesChitoitsu);
 testcases.set("国士無双", casesKokushi);
+testcases.set("枚数", casesMaisuu);
 
 testcases.forEach((value, key) => {
     describe(key, () => {
