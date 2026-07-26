@@ -30,6 +30,7 @@ export class YakuChecker {
 
             if(this.isShosushi(blocks)) yaku_map.set("小四喜", 0);
             if(this.isDaisushi(blocks)) yaku_map.set("大四喜", 0);
+            if(this.isDaisangen(blocks)) yaku_map.set("大三元", 0);
             if(this.isSuankoTanki(blocks)) yaku_map.set("四暗刻単騎", 0);
             else if(this.isSuanko(blocks)) yaku_map.set("四暗刻", 0);
 
@@ -40,45 +41,45 @@ export class YakuChecker {
     }
 
     private countTargetBlocks(blockedhaislist: BlockHaisList, target: number[]) {
-        const windNums = new Set(target);
-        const foundWinds = new Set<number>();
+        const targetNums = new Set(target);
+        const foundTargets = new Set<number>();
         let mentsuCount = 0;
         let jantoCount = 0;
         for(const blockhais of blockedhaislist){
             const id = blockhais.getHais()[0].getId();
-            if(windNums.has(id)){
-                foundWinds.add(id);
+            if(targetNums.has(id)){
+                foundTargets.add(id);
                 if(blockhais.getType() === BlockType.KOTSU) mentsuCount++;
                 if(blockhais.getType() === BlockType.JANTO) jantoCount++;
             }
         }
         for(const meld of this.hand.getFuro()){
             const id = meld.getHais()[0].getId();
-            if(windNums.has(id)){
+            if(targetNums.has(id)){
                 //ポン、カンであれば面子としてカウント
                 if(meld.getType() !== MeldType.CHI){
-                    foundWinds.add(id);
+                    foundTargets.add(id);
                     mentsuCount++;
                 }
             }
         }
 
-        return {foundWinds, mentsuCount, jantoCount};
+        return {foundTargets, mentsuCount, jantoCount};
     }
 
     //小四喜
     private isShosushi(blockedhaislist: BlockHaisList): boolean {
-        const {foundWinds, mentsuCount, jantoCount} = this.countTargetBlocks(blockedhaislist, [28,29,30,31]);
+        const {foundTargets, mentsuCount, jantoCount} = this.countTargetBlocks(blockedhaislist, [28,29,30,31]);
 
-        if(foundWinds.size !== 4) return false;
+        if(foundTargets.size !== 4) return false;
 
         return mentsuCount === 3 && jantoCount === 1;
     }
     //大四喜
     private isDaisushi(blockedhaislist: BlockHaisList): boolean {
-        const {foundWinds, mentsuCount, jantoCount} = this.countTargetBlocks(blockedhaislist, [28,29,30,31]);
+        const {foundTargets, mentsuCount, jantoCount} = this.countTargetBlocks(blockedhaislist, [28,29,30,31]);
 
-        if(foundWinds.size !== 4) return false;
+        if(foundTargets.size !== 4) return false;
 
         return mentsuCount === 4 && jantoCount === 0;
     }
@@ -142,5 +143,13 @@ export class YakuChecker {
         }
 
         return false;
+    }
+    //大三元
+    private isDaisangen(blockedhaislist: BlockHaisList): boolean {
+        const {foundTargets, mentsuCount, jantoCount} = this.countTargetBlocks(blockedhaislist, [32,33,34]);
+
+        if(foundTargets.size !== 3) return false;
+
+        return mentsuCount === 3 && jantoCount === 0;
     }
 }

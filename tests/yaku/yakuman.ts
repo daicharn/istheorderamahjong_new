@@ -1,0 +1,213 @@
+import { MeldSpec, TehaiCase } from '../testConsts';
+import { MeldType } from "../../modules/MahjongConsts";
+
+export const casesYakuman: TehaiCase[] = [
+  {
+    name: "tsuiso_1",
+    desc: "字一色",
+    agariHai: 29,
+    isTsumo: false,
+    isMenzen: true,
+    melds: [] as MeldSpec[],
+    hais: [28,28,29,29,29,31,31,31,32,32,32,34,34,34],
+    expected: new Map([[0, new Map([["字一色", 0]])]])
+  },
+  {
+    name: "tsuiso_2",
+    desc: "字一色",
+    agariHai: 29,
+    isTsumo: true,
+    isMenzen: false,
+    melds: [
+        {hai: 32, type: MeldType.PON},
+        {hai: 34, type: MeldType.PON},
+    ] as MeldSpec[],
+    hais: [28,28,29,29,29,31,31,31],
+    expected: new Map([[0, new Map([["字一色", 0]])]])
+  },
+  {
+    name: "chinroto_1",
+    desc: "清老頭",
+    agariHai: 1,
+    isTsumo: false,
+    isMenzen: true,
+    melds: [] as MeldSpec[],
+    hais: [1,1,1,9,9,9,10,10,18,18,18,27,27,27],
+    expected: new Map([[0, new Map([["清老頭", 0]])]])
+  },
+  {
+    name: "chinroto_2",
+    desc: "清老頭",
+    agariHai: 10,
+    isTsumo: true,
+    isMenzen: false,
+    melds: [
+        {hai: 1, type: MeldType.PON},
+        {hai: 19, type: MeldType.PON},
+    ] as MeldSpec[],
+    hais: [9,9,9,10,10,18,18,18],
+    expected: new Map([[0, new Map([["清老頭", 0]])]])
+  },
+  {
+    name: "ryuiso_1",
+    desc: "緑一色",
+    agariHai: 21,
+    isTsumo: true,
+    isMenzen: true,
+    melds: [] as MeldSpec[],
+    hais: [20,20,21,21,22,22,24,24,24,26,26,26,33,33],
+    expected: new Map([[0, new Map([["緑一色", 0]])]])
+  },
+  {
+    name: "ryuiso_2",
+    desc: "緑一色",
+    agariHai: 26,
+    isTsumo: true,
+    isMenzen: false,
+    melds: [
+        {hai: 20, type: MeldType.CHI},
+        {hai: 33, type: MeldType.PON},
+    ] as MeldSpec[],
+    hais: [20,21,22,24,24,24,26,26],
+    expected: new Map([[0, new Map([["緑一色", 0]])]])
+  },
+  {
+    name: "daisushi_1",
+    desc: "大四喜",
+    agariHai: 30,
+    isTsumo: false,
+    isMenzen: true,
+    melds: [] as MeldSpec[],
+    hais: [1,1,28,28,28,29,29,29,30,30,30,31,31,31],
+    expected: new Map([[0, new Map([["大四喜", 0]])]])
+  },
+  {
+    name: "daisushi_2",
+    desc: "大四喜",
+    agariHai: 30,
+    isTsumo: true,
+    isMenzen: true,
+    melds: [] as MeldSpec[],
+    hais: [28,28,28,29,29,29,30,30,30,31,31,31,33,33],
+    expected: new Map([[0, new Map([["四暗刻", 0],["字一色", 0],["大四喜", 0]])]])
+  },
+  {
+    name: "daisushi_3",
+    desc: "大四喜",
+    agariHai: 30,
+    isTsumo: true,
+    isMenzen: false,
+    melds: [
+        {hai: 29, type: MeldType.PON},
+        {hai: 31, type: MeldType.ANKAN},
+    ] as MeldSpec[],
+    hais: [26,26,28,28,28,30,30,30],
+    expected: new Map([[0, new Map([["大四喜", 0]])]])
+  },
+  {
+    name: "shosushi_1",
+    desc: "小四喜",
+    agariHai: 30,
+    isTsumo: false,
+    isMenzen: true,
+    melds: [] as MeldSpec[],
+    hais: [1,1,1,28,28,28,29,29,30,30,30,31,31,31],
+    expected: new Map([[0, new Map([["小四喜", 0]])]])
+  },
+  {
+    name: "shosushi_2",
+    desc: "小四喜",
+    agariHai: 28,
+    isTsumo: true,
+    isMenzen: true,
+    melds: [] as MeldSpec[],
+    hais: [28,28,28,29,29,29,30,30,31,31,31,33,33,33],
+    expected: new Map([[0, new Map([["字一色", 0],["小四喜", 0],["四暗刻", 0]])]])
+  },
+  {
+    name: "shosushi_3",
+    desc: "小四喜",
+    agariHai: 28,
+    isTsumo: true,
+    isMenzen: false,
+    melds: [
+        {hai: 29, type: MeldType.PON},
+        {hai: 31, type: MeldType.PON},
+    ] as MeldSpec[],
+    hais: [25,26,27,28,28,30,30,30],
+    expected: new Map([[0, new Map([["小四喜", 0]])]])
+  },
+  {
+    name: "suanko_1",
+    desc: "四暗刻",
+    agariHai: 3,
+    isTsumo: true,
+    isMenzen: true,
+    melds: [] as MeldSpec[],
+    hais: [3,3,3,7,7,7,12,12,12,24,24,24,31,31],
+    expected: new Map([[0, new Map([["四暗刻", 0]])]])
+  },
+  {
+    name: "suanko_2",
+    desc: "四暗刻",
+    agariHai: 3,
+    isTsumo: false,
+    isMenzen: true,
+    melds: [] as MeldSpec[],
+    hais: [3,3,3,7,7,7,12,12,12,24,24,24,31,31],
+    expected: new Map()
+  },
+  {
+    name: "suanko_3",
+    desc: "四暗刻",
+    agariHai: 31,
+    isTsumo: false,
+    isMenzen: true,
+    melds: [] as MeldSpec[],
+    hais: [3,3,3,7,7,7,12,12,12,24,24,24,31,31],
+    expected: new Map([[0, new Map([["四暗刻単騎", 0]])]])
+  },
+  {
+    name: "suanko_4",
+    desc: "四暗刻",
+    agariHai: 31,
+    isTsumo: true,
+    isMenzen: true,
+    melds: [] as MeldSpec[],
+    hais: [3,3,3,7,7,7,12,12,12,24,24,24,31,31],
+    expected: new Map([[0, new Map([["四暗刻単騎", 0]])]])
+  },
+  {
+    name: "daisangen_1",
+    desc: "大三元",
+    agariHai: 33,
+    isTsumo: false,
+    isMenzen: true,
+    melds: [] as MeldSpec[],
+    hais: [1,1,28,28,28,32,32,32,33,33,33,34,34,34],
+    expected: new Map([[0, new Map([["大三元", 0]])]])
+  },
+  {
+    name: "daisangen_2",
+    desc: "大三元",
+    agariHai: 33,
+    isTsumo: true,
+    isMenzen: true,
+    melds: [] as MeldSpec[],
+    hais: [28,28,29,29,29,32,32,32,33,33,33,34,34,34],
+    expected: new Map([[0, new Map([["大三元", 0],["字一色", 0],["四暗刻", 0]])]])
+  },
+  {
+    name: "daisangen_3",
+    desc: "大三元",
+    agariHai: 34,
+    isTsumo: false,
+    isMenzen: false,
+    melds: [
+        {hai: 32, type: MeldType.PON},
+        {hai: 33, type: MeldType.PON},
+    ] as MeldSpec[],
+    hais: [1,1,28,28,28,34,34,34],
+    expected: new Map([[0, new Map([["大三元", 0]])]])
+  },
+];
