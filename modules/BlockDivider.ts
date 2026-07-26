@@ -37,7 +37,7 @@ export class BlockDivider{
         if(this.hais.length > 14) return results;
 
         const dfs = (arr: number[], blocks: BlockHaisList) => {
-            if(arr.every(n => n === 0) && blocks.isStandardHand(Math.floor(this.hais.length / 3))){
+            if(blocks.length() === Math.floor(this.hais.length / 3) + 1 && blocks.isStandardHand(Math.floor(this.hais.length / 3))){
                 results.push(blocks.clone());
                 return;
             }
@@ -92,7 +92,7 @@ export class BlockDivider{
         //手牌から重複をなくしたものを用意
         const haiNumsSet = [...new Set(this.hais.map(h => h.getId()))];
         //七対子の判定
-        if(haiNumsSet.length === 7 && haiNumsSet.every(n => this.hais.filter(h => h.getId() == n).length == 2)){
+        if(haiNumsSet.length === 7 && haiNumsSet.every(n => counts[n - 1] === 2)){
             const blockhaischitoi: BlockHaisList = new BlockHaisList();
             for(const num of haiNumsSet){
                 blockhaischitoi.push(new BlockHais(BlockType.JANTO, [new Hai(num), new Hai(num)]));
