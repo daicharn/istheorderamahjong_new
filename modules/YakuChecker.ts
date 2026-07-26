@@ -21,16 +21,27 @@ export class YakuChecker {
 
         //面子構造に依存しない役の判定
         const flatYaku = new Map<string, number>();
-        if(this.isTsuiso()) flatYaku.set("字一色", 0);
-        if(this.isChinroto()) flatYaku.set("清老頭", 0);
-        if(this.isRyuiso()) flatYaku.set("緑一色", 0);
+        const flatYakus = [
+            {check: this.isTsuiso, name: "字一色"},
+            {check: this.isChinroto, name: "清老頭"},
+            {check: this.isRyuiso, name: "緑一色"},
+        ];
+        for(const y of flatYakus){
+            if(y.check.call(this)) flatYaku.set(y.name, 0);
+        }
 
         this.blockedhaislists.forEach((blocks, index) => {
             const yaku_map: Map<string, number> = new Map(flatYaku);
 
-            if(this.isShosushi(blocks)) yaku_map.set("小四喜", 0);
-            if(this.isDaisushi(blocks)) yaku_map.set("大四喜", 0);
-            if(this.isDaisangen(blocks)) yaku_map.set("大三元", 0);
+            const yakus = [
+                {check: this.isShosushi, name: "小四喜"},
+                {check: this.isDaisushi, name: "大四喜"},
+                {check: this.isDaisangen, name: "大三元"},
+            ];
+            for(const y of yakus){
+                if(y.check.call(this, blocks)) yaku_map.set(y.name, 0);
+            }
+
             if(this.isSuankoTanki(blocks)) yaku_map.set("四暗刻単騎", 0);
             else if(this.isSuanko(blocks)) yaku_map.set("四暗刻", 0);
 
