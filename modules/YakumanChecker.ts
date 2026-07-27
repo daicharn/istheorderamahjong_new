@@ -19,6 +19,7 @@ export class YakumanChecker extends YakuCheckerBase{
             {check: this.isTsuiso, name: "字一色"},
             {check: this.isChinroto, name: "清老頭"},
             {check: this.isRyuiso, name: "緑一色"},
+            {check: this.isSukantsu, name: "四槓子"},
         ];
         for(const y of flatYakus){
             if(y.check.call(this)) flatYaku.set(y.name, 0);
@@ -26,6 +27,9 @@ export class YakumanChecker extends YakuCheckerBase{
 
         if(this.isChuren9()) flatYaku.set("純正九蓮宝燈", 0);
         else if(this.isChuren()) flatYaku.set("九蓮宝燈", 0);
+
+        if(this.context.ctx.tenho) flatYaku.set("天和", 0);
+        if(this.context.ctx.chiho) flatYaku.set("地和", 0);
 
         this.context.blocks.forEach((blocks, index) => {
             const yaku_map: Map<string, number> = new Map(flatYaku);
@@ -180,5 +184,9 @@ export class YakumanChecker extends YakuCheckerBase{
         const machi = new MachiCalculator(hais).calculate();
 
         return machi.length === 9;
+    }
+    //四槓子
+    private isSukantsu(): boolean {
+        return this.countKantsu() === 4;
     }
 }

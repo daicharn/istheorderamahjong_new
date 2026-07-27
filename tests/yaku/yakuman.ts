@@ -178,6 +178,19 @@ export const casesYakuman: TehaiCase[] = [
     expected: new Map([[0, new Map([["四暗刻単騎", 0]])]])
   },
   {
+    name: "suanko_5",
+    desc: "四暗刻",
+    agariHai: 7,
+    isTsumo: true,
+    isMenzen: true,
+    melds: [
+        {hai: 12, type: MeldType.ANKAN},
+        {hai: 24, type: MeldType.ANKAN},
+    ] as MeldSpec[],
+    hais: [3,3,3,7,7,7,31,31],
+    expected: new Map([[0, new Map([["四暗刻", 0]])]])
+  },
+  {
     name: "daisangen_1",
     desc: "大三元",
     agariHai: 33,
@@ -309,5 +322,50 @@ export const casesYakuman: TehaiCase[] = [
     melds: [] as MeldSpec[],
     hais: [1,1,1,2,3,4,5,6,7,8,9,9,9,9],
     expected: new Map([[0, new Map([["純正九蓮宝燈", 0]])]])
+  },
+  {
+    name: "sukantsu_1",
+    desc: "四槓子",
+    agariHai: 1,
+    isTsumo: false,
+    isMenzen: false,
+    melds: [
+        {hai: 2, type: MeldType.ANKAN},
+        {hai: 13, type: MeldType.ANKAN},
+        {hai: 16, type: MeldType.MINKAN},
+        {hai: 31, type: MeldType.MINKAN},
+    ] as MeldSpec[],
+    hais: [1,1],
+    expected: new Map([[0, new Map([["四槓子", 0]])]])
+  },
+  {
+    name: "sukantsu_2",
+    desc: "四槓子",
+    agariHai: 1,
+    isTsumo: false,
+    isMenzen: true,
+    melds: [
+        {hai: 2, type: MeldType.ANKAN},
+        {hai: 13, type: MeldType.ANKAN},
+        {hai: 16, type: MeldType.ANKAN},
+        {hai: 31, type: MeldType.ANKAN},
+    ] as MeldSpec[],
+    hais: [1,1],
+    expected: new Map([[0, new Map([["四槓子", 0],["四暗刻単騎", 0]])]])
+  },
+  {
+    name: "sukantsu_3",
+    desc: "四槓子",
+    agariHai: 32,
+    isTsumo: false,
+    isMenzen: true,
+    melds: [
+        {hai: 28, type: MeldType.ANKAN},
+        {hai: 29, type: MeldType.ANKAN},
+        {hai: 30, type: MeldType.ANKAN},
+        {hai: 31, type: MeldType.ANKAN},
+    ] as MeldSpec[],
+    hais: [32,32],
+    expected: new Map([[0, new Map([["大四喜", 0],["字一色", 0],["四槓子", 0],["四暗刻単騎", 0]])]])
   },
 ];

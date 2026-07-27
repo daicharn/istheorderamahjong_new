@@ -37,6 +37,16 @@ export class YakuCheckerBase {
         return {foundTargets, mentsuCount, jantoCount};
     }
 
+    //カンの数を数える
+    protected countKantsu(){
+        let kantsuCount = 0;
+        for(const meld of this.context.melds){
+            if(meld.getType() === MeldType.ANKAN || meld.getType() === MeldType.MINKAN) kantsuCount++;
+        }
+
+        return kantsuCount;
+    }
+
     //清一色
     protected isChinitsu() {
         const hais = this.context.hais;
