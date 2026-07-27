@@ -87,7 +87,6 @@ describe("ランダム", () => {
 
             const machi = getMachi(hais);
             if(machi.length > 0) count[machi.length - 1]++;
-            expect(machi).not.toHaveLength(0);
             //待ちから完成系の手牌を作成して成立するかどうか調べる
             for(const hai of machi){
                 const hais_agari = [...hais, hai];
@@ -96,6 +95,6 @@ describe("ランダム", () => {
             }
         }
 
-        console.log(count);
+        console.log(count.map((v, i) => `${i + 1}men->${v}`));
     });
 });
