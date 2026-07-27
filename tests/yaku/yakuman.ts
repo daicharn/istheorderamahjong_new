@@ -210,4 +210,104 @@ export const casesYakuman: TehaiCase[] = [
     hais: [1,1,28,28,28,34,34,34],
     expected: new Map([[0, new Map([["大三元", 0]])]])
   },
+  {
+    name: "kokushi_1",
+    desc: "国士無双",
+    agariHai: 9,
+    isTsumo: true,
+    isMenzen: true,
+    melds: [] as MeldSpec[],
+    hais: [1,1,9,10,18,19,27,28,29,30,31,32,33,34],
+    expected: new Map([[0, new Map([["国士無双", 0]])]])
+  },
+  {
+    name: "kokushi_2",
+    desc: "国士無双",
+    agariHai: 18,
+    isTsumo: true,
+    isMenzen: true,
+    melds: [] as MeldSpec[],
+    hais: [1,9,10,18,19,27,28,29,30,31,32,33,34,34],
+    expected: new Map([[0, new Map([["国士無双", 0]])]])
+  },
+  {
+    name: "kokushi_3",
+    desc: "国士無双",
+    agariHai: 28,
+    isTsumo: true,
+    isMenzen: true,
+    melds: [] as MeldSpec[],
+    hais: [1,9,10,18,19,27,28,28,29,30,31,32,33,34],
+    expected: new Map([[0, new Map([["国士無双13面待ち", 0]])]])
+  },
+  {
+    name: "churen_1",
+    desc: "九蓮宝燈",
+    agariHai: 9,
+    isTsumo: false,
+    isMenzen: true,
+    melds: [] as MeldSpec[],
+    hais: [1,1,1,2,3,4,5,5,6,7,8,9,9,9],
+    expected: new Map([[0, new Map([["九蓮宝燈", 0]])]])
+  },
+  {
+    name: "churen_2",
+    desc: "九蓮宝燈",
+    agariHai: 18,
+    isTsumo: false,
+    isMenzen: true,
+    melds: [] as MeldSpec[],
+    hais: [10,10,10,10,11,12,13,14,15,16,17,18,18,18],
+    expected: new Map([[0, new Map([["九蓮宝燈", 0]])]])
+  },
+  {
+    name: "churen_3",
+    desc: "九蓮宝燈",
+    agariHai: 22,
+    isTsumo: false,
+    isMenzen: true,
+    melds: [] as MeldSpec[],
+    hais: [19,19,19,20,21,22,23,24,25,26,26,27,27,27],
+    expected: new Map([[0, new Map([["九蓮宝燈", 0]])]])
+  },
+  {
+    name: "churen_4",
+    desc: "九蓮宝燈",
+    agariHai: 9,
+    isTsumo: false,
+    isMenzen: true,
+    melds: [] as MeldSpec[],
+    hais: [2,3,4,5,5],
+    expected: new Map()
+  },
+  {
+    name: "churen_5",
+    desc: "九蓮宝燈",
+    agariHai: 1,
+    isTsumo: false,
+    isMenzen: true,
+    melds: [] as MeldSpec[],
+    hais: [1,1,1,1,2,3,4,5,6,7,8,9,9,9],
+    expected: new Map([[0, new Map([["純正九蓮宝燈", 0]])]])
+  },
+  {
+    name: "churen_6",
+    desc: "九蓮宝燈",
+    agariHai: 5,
+    isTsumo: false,
+    isMenzen: true,
+    melds: [] as MeldSpec[],
+    hais: [1,1,1,2,3,4,5,5,6,7,8,9,9,9],
+    expected: new Map([[0, new Map([["純正九蓮宝燈", 0]])]])
+  },
+  {
+    name: "churen_7",
+    desc: "九蓮宝燈",
+    agariHai: 9,
+    isTsumo: false,
+    isMenzen: true,
+    melds: [] as MeldSpec[],
+    hais: [1,1,1,2,3,4,5,6,7,8,9,9,9,9],
+    expected: new Map([[0, new Map([["純正九蓮宝燈", 0]])]])
+  },
 ];

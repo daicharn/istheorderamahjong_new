@@ -36,4 +36,18 @@ export class YakuCheckerBase {
 
         return {foundTargets, mentsuCount, jantoCount};
     }
+
+    //清一色
+    protected isChinitsu() {
+        const hais = this.context.hais;
+        const allTiles = [
+            ...hais,
+            ...this.context.melds.flatMap(m => m.getHais())
+        ];
+
+        if(hais.length === 0) return false;
+        const suit = hais[0];
+        
+        return allTiles.every(h => h.type === suit.type);
+    }
 }

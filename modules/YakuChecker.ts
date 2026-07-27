@@ -15,6 +15,4 @@ export class YakuChecker {
 
         return yakuman;
     }
-
-
 }

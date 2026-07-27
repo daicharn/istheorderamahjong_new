@@ -54,7 +54,6 @@ export class Hai{
         return this.isRoutouTile() || this.isJihaiTile();
     }
 
-
     getId(): number {
         return this.id;
     }
