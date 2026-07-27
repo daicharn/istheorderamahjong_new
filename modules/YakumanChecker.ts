@@ -103,7 +103,7 @@ export class YakumanChecker extends YakuCheckerBase{
     }
     //四暗刻
     private isSuanko(blockedhaislist: BlockHaisList): boolean {
-        if(!this.context.ctx.isMenzen) return false;
+        if(!this.isMenzen()) return false;
 
         let ankoCount = 0;
         for(const blockhais of blockedhaislist){
@@ -141,6 +141,7 @@ export class YakumanChecker extends YakuCheckerBase{
     }
     //国士無双
     private isKokushi(blockedhaislist: BlockHaisList): boolean {
+        if(!this.isMenzen()) return false;
         return blockedhaislist.getBlockHais().some(b => b.getType() === BlockType.KOKUSHI);
     }
     //国士無双13面待ち
@@ -158,6 +159,7 @@ export class YakumanChecker extends YakuCheckerBase{
     //九蓮宝燈
     private isChuren(): boolean {
         if(!this.isChinitsu()) return false;
+        if(!this.isMenzen()) return false;
         
         const count = new Array(9).fill(0);
         const hais = this.context.hais.map(h => h.clone());

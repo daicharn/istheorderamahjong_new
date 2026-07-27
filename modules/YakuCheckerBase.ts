@@ -38,13 +38,18 @@ export class YakuCheckerBase {
     }
 
     //カンの数を数える
-    protected countKantsu(){
+    protected countKantsu() {
         let kantsuCount = 0;
         for(const meld of this.context.melds){
             if(meld.getType() === MeldType.ANKAN || meld.getType() === MeldType.MINKAN) kantsuCount++;
         }
 
         return kantsuCount;
+    }
+
+    //面前かどうか
+    protected isMenzen() {
+        return this.context.melds.every(meld => meld.getType() === MeldType.ANKAN);
     }
 
     //清一色

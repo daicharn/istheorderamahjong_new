@@ -10,7 +10,6 @@ export type TehaiCase = {
     desc: string,
     agariHai: number,
     isTsumo: boolean,
-    isMenzen: boolean,
     melds: MeldSpec[],
     hais: number[],
     expected: Map<number, Map<string, number>>

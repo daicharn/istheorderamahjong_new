@@ -3,7 +3,6 @@ import { Hai } from "./Hai";
 interface UserOptions {
     agariHai: Hai
     isTsumo: boolean;
-    isMenzen: boolean;
     playerWind: "E" | "S" | "W" | "N";
     roundWind: "E" | "S" | "W" | "N";
     tenho?: boolean;
@@ -20,7 +19,6 @@ interface UserOptions {
 export class PlayerContext{
     agariHai: Hai;
     isTsumo: boolean;
-    isMenzen: boolean;
     playerWind: "E" | "S" | "W" | "N";
     roundWind: "E" | "S" | "W" | "N";
     tenho: boolean;
@@ -36,7 +34,6 @@ export class PlayerContext{
     constructor(options: UserOptions) {
         this.agariHai = options.agariHai;
         this.isTsumo = options.isTsumo;
-        this.isMenzen =  options.isMenzen;
         this.playerWind = options.playerWind;
         this.roundWind = options.roundWind;
         this.tenho = options.tenho ?? false;
