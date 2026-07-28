@@ -148,11 +148,8 @@ export class YakumanChecker extends YakuCheckerBase{
     private isKokushi13(blockedhaislist: BlockHaisList): boolean {
         if (!this.isKokushi(blockedhaislist)) return false;
 
-        const hais = this.context.hais.map(h => h.clone());
-        const agariId = this.context.ctx.agariHai.getId();
-        const index = this.context.hais.findIndex(h => h.getId() === agariId);
-        hais.splice(index, 1);
-        const machi = new MachiCalculator(hais).calculate();
+        const haisWithoutAgari = this.getHaisWithoutAgariHai();
+        const machi = new MachiCalculator(haisWithoutAgari).calculate();
 
         return machi.length === 13;
     }
@@ -179,11 +176,8 @@ export class YakumanChecker extends YakuCheckerBase{
     private isChuren9(): boolean {
         if(!this.isChuren()) return false;
 
-        const hais = this.context.hais.map(h => h.clone());
-        const agariId = this.context.ctx.agariHai.getId();
-        const index = this.context.hais.findIndex(h => h.getId() === agariId);
-        hais.splice(index, 1);
-        const machi = new MachiCalculator(hais).calculate();
+        const haisWithoutAgari = this.getHaisWithoutAgariHai();
+        const machi = new MachiCalculator(haisWithoutAgari).calculate();
 
         return machi.length === 9;
     }

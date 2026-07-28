@@ -1,3 +1,4 @@
+import { Hai } from './Hai';
 import { YakuContext } from './YakuContext';
 import { BlockHaisList } from './BlockHaisList';
 import { BlockType, MeldType } from './MahjongConsts';
@@ -50,6 +51,16 @@ export class YakuCheckerBase {
     //面前かどうか
     protected isMenzen() {
         return this.context.melds.every(meld => meld.getType() === MeldType.ANKAN);
+    }
+
+    //アガリ牌を除いた手牌のコピーを作成
+    protected getHaisWithoutAgariHai(): Hai[] {
+        const hais = this.context.hais.map(h => h.clone());
+        const agariId = this.context.ctx.agariHai.getId();
+        const index = this.context.hais.findIndex(h => h.getId() === agariId);
+        hais.splice(index, 1);
+
+        return hais;
     }
 
     //清一色
