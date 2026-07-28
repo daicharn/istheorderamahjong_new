@@ -1,7 +1,7 @@
-import { Hai } from './Hai';
+import { Hai } from '../Hai';
 import { YakuContext } from './YakuContext';
-import { BlockHaisList } from './BlockHaisList';
-import { BlockType, MeldType } from './MahjongConsts';
+import { BlockHaisList } from '../BlockHaisList';
+import { BlockType, MeldType } from '../MahjongConsts';
 
 export class YakuCheckerBase {
     protected readonly context: YakuContext;

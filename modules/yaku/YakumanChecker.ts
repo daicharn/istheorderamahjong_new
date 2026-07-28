@@ -1,20 +1,23 @@
 import { YakuContext } from './YakuContext';
-import { BlockHaisList } from './BlockHaisList';
+import { BlockHaisList } from '../BlockHaisList';
 import { YakuCheckerBase } from './YakuCheckerBase';
-import { BlockType, MeldType } from './MahjongConsts';
-import { MachiCalculator } from './MachiCalculator';
+import { BlockType, MeldType } from '../MahjongConsts';
+import { MachiCalculator } from '../MachiCalculator';
 
 export class YakumanChecker extends YakuCheckerBase{
-    constructor(context: YakuContext){
+    private readonly index: number;
+
+    constructor(context: YakuContext, index: number){
         super(context);
+        this.index = index;
     }
 
     //役判定
-    check(): Map<number, Map<string, number>> {
-        const yaku_maps: Map<number, Map<string, number>> = new Map<number, Map<string, number>>();
+    check(): Map<string, number> {
+        const block: BlockHaisList = this.context.blocks[this.index];
+        const yaku_map: Map<string, number> = new Map();
 
         //面子構造に依存しない役の判定
-        const flatYaku = new Map<string, number>();
         const flatYakus = [
             {check: this.isTsuiso, name: "字一色"},
             {check: this.isChinroto, name: "清老頭"},
@@ -22,36 +25,30 @@ export class YakumanChecker extends YakuCheckerBase{
             {check: this.isSukantsu, name: "四槓子"},
         ];
         for(const y of flatYakus){
-            if(y.check.call(this)) flatYaku.set(y.name, 0);
+            if(y.check.call(this)) yaku_map.set(y.name, 0);
         }
 
-        if(this.isChuren9()) flatYaku.set("純正九蓮宝燈", 0);
-        else if(this.isChuren()) flatYaku.set("九蓮宝燈", 0);
+        if(this.isChuren9()) yaku_map.set("純正九蓮宝燈", 0);
+        else if(this.isChuren()) yaku_map.set("九蓮宝燈", 0);
 
-        if(this.context.ctx.tenho) flatYaku.set("天和", 0);
-        if(this.context.ctx.chiho) flatYaku.set("地和", 0);
+        if(this.context.ctx.tenho) yaku_map.set("天和", 0);
+        if(this.context.ctx.chiho) yaku_map.set("地和", 0);
 
-        this.context.blocks.forEach((blocks, index) => {
-            const yaku_map: Map<string, number> = new Map(flatYaku);
+        const yakus = [
+            {check: this.isShosushi, name: "小四喜"},
+            {check: this.isDaisushi, name: "大四喜"},
+            {check: this.isDaisangen, name: "大三元"},
+        ];
+        for(const y of yakus){
+            if(y.check.call(this, this.context.blocks[this.index])) yaku_map.set(y.name, 0);
+        }
 
-            const yakus = [
-                {check: this.isShosushi, name: "小四喜"},
-                {check: this.isDaisushi, name: "大四喜"},
-                {check: this.isDaisangen, name: "大三元"},
-            ];
-            for(const y of yakus){
-                if(y.check.call(this, blocks)) yaku_map.set(y.name, 0);
-            }
+        if(this.isSuankoTanki(block)) yaku_map.set("四暗刻単騎", 0);
+        else if(this.isSuanko(block)) yaku_map.set("四暗刻", 0);
+        if(this.isKokushi13(block)) yaku_map.set("国士無双13面待ち", 0);
+        else if(this.isKokushi(block)) yaku_map.set("国士無双", 0);
 
-            if(this.isSuankoTanki(blocks)) yaku_map.set("四暗刻単騎", 0);
-            else if(this.isSuanko(blocks)) yaku_map.set("四暗刻", 0);
-            if(this.isKokushi13(blocks)) yaku_map.set("国士無双13面待ち", 0);
-            else if(this.isKokushi(blocks)) yaku_map.set("国士無双", 0);
-
-            if(yaku_map.size !== 0) yaku_maps.set(index, yaku_map);
-        });
-
-        return yaku_maps;
+        return yaku_map;
     }
 
     //小四喜

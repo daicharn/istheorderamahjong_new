@@ -1,9 +1,9 @@
-import { Hai } from './Hai';
-import { Meld } from './Meld';
-import { PlayerHand } from './PlayerHand';
-import { PlayerContext } from './PlayerContext';
-import { BlockHaisList } from './BlockHaisList';
-import { BlockDivider } from './BlockDivider';
+import { Hai } from '../Hai';
+import { Meld } from '../Meld';
+import { PlayerHand } from '../PlayerHand';
+import { PlayerContext } from '../PlayerContext';
+import { BlockHaisList } from '../BlockHaisList';
+import { BlockDivider } from '../BlockDivider';
 
 
 export class YakuContext {
