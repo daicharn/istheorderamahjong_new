@@ -1,21 +1,29 @@
 import { YakuContext } from './YakuContext';
 import { BlockHaisList } from '../BlockHaisList';
-import { YakuCheckerBase } from './YakuCheckerBase';
+import { YakuCheckerBaseOld } from './YakuCheckerBaseOld';
 import { BlockType, MeldType } from '../MahjongConsts';
 import { MachiCalculator } from '../MachiCalculator';
+import { YakumanCheckers } from './yakuman/index';
 
-export class YakumanChecker extends YakuCheckerBase{
+export class YakumanChecker extends YakuCheckerBaseOld{
     private readonly index: number;
 
     constructor(context: YakuContext, index: number){
-        super(context);
+        super(context, 0, 0);
         this.index = index;
     }
 
     //役判定
     check(): Map<string, number> {
-        const block: BlockHaisList = this.context.blocks[this.index];
         const yaku_map: Map<string, number> = new Map();
+        /*
+        for(const Checker of YakumanCheckers){
+            const checker = new Checker(this.context, this.index);
+            if(checker.check()) yaku_map.set(checker.getYakuName(), checker.getHansuu());
+        }
+        */
+        
+        const block: BlockHaisList = this.context.blocks[this.index];
 
         //面子構造に依存しない役の判定
         const flatYakus = [

@@ -3,33 +3,20 @@ import { YakuContext } from './YakuContext';
 import { BlockHaisList } from '../BlockHaisList';
 import { BlockType, MeldType } from '../MahjongConsts';
 
-export class YakuCheckerBase {
+export class YakuCheckerBaseOld {
     protected readonly context: YakuContext;
-    protected index: number;
     protected hanMenzen: number;
     protected hanFuro: number;
-    protected yakuName: string;
     
-    constructor(context: YakuContext, index: number, yakuname: string, hanmenzen: number, hanfuro: number){
+    constructor(context: YakuContext, hanmenzen: number, hanfuro: number){
         this.context = context;
-        this.index = index;
-        this.yakuName = yakuname;
         this.hanMenzen = hanmenzen;
         this.hanFuro = hanfuro;
     }
 
-    public check(): boolean {
-        return true;
-    }
-
-    public getHansuu(): number {
+    protected han(): number {
         return this.isMenzen() ? this.hanMenzen : this.hanFuro;
     }
-
-    public getYakuName(): string {
-        return this.yakuName;
-    }
-
 
     //指定された牌の数を手牌と鳴き牌から数える
     protected countTargetBlocks(blockedhaislist: BlockHaisList, target: number[]) {
