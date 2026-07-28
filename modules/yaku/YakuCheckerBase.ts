@@ -3,30 +3,29 @@ import { YakuContext } from './YakuContext';
 import { BlockHaisList } from '../BlockHaisList';
 import { BlockType, MeldType } from '../MahjongConsts';
 
-export class YakuCheckerBase {
+export abstract class YakuCheckerBase {
     protected readonly context: YakuContext;
     protected index: number;
-    protected hanMenzen: number;
-    protected hanFuro: number;
-    protected yakuName: string;
+    protected abstract hanMenzen: number;
+    protected abstract hanFuro: number;
+    protected abstract yakuName: string;
     
-    constructor(context: YakuContext, index: number, yakuname: string, hanmenzen: number, hanfuro: number){
+    constructor(context: YakuContext, index: number){
         this.context = context;
         this.index = index;
-        this.yakuName = yakuname;
-        this.hanMenzen = hanmenzen;
-        this.hanFuro = hanfuro;
     }
+
+    protected abstract isSatisfied(): boolean;
 
     public check(): boolean {
-        return true;
+        return this.isSatisfied();
     }
 
-    public getHansuu(): number {
+    public getHan(): number {
         return this.isMenzen() ? this.hanMenzen : this.hanFuro;
     }
 
-    public getYakuName(): string {
+    public getName(): string {
         return this.yakuName;
     }
 

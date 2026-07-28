@@ -16,19 +16,15 @@ export class YakumanChecker extends YakuCheckerBaseOld{
     //役判定
     check(): Map<string, number> {
         const yaku_map: Map<string, number> = new Map();
-        /*
         for(const Checker of YakumanCheckers){
             const checker = new Checker(this.context, this.index);
-            if(checker.check()) yaku_map.set(checker.getYakuName(), checker.getHansuu());
+            if(checker.check()) yaku_map.set(checker.getName(), checker.getHan());
         }
-        */
         
         const block: BlockHaisList = this.context.blocks[this.index];
 
         //面子構造に依存しない役の判定
         const flatYakus = [
-            {check: this.isTsuiso, name: "字一色"},
-            {check: this.isChinroto, name: "清老頭"},
             {check: this.isRyuiso, name: "緑一色"},
             {check: this.isSukantsu, name: "四槓子"},
         ];
@@ -74,26 +70,6 @@ export class YakumanChecker extends YakuCheckerBaseOld{
         if(foundTargets.size !== 4) return false;
 
         return mentsuCount === 4 && jantoCount === 0;
-    }
-    //字一色
-    private isTsuiso(): boolean {
-        const allTiles = [
-            ...this.context.hais,
-            ...this.context.melds.flatMap(m => m.getHais())
-        ];
-
-        return allTiles.every(h => h.isJihaiTile());
-    }
-    //清老頭
-    private isChinroto(): boolean {
-        const routouNums = new Set([1, 9]);
-
-        const allTiles = [
-            ...this.context.hais,
-            ...this.context.melds.flatMap(m => m.getHais())
-        ];
-
-        return allTiles.every(h => routouNums.has(h.num));
     }
     //緑一色
     private isRyuiso(): boolean {
