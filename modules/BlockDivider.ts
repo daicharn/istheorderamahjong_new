@@ -10,11 +10,6 @@ export class BlockDivider{
         this.hais = hais.map(h => h.clone()).sort((a, b) => a.getId() - b.getId());
     }
 
-    protected removeHai(arr: Hai[], target: Hai) {
-            const idx = arr.findIndex(h => h.getId() === target.getId());
-            if(idx !== -1) arr.splice(idx, 1);
-    }
-
     private dedupeBlockHais(blockhaislist: BlockHaisList[]): BlockHaisList[]{
         const unique = new Map<string, BlockHaisList>();
         for(const blocks of blockhaislist){
