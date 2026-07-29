@@ -29,7 +29,6 @@ export abstract class YakuCheckerBase {
         return this.yakuName;
     }
 
-
     //指定された牌の数を手牌と鳴き牌から数える
     protected countTargetBlocks(blockedhaislist: BlockHaisList, target: number[]) {
         const targetNums = new Set(target);

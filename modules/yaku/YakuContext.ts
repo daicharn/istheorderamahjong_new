@@ -5,7 +5,6 @@ import { PlayerContext } from '../PlayerContext';
 import { BlockHaisList } from '../BlockHaisList';
 import { BlockDivider } from '../BlockDivider';
 
-
 export class YakuContext {
     readonly hais: Hai[];
     readonly blocks: BlockHaisList[];
