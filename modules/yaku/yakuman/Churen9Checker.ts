@@ -8,12 +8,12 @@ export class Churen9Checker extends YakuCheckerBase{
     protected hanFuro: number = 0;
     protected yakuName: string = "純正九蓮宝燈";
 
-    constructor(context: YakuContext, index: number){
-        super(context, index);
+    constructor(context: YakuContext){
+        super(context);
     }
 
     protected isSatisfied(): boolean {
-        const base = new ChurenChecker(this.context, this.index)
+        const base = new ChurenChecker(this.context);
         if(!base.isChuren()) return false;
 
         const haisWithoutAgari = this.getHaisWithoutAgariHai();

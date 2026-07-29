@@ -5,14 +5,12 @@ import { BlockType, MeldType } from '../MahjongConsts';
 
 export abstract class YakuCheckerBase {
     protected readonly context: YakuContext;
-    protected index: number;
     protected abstract hanMenzen: number;
     protected abstract hanFuro: number;
     protected abstract yakuName: string;
     
-    constructor(context: YakuContext, index: number){
+    constructor(context: YakuContext){
         this.context = context;
-        this.index = index;
     }
 
     protected abstract isSatisfied(): boolean;

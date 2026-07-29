@@ -8,12 +8,12 @@ export class Kokushi13Checker extends YakuCheckerBase{
     protected hanFuro: number = 0;
     protected yakuName: string = "国士無双13面待ち";
 
-    constructor(context: YakuContext, index: number){
-        super(context, index);
+    constructor(context: YakuContext){
+        super(context);
     }
 
     public isSatisfied(): boolean {
-        const base = new KokushiChecker(this.context, this.index)
+        const base = new KokushiChecker(this.context);
         if(!base.isKokushi()) return false;
 
         const haisWithoutAgari = this.getHaisWithoutAgariHai();

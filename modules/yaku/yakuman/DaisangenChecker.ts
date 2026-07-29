@@ -7,12 +7,12 @@ export class DaisangenChecker extends YakuCheckerBase{
     protected hanFuro: number = 0;
     protected yakuName: string = "大三元";
 
-    constructor(context: YakuContext, index: number){
-        super(context, index);
+    constructor(context: YakuContext){
+        super(context);
     }
 
     protected isSatisfied(): boolean {
-        const {foundTargets, mentsuCount, jantoCount} = this.countTargetBlocks(this.context.blocks[this.index], [32,33,34]);
+        const {foundTargets, mentsuCount, jantoCount} = this.countTargetBlocks(this.context.block, [32,33,34]);
 
         if(foundTargets.size !== 3) return false;
 

@@ -8,15 +8,15 @@ export class SuankoChecker extends YakuCheckerBase{
     protected hanFuro: number = 0;
     protected yakuName: string = "四暗刻";
 
-    constructor(context: YakuContext, index: number){
-        super(context, index);
+    constructor(context: YakuContext){
+        super(context);
     }
 
     protected isSatisfied(): boolean {
         if(!this.isMenzen()) return false;
 
         let ankoCount = 0;
-        for(const blockhais of this.context.blocks[this.index]){
+        for(const blockhais of this.context.block){
             if(blockhais.getType() === BlockType.KOTSU){
                 //ロンであり刻子にアガリ牌が含まれている場合暗刻として認めない
                 if(!this.context.ctx.isTsumo && blockhais.getHais().some(h => h.getId() == this.context.ctx.agariHai.getId())) continue;

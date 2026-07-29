@@ -15,7 +15,7 @@ import { ShosushiChecker } from './yakuman/ShosushiChecker';
 import { DaisangenChecker } from './yakuman/DaisangenChecker';
 
 export type YakuCheckerConstructor =
-    new (context: YakuContext, index: number) => YakuCheckerBase;
+    new (context: YakuContext) => YakuCheckerBase;
 
 export const YakumanCheckers: YakuCheckerConstructor[] = [
     TsuisoChecker,

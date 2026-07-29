@@ -9,15 +9,15 @@ export class SuankoTankiChecker extends YakuCheckerBase{
     protected hanFuro: number = 0;
     protected yakuName: string = "四暗刻単騎";
 
-    constructor(context: YakuContext, index: number){
-        super(context, index);
+    constructor(context: YakuContext){
+        super(context);
     }
 
     protected isSatisfied(): boolean {
-        const base = new SuankoChecker(this.context, this.index)
+        const base = new SuankoChecker(this.context)
         if(!base.isSuanko()) return false;
 
-        for(const blockhais of this.context.blocks[this.index]){
+        for(const blockhais of this.context.block){
             if(blockhais.getType() === BlockType.JANTO){
                 if(blockhais.getHais().some(h => h.getId() == this.context.ctx.agariHai.getId())) return true;
             }

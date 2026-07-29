@@ -7,8 +7,8 @@ export class TsuisoChecker extends YakuCheckerBase{
     protected hanFuro: number = 0;
     protected yakuName: string = "字一色";
 
-    constructor(context: YakuContext, index: number){
-        super(context, index);
+    constructor(context: YakuContext){
+        super(context);
     }
 
     protected isSatisfied(): boolean {

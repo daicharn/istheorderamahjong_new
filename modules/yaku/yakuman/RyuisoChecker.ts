@@ -7,8 +7,8 @@ export class RyuisoChecker extends YakuCheckerBase{
     protected hanFuro: number = 0;
     protected yakuName: string = "緑一色";
 
-    constructor(context: YakuContext, index: number){
-        super(context, index);
+    constructor(context: YakuContext){
+        super(context);
     }
 
     protected isSatisfied(): boolean {

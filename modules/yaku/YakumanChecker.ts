@@ -3,11 +3,9 @@ import { YakumanCheckers } from './index';
 
 export class YakumanChecker{
     protected readonly context: YakuContext;
-    private readonly index: number;
 
-    constructor(context: YakuContext, index: number){
+    constructor(context: YakuContext){
         this.context = context;
-        this.index = index;
     }
 
     //役判定
@@ -19,7 +17,7 @@ export class YakumanChecker{
         ];
         const yaku_map: Map<string, number> = new Map();
         for(const Checker of YakumanCheckers) {
-            const checker = new Checker(this.context, this.index);
+            const checker = new Checker(this.context);
             if(checker.check()) yaku_map.set(checker.getName(), checker.getHan());
         }
 

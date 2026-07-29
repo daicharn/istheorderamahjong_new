@@ -7,8 +7,8 @@ export class SukantsuChecker extends YakuCheckerBase{
     protected hanFuro: number = 0;
     protected yakuName: string = "四槓子";
 
-    constructor(context: YakuContext, index: number){
-        super(context, index);
+    constructor(context: YakuContext){
+        super(context);
     }
 
     protected isSatisfied(): boolean {

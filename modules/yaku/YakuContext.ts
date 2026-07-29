@@ -7,14 +7,14 @@ import { BlockDivider } from '../BlockDivider';
 
 export class YakuContext {
     readonly hais: Hai[];
-    readonly blocks: BlockHaisList[];
+    readonly block: BlockHaisList;
     readonly melds: Meld[];
     readonly ctx: PlayerContext;
 
-    constructor(hand: PlayerHand, ctx: PlayerContext){
+    constructor(hand: PlayerHand, ctx: PlayerContext, block: BlockHaisList){
         this.hais = hand.getTehai();
-        this.blocks = new BlockDivider(hand.getTehai()).divide();
         this.melds = hand.getFuro();
         this.ctx = ctx;
+        this.block = block;
     }
 }
