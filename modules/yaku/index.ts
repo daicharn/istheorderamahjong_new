@@ -8,6 +8,11 @@ import { ChurenChecker } from './yakuman/ChurenChecker';
 import { Churen9Checker } from './yakuman/Churen9Checker';
 import { SuankoChecker } from './yakuman/SuankoChecker';
 import { SuankoTankiChecker } from './yakuman/SuankoTankiChecker';
+import { KokushiChecker } from './yakuman/KokushiChecker';
+import { Kokushi13Checker } from './yakuman/Kokushi13Checker';
+import { DaisushiChecker } from './yakuman/DaisushiChecker';
+import { ShosushiChecker } from './yakuman/ShosushiChecker';
+import { DaisangenChecker } from './yakuman/DaisangenChecker';
 
 export type YakuCheckerConstructor =
     new (context: YakuContext, index: number) => YakuCheckerBase;
@@ -20,5 +25,10 @@ export const YakumanCheckers: YakuCheckerConstructor[] = [
     ChurenChecker,
     Churen9Checker,
     SuankoChecker,
-    SuankoTankiChecker
+    SuankoTankiChecker,
+    KokushiChecker,
+    Kokushi13Checker,
+    DaisushiChecker,
+    ShosushiChecker,
+    DaisangenChecker,
 ];

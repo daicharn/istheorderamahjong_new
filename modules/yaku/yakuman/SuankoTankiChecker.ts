@@ -1,6 +1,6 @@
 import { YakuContext } from '../YakuContext';
 import { YakuCheckerBase } from '../YakuCheckerBase';
-import { BlockType, MeldType } from '../../MahjongConsts';
+import { BlockType } from '../../MahjongConsts';
 import { SuankoChecker } from './SuankoChecker';
 
 
@@ -15,7 +15,7 @@ export class SuankoTankiChecker extends YakuCheckerBase{
 
     protected isSatisfied(): boolean {
         const base = new SuankoChecker(this.context, this.index)
-        if(!base.isSatisfied()) return false;
+        if(!base.isSuanko()) return false;
 
         for(const blockhais of this.context.blocks[this.index]){
             if(blockhais.getType() === BlockType.JANTO){

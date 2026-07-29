@@ -12,7 +12,7 @@ export class SuankoChecker extends YakuCheckerBase{
         super(context, index);
     }
 
-    public isSatisfied(): boolean {
+    protected isSatisfied(): boolean {
         if(!this.isMenzen()) return false;
 
         let ankoCount = 0;
@@ -28,5 +28,9 @@ export class SuankoChecker extends YakuCheckerBase{
         }
 
         return ankoCount === 4;
+    }
+
+    public isSuanko(): boolean {
+        return this.isSatisfied();
     }
 }
