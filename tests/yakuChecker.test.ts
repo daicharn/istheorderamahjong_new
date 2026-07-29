@@ -7,6 +7,7 @@ import { Meld } from "../modules/Meld";
 import { MeldType } from "../modules/MahjongConsts";
 import { BACK } from '../modules/tileDefs';
 import { casesYakuman } from './yaku/yakuman';
+import { casesNormal } from './yaku/normal';
 import { TehaiCase } from './testConsts';
 
 const ctx_default: PlayerContext = new PlayerContext({agariHai: new Hai(BACK), isTsumo: false, playerWind: "E", roundWind: "E"});
@@ -28,6 +29,7 @@ function makeNaki(hainum: number, type: MeldType): Meld {
 
 const testcases: TehaiCase[] = [];
 casesYakuman.forEach(caseyakuman => testcases.push(caseyakuman));
+casesNormal.forEach(casenormal => testcases.push(casenormal));
 
 testcases.forEach(testcase => {
     describe(testcase.desc, () => {
