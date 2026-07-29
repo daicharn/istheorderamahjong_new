@@ -1,12 +1,12 @@
 import { YakuContext } from './YakuContext';
-import { YakuCheckerBaseOld } from './YakuCheckerBaseOld';
 import { YakumanCheckers } from './index';
 
-export class YakumanChecker extends YakuCheckerBaseOld{
+export class YakumanChecker{
+    protected readonly context: YakuContext;
     private readonly index: number;
 
     constructor(context: YakuContext, index: number){
-        super(context, 0, 0);
+        this.context = context;
         this.index = index;
     }
 
