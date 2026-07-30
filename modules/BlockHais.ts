@@ -23,6 +23,14 @@ export class BlockHais implements IMentsu {
         return this.hais.some(h => h.isRoutouHai());
     }
 
+    hasJihai(): boolean {
+        return this.hais.some(h => h.isJihai());
+    }
+
+    isShuntsu(): boolean {
+        return this.type === BlockType.SHUNTSU;
+    }
+
     clone(): BlockHais {
         return new BlockHais(this.hais.map(h => h.clone()), this.type);
     }

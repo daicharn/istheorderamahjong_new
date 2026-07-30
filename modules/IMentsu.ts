@@ -5,5 +5,7 @@ export interface IMentsu {
     getType(): BlockType | MeldType;
     getHais(): Hai[];
     hasRoutouHai(): boolean;
+    hasJihai(): boolean;
+    isShuntsu(): boolean;
     clone(): IMentsu;
 }

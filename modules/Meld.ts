@@ -23,6 +23,14 @@ export class Meld implements IMentsu {
         return this.hais.some(h => h.isRoutouHai());
     }
 
+    hasJihai(): boolean {
+        return this.hais.some(h => h.isJihai());
+    }
+
+    isShuntsu(): boolean {
+        return this.type === MeldType.CHI;
+    }
+
     clone(): Meld {
         return new Meld(this.hais.map(h => h.clone()), this.type);
     }

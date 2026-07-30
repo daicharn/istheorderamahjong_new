@@ -15,9 +15,6 @@ export class JunchanChecker extends YakuCheckerBase{
     protected isSatisfied(): boolean {
         const allMentsu: IMentsu[] = [...this.context.block, ...this.context.melds];
 
-        for(const mentsu of allMentsu){
-            if(!mentsu.hasRoutouHai()) return false;
-        }
-        return true;
+        return allMentsu.every(mentsu => mentsu.hasRoutouHai());
     }
 }
