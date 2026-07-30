@@ -110,18 +110,40 @@ export const casesNormal: TehaiCase[] = [
     hais: [25,26,27,29,29,29,30,30],
     expected: new Map([[0, new Map([["混全帯么九", 1]])]])
   },
-  /*
   {
-    name: "honchan_3",
-    desc: "混全帯么九",
-    agariHai: 29,
+    name: "Honroto_1",
+    desc: "混老頭",
+    agariHai: 1,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    hais: [1,1,1,10,10,10,19,19,19,29,29,29,30,30],
+    expected: new Map([[0, new Map([["混老頭", 2]])]])
+  },
+  {
+    name: "Honroto_2",
+    desc: "混老頭",
+    agariHai: 31,
     isTsumo: true,
     melds: [
-        {hai: 28, type: MeldType.PON},
-        {hai: 32, type: MeldType.PON},
+        {hai: 1, type: MeldType.PON},
+        {hai: 9, type: MeldType.PON},
+        {hai: 30, type: MeldType.PON},
     ] as MeldSpec[],
-    hais: [1,1,31,31,31,29,29,29],
-    expected: new Map([[0, new Map([["混一色", 2]])]])
+    hais: [10,10,31,31,31],
+    expected: new Map([[0, new Map([["混老頭", 2]])]])
+  },
+  {
+    name: "Honroto_3",
+    desc: "混老頭",
+    agariHai: 1,
+    isTsumo: false,
+    melds: [
+        {hai: 1, type: MeldType.PON},
+        {hai: 10, type: MeldType.PON},
+        {hai: 30, type: MeldType.MINKAN},
+        {hai: 31, type: MeldType.ANKAN},
+    ] as MeldSpec[],
+    hais: [29,29],
+    expected: new Map([[0, new Map([["混老頭", 2]])]])
   }
-  */
 ];
