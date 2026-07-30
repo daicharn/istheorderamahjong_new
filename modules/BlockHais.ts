@@ -19,6 +19,10 @@ export class BlockHais implements IMentsu {
         return this.hais;
     }
 
+    hasRoutou(): boolean {
+        return this.hais.some(h => h.isRoutouHai());
+    }
+
     clone(): BlockHais {
         return new BlockHais(this.hais.map(h => h.clone()), this.type);
     }

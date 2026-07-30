@@ -19,6 +19,10 @@ export class Meld implements IMentsu {
         return this.type;
     }
 
+    hasRoutou(): boolean {
+        return this.hais.some(h => h.isRoutouHai());
+    }
+
     clone(): Meld {
         return new Meld(this.hais.map(h => h.clone()), this.type);
     }

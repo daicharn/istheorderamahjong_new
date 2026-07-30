@@ -38,7 +38,7 @@ function generateRandomTehai(mentsunum: number): number[] {
         if(Math.random() < 0.5){
             const candidate_shuntsu = ids.filter(id => {
                 const hai = new Hai(id);
-                return hai.isNumberTile() && hai.num <= 7 && 
+                return hai.isNumberHai() && hai.num <= 7 && 
                     tehainum[id - 1] >= 1 &&
                     tehainum[id] >= 1 &&
                     tehainum[id + 1] >= 1

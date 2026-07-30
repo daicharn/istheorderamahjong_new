@@ -17,6 +17,6 @@ export class TsuisoChecker extends YakuCheckerBase{
             ...this.context.melds.flatMap(m => m.getHais())
         ];
 
-        return allTiles.every(h => h.isJihaiTile());
+        return allTiles.every(h => h.isJihai());
     }
 }

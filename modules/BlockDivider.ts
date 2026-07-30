@@ -51,7 +51,7 @@ export class BlockDivider{
                     blocks.pop();
                 }
                 //順子の処理
-                if(arr[j] > 0 && arr[j + 1] > 0 && arr[j + 2] > 0 && hai.isNumberTile() && hai.num <= 7){
+                if(arr[j] > 0 && arr[j + 1] > 0 && arr[j + 2] > 0 && hai.isNumberHai() && hai.num <= 7){
                     const h2 = new Hai(j + 2);
                     const h3 = new Hai(j + 3);
 
@@ -96,7 +96,7 @@ export class BlockDivider{
             results.push(blockhaischitoi)
         }
         //国士無双の判定
-        if(this.hais.every(h => h.isYaochuTile()) && this.hais.length === 14 && haiNumsSet.length === 13){
+        if(this.hais.every(h => h.isYaochuHai()) && this.hais.length === 14 && haiNumsSet.length === 13){
             const blockhaiskokushi: BlockHaisList = new BlockHaisList();
             const haiskokushi: Hai[] = [];
             for(const hai of this.hais){
