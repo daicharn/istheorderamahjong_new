@@ -16,6 +16,7 @@ import { DaisangenChecker } from './yakuman/DaisangenChecker';
 
 import { ChinitsuChecker } from './normal/ChinitsuChecker';
 import { HonitsuChecker } from './normal/HonitsuChecker';
+import { JunchanChecker } from './normal/JunchanChecker';
 
 export type YakuCheckerConstructor =
     new (context: YakuContext) => YakuCheckerBase;
@@ -39,4 +40,5 @@ export const YakumanCheckers: YakuCheckerConstructor[] = [
 export const NormalYakuCheckers: YakuCheckerConstructor[] = [
     ChinitsuChecker,
     HonitsuChecker,
+    JunchanChecker,
 ];

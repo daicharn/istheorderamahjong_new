@@ -39,7 +39,7 @@ export class Hai{
     }
 
     isRoutouHai(): boolean {
-        return this.num === 1 || this.num === 9;
+        return (this.num === 1 || this.num === 9) && this.isNumberHai();
     }
 
     isNumberHai(): boolean {

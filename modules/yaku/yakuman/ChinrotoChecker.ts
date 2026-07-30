@@ -12,13 +12,11 @@ export class ChinrotoChecker extends YakuCheckerBase{
     }
 
     protected isSatisfied(): boolean {
-        const routouNums = new Set([1, 9]);
-
         const allTiles = [
             ...this.context.hais,
             ...this.context.melds.flatMap(m => m.getHais())
         ];
 
-        return allTiles.every(h => routouNums.has(h.num));
+        return allTiles.every(h => h.isRoutouHai());
     }
 }

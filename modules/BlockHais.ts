@@ -19,7 +19,7 @@ export class BlockHais implements IMentsu {
         return this.hais;
     }
 
-    hasRoutou(): boolean {
+    hasRoutouHai(): boolean {
         return this.hais.some(h => h.isRoutouHai());
     }
 
