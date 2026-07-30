@@ -46,7 +46,7 @@ export class BlockDivider{
                     let next = [...arr];
                     next[j] -= 3;
 
-                    blocks.push(new BlockHais(BlockType.KOTSU, [hai, hai, hai]));
+                    blocks.push(new BlockHais([hai, hai, hai], BlockType.KOTSU));
                     dfs(next, blocks);
                     blocks.pop();
                 }
@@ -60,7 +60,7 @@ export class BlockDivider{
                     next[j + 1]--;
                     next[j + 2]--;
 
-                    blocks.push(new BlockHais(BlockType.SHUNTSU, [hai, h2, h3]));
+                    blocks.push(new BlockHais([hai, h2, h3], BlockType.SHUNTSU));
                     dfs(next, blocks);
                     blocks.pop();
                 }
@@ -78,7 +78,7 @@ export class BlockDivider{
                 let next = [...counts];
                 next[firstid - 1] -= 2;
 
-                blockhaislist.push(new BlockHais(BlockType.JANTO, [this.hais[i].clone(), this.hais[i].clone()]));
+                blockhaislist.push(new BlockHais([this.hais[i].clone(), this.hais[i].clone()], BlockType.JANTO));
                 dfs(next, blockhaislist);
                 blockhaislist.pop();
             }
@@ -90,7 +90,7 @@ export class BlockDivider{
         if(haiNumsSet.length === 7 && haiNumsSet.every(n => counts[n - 1] === 2)){
             const blockhaischitoi: BlockHaisList = new BlockHaisList();
             for(const num of haiNumsSet){
-                blockhaischitoi.push(new BlockHais(BlockType.JANTO, [new Hai(num), new Hai(num)]));
+                blockhaischitoi.push(new BlockHais([new Hai(num), new Hai(num)], BlockType.JANTO));
             }
 
             results.push(blockhaischitoi)
@@ -103,7 +103,7 @@ export class BlockDivider{
                 haiskokushi.push(hai);
             }
 
-            blockhaiskokushi.push(new BlockHais(BlockType.KOKUSHI, haiskokushi));
+            blockhaiskokushi.push(new BlockHais(haiskokushi, BlockType.KOKUSHI));
             results.push(blockhaiskokushi);
         }
 

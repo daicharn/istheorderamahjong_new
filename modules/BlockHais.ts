@@ -1,11 +1,12 @@
 import {Hai} from "./Hai";
 import { BlockType } from "./MahjongConsts";
+import { IMentsu } from "./IMentsu";
 
-export class BlockHais {
+export class BlockHais implements IMentsu {
     private readonly type: BlockType;
     private readonly hais: Hai[]
 
-    constructor(type: BlockType, hais: Hai[]){
+    constructor(hais: Hai[], type: BlockType){
         this.type = type;
         this.hais = hais;
     }
@@ -19,6 +20,6 @@ export class BlockHais {
     }
 
     clone(): BlockHais {
-        return new BlockHais(this.type, this.hais.map(h => h.clone()));
+        return new BlockHais(this.hais.map(h => h.clone()), this.type);
     }
 }

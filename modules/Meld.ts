@@ -1,7 +1,8 @@
 import {Hai} from './Hai';
 import { MeldType } from './MahjongConsts';
+import { IMentsu } from './IMentsu';
 
-export class Meld {
+export class Meld implements IMentsu {
     private readonly hais: Hai[];
     private readonly type: MeldType;
 
@@ -16,5 +17,9 @@ export class Meld {
 
     getType(): MeldType {
         return this.type;
+    }
+
+    clone(): Meld {
+        return new Meld(this.hais.map(h => h.clone()), this.type);
     }
 }
