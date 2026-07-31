@@ -1,6 +1,7 @@
 import { Hai } from '../Hai';
 import { YakuContext } from './YakuContext';
 import { BlockHaisList } from '../BlockHaisList';
+import { IMentsu } from '../IMentsu';
 import { BlockType, MeldType } from '../MahjongConsts';
 
 export abstract class YakuCheckerBase {
@@ -25,6 +26,22 @@ export abstract class YakuCheckerBase {
 
     public getName(): string {
         return this.yakuName;
+    }
+
+    //順子のグループを取得する
+    protected getGroupsByShuntsu(): Map<string, IMentsu[]> {
+        const shuntsu = this.context.block.getBlockHais().filter(block => block.isShuntsu());
+
+        const groups = new Map<string, IMentsu[]>();
+        for(const block of shuntsu){
+            const key = `${block.min}-${block.max}`;
+            if(!groups.has(key)){
+                groups.set(key, []);
+            }
+            groups.get(key)?.push(block);
+        }
+
+        return groups;
     }
 
     //指定された牌の数を手牌と鳴き牌から数える
