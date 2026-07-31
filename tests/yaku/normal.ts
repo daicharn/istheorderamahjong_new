@@ -145,5 +145,48 @@ export const casesNormal: TehaiCase[] = [
     ] as MeldSpec[],
     hais: [29,29],
     expected: new Map([[0, new Map([["混老頭", 2]])]])
-  }
+  },
+  {
+    name: "Ryanpeko_1",
+    desc: "二盃口",
+    agariHai: 1,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    hais: [1,1,2,2,3,3,12,12,13,13,14,14,17,17],
+    expected: new Map([[0, new Map([["二盃口", 3]])]])
+  },
+  {
+    name: "Ryanpeko_2",
+    desc: "二盃口",
+    agariHai: 11,
+    isTsumo: true,
+    melds: [] as MeldSpec[],
+    hais: [1,1,1,1,2,2,2,2,3,3,3,3,11,11],
+    expected: new Map([[1, new Map([["二盃口", 3]])]])
+  },
+  {
+    name: "Ryanpeko_3",
+    desc: "二盃口",
+    agariHai: 1,
+    isTsumo: true,
+    melds: [] as MeldSpec[],
+    hais: [1,1,2,2,3,3,4,4,5,5,6,6,7,7],
+    expected: new Map([[0, new Map([["清一色", 6],["二盃口", 3]])],
+      [1, new Map([["清一色", 6],["二盃口", 3]])],
+      [2, new Map([["清一色", 6],["二盃口", 3]])],
+      [3, new Map([["清一色", 6]])]
+    ])
+  },
+  {
+    name: "Ryanpeko_4",
+    desc: "二盃口",
+    agariHai: 1,
+    isTsumo: true,
+    melds: [] as MeldSpec[],
+    hais: [1,1,1,1,2,2,2,2,3,3,3,3,4,4],
+    expected: new Map([[0, new Map([["清一色", 6],["二盃口", 3]])],
+      [1, new Map([["清一色", 6]])],
+      [2, new Map([["清一色", 6],["二盃口", 3]])],
+    ])
+  },
 ];
