@@ -20,7 +20,7 @@ export class Hai{
         if(this.type == HaiType.MANZU) return this.id;
         if(this.type == HaiType.PINZU) return this.id - 9;
         if(this.type == HaiType.SOUZU) return this.id - 18;
-        if(this.type == HaiType.JIHAI) return this.id - 27;
+        if(this.type == HaiType.JIHAI) return this.id;
         return BACK;
     }
 
@@ -33,7 +33,7 @@ export class Hai{
         //索子
         if(this.type === HaiType.SOUZU) return `${base}s_${this.num}.png`;
         //字牌
-        if(this.type === HaiType.JIHAI) return `${base}j_${this.num}.png`;
+        if(this.type === HaiType.JIHAI) return `${base}j_${this.num - 27}.png`;
         
         return `${base}back.png`;
     }
