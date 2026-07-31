@@ -14,7 +14,7 @@ export class RyanpekoChecker extends YakuCheckerBase{
 
     protected isSatisfied(): boolean {
         if(!this.isMenzen()) return false;
-        
+
         const shuntsu = this.context.block.getBlockHais().filter(block => block.isShuntsu());
 
         const groups = new Map<string, IMentsu[]>();
