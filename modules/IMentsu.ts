@@ -8,4 +8,6 @@ export interface IMentsu {
     hasJihai(): boolean;
     isShuntsu(): boolean;
     clone(): IMentsu;
+    get min(): number;
+    get max(): number;
 }

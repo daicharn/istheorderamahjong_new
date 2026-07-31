@@ -30,7 +30,9 @@ export abstract class YakuCheckerBase {
 
     //順子のグループを取得する
     protected getGroupsByShuntsu(): Map<string, IMentsu[]> {
-        const shuntsu = this.context.block.getBlockHais().filter(block => block.isShuntsu());
+        const mentsuList = [...this.context.block.getBlockHais(), ...this.context.melds] as IMentsu[];
+
+        const shuntsu = mentsuList.filter(block => block.isShuntsu());
 
         const groups = new Map<string, IMentsu[]>();
         for(const block of shuntsu){

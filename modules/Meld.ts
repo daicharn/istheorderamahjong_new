@@ -34,4 +34,12 @@ export class Meld implements IMentsu {
     clone(): Meld {
         return new Meld(this.hais.map(h => h.clone()), this.type);
     }
+
+    get min(): number {
+        return Math.min(...this.hais.map(h => h.num));
+    }
+
+    get max(): number {
+        return Math.max(...this.hais.map(h => h.num));
+    }
 }
