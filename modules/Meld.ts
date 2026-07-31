@@ -1,4 +1,4 @@
-import {Hai} from './Hai';
+import { Hai } from './Hai';
 import { MeldType } from './MahjongConsts';
 import { IMentsu } from './IMentsu';
 
