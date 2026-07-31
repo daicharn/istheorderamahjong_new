@@ -24,6 +24,15 @@ export const casesYakuman: TehaiCase[] = [
     expected: new Map([[0, new Map([["字一色", 0]])]])
   },
   {
+    name: "tsuiso_3",
+    desc: "字一色",
+    agariHai: 29,
+    isTsumo: true,
+    melds: [] as MeldSpec[],
+    hais: [28,28,29,29,30,30,31,31,32,32,33,33,34,34],
+    expected: new Map([[0, new Map([["字一色", 0]])]])
+  },
+  {
     name: "chinroto_1",
     desc: "清老頭",
     agariHai: 1,
