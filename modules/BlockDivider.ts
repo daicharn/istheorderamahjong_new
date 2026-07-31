@@ -14,7 +14,7 @@ export class BlockDivider{
         const unique = new Map<string, BlockHaisList>();
         for(const blocks of blockhaislist){
             blocks.sort();
-            const key = [...blocks].map(b => `${b.getType()}:${b.getHais().map(h => h.getId()).join(",")}`).join("|");
+            const key = blocks.blockToString();
             if(!unique.has(key)){
                 unique.set(key, blocks);
             }
