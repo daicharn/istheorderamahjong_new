@@ -74,7 +74,36 @@ export abstract class YakuCheckerBase {
         return {foundTargets, mentsuCount, jantoCount};
     }
 
-    //カンの数を数える
+    //暗刻の数を数える
+    protected countAnko(): number {
+        let ankoCount = 0;
+        for(const blockhais of this.context.block){
+            if(blockhais.getType() === BlockType.KOTSU){
+                //ロンであり刻子にアガリ牌が含まれている場合暗刻として認めない
+                if(!this.context.ctx.isTsumo && blockhais.getHais().some(h => h.getId() == this.context.ctx.agariHai.getId())) continue;
+                ankoCount++;
+            }
+        }
+        for(const meld of this.context.melds){
+            if(meld.getType() === MeldType.ANKAN) ankoCount++;
+        }
+        
+        return ankoCount;
+    }
+
+    //刻子の数を数える
+    protected countKotsu(): number {
+        let kotsuCount = 0;
+        const allMentsu: IMentsu[] = [...this.context.block, ...this.context.melds];
+
+        allMentsu.forEach(mentsu => {
+            if(mentsu.isKoutsuOrKantsu()) kotsuCount++;
+        });
+
+        return kotsuCount;
+    }
+
+    //槓子の数を数える
     protected countKantsu() {
         let kantsuCount = 0;
         for(const meld of this.context.melds){

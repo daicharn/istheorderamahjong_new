@@ -150,7 +150,7 @@ export const casesYakuman: TehaiCase[] = [
     isTsumo: false,
     melds: [] as MeldSpec[],
     hais: [3,3,3,7,7,7,12,12,12,24,24,24,31,31],
-    expected: new Map()
+    expected: new Map([[0, new Map([["三暗刻", 2], ["対々和", 2]])]])
   },
   {
     name: "suanko_3",

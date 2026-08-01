@@ -7,6 +7,7 @@ export interface IMentsu {
     hasRoutouHai(): boolean;
     hasJihai(): boolean;
     isShuntsu(): boolean;
+    isKoutsuOrKantsu(): boolean;
     clone(): IMentsu;
     get min(): number;
     get max(): number;

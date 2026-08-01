@@ -31,6 +31,10 @@ export class Meld implements IMentsu {
         return this.type === MeldType.CHI;
     }
 
+    isKoutsuOrKantsu(): boolean {
+        return this.type === MeldType.PON || this.type === MeldType.ANKAN || this.type === MeldType.MINKAN;
+    }
+
     clone(): Meld {
         return new Meld(this.hais.map(h => h.clone()), this.type);
     }
