@@ -39,11 +39,11 @@ export class BlockHais implements IMentsu {
         return new BlockHais(this.hais.map(h => h.clone()), this.type);
     }
 
-    get min(): number {
-        return Math.min(...this.hais.map(h => h.num));
+    get minHai(): Hai {
+        return this.hais.reduce((min, h) => h.num < min.num ? h : min);
     }
 
-    get max(): number {
-        return Math.max(...this.hais.map(h => h.num));
+    get maxHai(): Hai {
+        return this.hais.reduce((max, h) => h.num > max.num ? h : max);
     }
 }
