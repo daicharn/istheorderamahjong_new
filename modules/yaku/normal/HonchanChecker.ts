@@ -17,7 +17,8 @@ export class HonchanChecker extends YakuCheckerBase{
 
         const allYaochu = allMentsu.every(mentsu => (mentsu.hasRoutouHai() || mentsu.hasJihai()));
         const hasShuntsu = allMentsu.some(mentsu => mentsu.isShuntsu());
+        const hasJihai = allMentsu.some(mentsu => mentsu.hasJihai());
 
-        return allYaochu && hasShuntsu;
+        return allYaochu && hasShuntsu && hasJihai;
     }
 }
