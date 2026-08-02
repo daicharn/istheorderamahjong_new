@@ -12,7 +12,6 @@ export class NormalYakuChecker{
     check(): Map<string, number> {
         const excludes = [
             { main: "純全帯么九", sub: "混全帯么九"},
-            { main: "二盃口", sub: "一盃口"},
         ];
         const yaku_map: Map<string, number> = new Map();
         for(const Checker of NormalYakuCheckers) {

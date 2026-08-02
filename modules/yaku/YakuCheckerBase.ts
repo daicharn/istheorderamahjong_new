@@ -28,6 +28,18 @@ export abstract class YakuCheckerBase {
         return this.yakuName;
     }
 
+    //全く同じ順子のグループ数を数える
+    protected countSameShuntsuGroups(): number {
+        const groups = this.getGroupsByShuntsu();
+        let count = 0;
+        for(const group of groups.values()){
+            if(group.length >= 2){
+                count += Math.floor(group.length / 2);
+            }
+        }
+        return count;
+    }
+
     //順子のグループを取得する
     protected getGroupsByShuntsu(): Map<string, IMentsu[]> {
         const mentsuList: IMentsu[] = [...this.context.block.getBlockHais(), ...this.context.melds];

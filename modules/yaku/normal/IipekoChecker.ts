@@ -2,10 +2,10 @@ import { YakuContext } from '../YakuContext';
 import { YakuCheckerBase } from '../YakuCheckerBase';
 
 
-export class RyanpekoChecker extends YakuCheckerBase{
-    protected hanMenzen: number = 3;
+export class IipekoChecker extends YakuCheckerBase{
+    protected hanMenzen: number = 1;
     protected hanFuro: number = 0;
-    protected yakuName: string = "二盃口";
+    protected yakuName: string = "一盃口";
 
     constructor(context: YakuContext){
         super(context);
@@ -13,6 +13,6 @@ export class RyanpekoChecker extends YakuCheckerBase{
 
     protected isSatisfied(): boolean {
         if(!this.isMenzen()) return false;
-        return this.countSameShuntsuGroups() === 2;
+        return this.countSameShuntsuGroups() === 1;
     }
 }
