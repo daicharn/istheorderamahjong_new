@@ -48,7 +48,7 @@ export abstract class YakuCheckerBase {
 
         const groups = new Map<string, IMentsu[]>();
         for(const block of shuntsu){
-            const key = `${block.minHai.num}-${block.maxHai.num}`;
+            const key = `${block.minHai.getId()}-${block.maxHai.getId()}`;
             if(!groups.has(key)){
                 groups.set(key, []);
             }
