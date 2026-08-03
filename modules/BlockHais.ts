@@ -35,6 +35,10 @@ export class BlockHais implements IMentsu {
         return this.type === BlockType.KOTSU;
     }
 
+    containsHai(haiId: number): boolean {
+        return this.hais.some(h => h.getId() === haiId);
+    }
+
     clone(): BlockHais {
         return new BlockHais(this.hais.map(h => h.clone()), this.type);
     }

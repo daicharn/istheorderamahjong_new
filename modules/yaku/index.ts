@@ -25,36 +25,40 @@ import { SanankoChecker } from './normal/SanankoChecker';
 import { ToitoiChecker } from './normal/ToitoiChecker';
 import { IipekoChecker } from './normal/IipekoChecker';
 import { ShosangenChecker } from './normal/ShosangenChecker';
+import { YakuhaiChecker } from './normal/YakuhaiChecker';
 
 export type YakuCheckerConstructor =
-    new (context: YakuContext) => YakuCheckerBase;
+    (context: YakuContext) => YakuCheckerBase;
 
 export const YakumanCheckers: YakuCheckerConstructor[] = [
-    TsuisoChecker,
-    ChinrotoChecker,
-    RyuisoChecker,
-    SukantsuChecker,
-    ChurenChecker,
-    Churen9Checker,
-    SuankoChecker,
-    SuankoTankiChecker,
-    KokushiChecker,
-    Kokushi13Checker,
-    DaisushiChecker,
-    ShosushiChecker,
-    DaisangenChecker,
+    ctx => new TsuisoChecker(ctx),
+    ctx => new ChinrotoChecker(ctx),
+    ctx => new RyuisoChecker(ctx),
+    ctx => new SukantsuChecker(ctx),
+    ctx => new ChurenChecker(ctx),
+    ctx => new Churen9Checker(ctx),
+    ctx => new SuankoChecker(ctx),
+    ctx => new SuankoTankiChecker(ctx),
+    ctx => new KokushiChecker(ctx),
+    ctx => new Kokushi13Checker(ctx),
+    ctx => new DaisushiChecker(ctx),
+    ctx => new ShosushiChecker(ctx),
+    ctx => new DaisangenChecker(ctx),
 ];
 
 export const NormalYakuCheckers: YakuCheckerConstructor[] = [
-    ChinitsuChecker,
-    HonitsuChecker,
-    JunchanChecker,
-    HonchanChecker,
-    HonrotoChecker,
-    RyanpekoChecker,
-    ChitoitsuChecker,
-    SanankoChecker,
-    ToitoiChecker,
-    IipekoChecker,
-    ShosangenChecker,
+    ctx => new ChinitsuChecker(ctx),
+    ctx => new HonitsuChecker(ctx),
+    ctx => new JunchanChecker(ctx),
+    ctx => new HonchanChecker(ctx),
+    ctx => new HonrotoChecker(ctx),
+    ctx => new RyanpekoChecker(ctx),
+    ctx => new ChitoitsuChecker(ctx),
+    ctx => new SanankoChecker(ctx),
+    ctx => new ToitoiChecker(ctx),
+    ctx => new IipekoChecker(ctx),
+    ctx => new ShosangenChecker(ctx),
+    ctx => new YakuhaiChecker(ctx, 31, "白"),
+    ctx => new YakuhaiChecker(ctx, 32, "發"),
+    ctx => new YakuhaiChecker(ctx, 33, "中"),
 ];

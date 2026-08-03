@@ -35,6 +35,10 @@ export class Meld implements IMentsu {
         return this.type === MeldType.PON || this.type === MeldType.ANKAN || this.type === MeldType.MINKAN;
     }
 
+    containsHai(haiId: number): boolean {
+        return this.hais.some(h => h.getId() === haiId);
+    }
+
     clone(): Meld {
         return new Meld(this.hais.map(h => h.clone()), this.type);
     }

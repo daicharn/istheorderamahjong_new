@@ -130,7 +130,7 @@ export const casesNormal: TehaiCase[] = [
         {hai: 30, type: MeldType.PON},
     ] as MeldSpec[],
     hais: [10,10,31,31,31],
-    expected: new Map([[0, new Map([["混老頭", 2],["対々和", 2]])]])
+    expected: new Map([[0, new Map([["混老頭", 2],["対々和", 2],["白", 1]])]])
   },
   {
     name: "honroto_3",
@@ -144,7 +144,7 @@ export const casesNormal: TehaiCase[] = [
         {hai: 31, type: MeldType.ANKAN},
     ] as MeldSpec[],
     hais: [29,29],
-    expected: new Map([[0, new Map([["混老頭", 2],["対々和", 2]])]])
+    expected: new Map([[0, new Map([["混老頭", 2],["対々和", 2],["白", 1]])]])
   },
   {
     name: "ryanpeko_1",
@@ -331,7 +331,7 @@ export const casesNormal: TehaiCase[] = [
         {hai: 33, type: MeldType.PON},
     ] as MeldSpec[],
     hais: [34,34,1,1,1,12,13,14],
-    expected: new Map([[0, new Map([["小三元", 2]])]])
+    expected: new Map([[0, new Map([["小三元", 2],["發", 1],["中", 1]])]])
   },
   {
     name: "shosangen_2",
@@ -340,6 +340,6 @@ export const casesNormal: TehaiCase[] = [
     isTsumo: false,
     melds: [] as MeldSpec[],
     hais: [32,32,32,33,33,33,34,34,1,1,1,9,9,9],
-    expected: new Map([[0, new Map([["混一色", 3],["混老頭", 2],["三暗刻", 2],["対々和", 2],["小三元", 2]])]])
+    expected: new Map([[0, new Map([["混一色", 3],["混老頭", 2],["三暗刻", 2],["対々和", 2],["小三元", 2],["發", 1],["中", 1]])]])
   },
 ];

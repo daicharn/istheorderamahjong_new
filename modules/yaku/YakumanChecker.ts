@@ -17,7 +17,7 @@ export class YakumanChecker{
         ];
         const yaku_map: Map<string, number> = new Map();
         for(const Checker of YakumanCheckers) {
-            const checker = new Checker(this.context);
+            const checker = Checker(this.context);
             if(checker.check()) yaku_map.set(checker.getName(), checker.getHan());
         }
 
