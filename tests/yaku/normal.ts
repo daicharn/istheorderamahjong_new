@@ -321,4 +321,25 @@ export const casesNormal: TehaiCase[] = [
     hais: [2,2,3,3,4,4,6,6],
     expected: new Map([[0, new Map([["清一色", 5]])]])
   },
+  {
+    name: "shosangen_1",
+    desc: "小三元",
+    agariHai: 1,
+    isTsumo: false,
+    melds: [
+        {hai: 32, type: MeldType.PON},
+        {hai: 33, type: MeldType.PON},
+    ] as MeldSpec[],
+    hais: [34,34,1,1,1,12,13,14],
+    expected: new Map([[0, new Map([["小三元", 2]])]])
+  },
+  {
+    name: "shosangen_2",
+    desc: "小三元",
+    agariHai: 32,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    hais: [32,32,32,33,33,33,34,34,1,1,1,9,9,9],
+    expected: new Map([[0, new Map([["混一色", 3],["混老頭", 2],["三暗刻", 2],["対々和", 2],["小三元", 2]])]])
+  },
 ];
