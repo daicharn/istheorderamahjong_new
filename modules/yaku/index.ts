@@ -27,10 +27,10 @@ import { IipekoChecker } from './normal/IipekoChecker';
 import { ShosangenChecker } from './normal/ShosangenChecker';
 import { YakuhaiChecker } from './normal/YakuhaiChecker';
 
-export type YakuCheckerConstructor =
+export type YakuCheckerFactory =
     (context: YakuContext) => YakuCheckerBase;
 
-export const YakumanCheckers: YakuCheckerConstructor[] = [
+export const YakumanCheckers: YakuCheckerFactory[] = [
     ctx => new TsuisoChecker(ctx),
     ctx => new ChinrotoChecker(ctx),
     ctx => new RyuisoChecker(ctx),
@@ -46,7 +46,7 @@ export const YakumanCheckers: YakuCheckerConstructor[] = [
     ctx => new DaisangenChecker(ctx),
 ];
 
-export const NormalYakuCheckers: YakuCheckerConstructor[] = [
+export const NormalYakuCheckers: YakuCheckerFactory[] = [
     ctx => new ChinitsuChecker(ctx),
     ctx => new HonitsuChecker(ctx),
     ctx => new JunchanChecker(ctx),
