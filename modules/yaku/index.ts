@@ -58,7 +58,7 @@ export const NormalYakuCheckers: YakuCheckerConstructor[] = [
     ctx => new ToitoiChecker(ctx),
     ctx => new IipekoChecker(ctx),
     ctx => new ShosangenChecker(ctx),
-    ctx => new YakuhaiChecker(ctx, 31, "白"),
-    ctx => new YakuhaiChecker(ctx, 32, "發"),
-    ctx => new YakuhaiChecker(ctx, 33, "中"),
+    ctx => new YakuhaiChecker(ctx, 32, "白"),
+    ctx => new YakuhaiChecker(ctx, 33, "發"),
+    ctx => new YakuhaiChecker(ctx, 34, "中"),
 ];
