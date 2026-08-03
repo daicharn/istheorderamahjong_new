@@ -30,7 +30,10 @@ export abstract class YakuCheckerBase {
 
     //全く同じ順子のグループ数を数える
     protected countSameShuntsuGroups(): number {
-        const groups = this.getGroupsByShuntsu();
+        const groups = this.getGroupsMentsu(
+            (m) => m.isShuntsu(),
+            (m) => `${m.minHai.getId()}-${m.maxHai.getId()}`
+        );
         let count = 0;
         for(const group of groups.values()){
             if(group.length >= 2){
@@ -40,21 +43,21 @@ export abstract class YakuCheckerBase {
         return count;
     }
 
-    //順子のグループを取得する
-    protected getGroupsByShuntsu(): Map<string, IMentsu[]> {
+    //面子ごとにグループを作成する
+    protected getGroupsMentsu(
+        filter: (m: IMentsu) => boolean,
+        keySelector: (m: IMentsu) => string
+    ): Map<string, IMentsu[]> {
         const mentsuList: IMentsu[] = [...this.context.block.getBlockHais(), ...this.context.melds];
-
-        const shuntsu = mentsuList.filter(block => block.isShuntsu());
-
+        const filteredMentsu = mentsuList.filter(filter);
         const groups = new Map<string, IMentsu[]>();
-        for(const block of shuntsu){
-            const key = `${block.minHai.getId()}-${block.maxHai.getId()}`;
+        for(const mentsu of filteredMentsu){
+            const key = keySelector(mentsu);
             if(!groups.has(key)){
                 groups.set(key, []);
             }
-            groups.get(key)?.push(block);
+            groups.get(key)?.push(mentsu);
         }
-
         return groups;
     }
 
