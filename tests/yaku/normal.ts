@@ -343,6 +343,48 @@ export const casesNormal: TehaiCase[] = [
     expected: new Map([[0, new Map([["混一色", 3],["混老頭", 2],["三暗刻", 2],["対々和", 2],["小三元", 2],["發", 1],["中", 1]])]])
   },
   {
+    name: "sanshoku_1",
+    desc: "三色同順",
+    agariHai: 1,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    hais: [1,2,3,10,11,12,19,19,20,20,21,21,23,23],
+    expected: new Map([[0, new Map([["三色同順", 2],["一盃口", 1]])]])
+  },
+  {
+    name: "sanshoku_2",
+    desc: "三色同順",
+    agariHai: 1,
+    isTsumo: false,
+    melds: [
+        {hai: 2, type: MeldType.CHI},
+        {hai: 11, type: MeldType.CHI},
+        {hai: 20, type: MeldType.CHI},
+    ] as MeldSpec[],
+    hais: [2,3,4,23,23],
+    expected: new Map([[0, new Map([["三色同順", 1]])]])
+  },
+  {
+    name: "sanshoku_3",
+    desc: "三色同順",
+    agariHai: 1,
+    isTsumo: false,
+    melds: [
+        {hai: 7, type: MeldType.CHI},
+    ] as MeldSpec[],
+    hais: [16,17,18,25,26,27,28,28,32,32,32],
+    expected: new Map([[0, new Map([["三色同順", 1],["混全帯么九", 1],["白", 1]])]])
+  },
+  {
+    name: "sanshoku_4",
+    desc: "三色同順",
+    agariHai: 1,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    hais: [1,2,3,10,11,12,19,20,21,26,26,28,28,28],
+    expected: new Map([[0, new Map([["三色同順", 2]])]])
+  },
+  {
     name: "yakuhai_1",
     desc: "役牌",
     agariHai: 1,
