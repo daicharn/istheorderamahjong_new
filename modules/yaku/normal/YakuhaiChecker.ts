@@ -17,6 +17,6 @@ export class YakuhaiChecker extends YakuCheckerBase{
     protected isSatisfied(): boolean {
         const allMentsu: IMentsu[] = [...this.context.block, ...this.context.melds];
 
-        return allMentsu.some(mentsu => mentsu.isKoutsuOrKantsu() && mentsu.containsHai(this.targetHai));
+        return allMentsu.some(mentsu => mentsu.isKotsuOrKantsu() && mentsu.containsHai(this.targetHai));
     }
 }

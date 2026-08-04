@@ -7,7 +7,7 @@ export interface IMentsu {
     hasRoutouHai(): boolean;
     hasJihai(): boolean;
     isShuntsu(): boolean;
-    isKoutsuOrKantsu(): boolean;
+    isKotsuOrKantsu(): boolean;
     containsHai(haiId: number): boolean;
     clone(): IMentsu;
     get minHai(): Hai;

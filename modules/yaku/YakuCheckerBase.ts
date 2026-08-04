@@ -112,7 +112,7 @@ export abstract class YakuCheckerBase {
         const allMentsu: IMentsu[] = [...this.context.block, ...this.context.melds];
 
         allMentsu.forEach(mentsu => {
-            if(mentsu.isKoutsuOrKantsu()) kotsuCount++;
+            if(mentsu.isKotsuOrKantsu()) kotsuCount++;
         });
 
         return kotsuCount;

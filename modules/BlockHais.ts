@@ -31,7 +31,7 @@ export class BlockHais implements IMentsu {
         return this.type === BlockType.SHUNTSU;
     }
 
-    isKoutsuOrKantsu(): boolean {
+    isKotsuOrKantsu(): boolean {
         return this.type === BlockType.KOTSU;
     }
 
