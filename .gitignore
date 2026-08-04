@@ -1,5 +1,3 @@
-babel.config.js
-tsconfig.json
 .vscode
 coverage/
 .VScodeCounter
