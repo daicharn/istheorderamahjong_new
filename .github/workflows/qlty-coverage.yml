@@ -25,7 +25,7 @@ jobs:
         run: npx jest --coverage
 
       - name: Upload coverage to qlty.sh
-        uses: qltysh/qlty-action/coverage@v2
+        uses: qltysh/qlty-action/coverage@9e8e09dfc3d82a968f4034f5265eaf3c142881f7
         with:
           token: ${{ secrets.QLTY_COVERAGE_TOKEN }}
           files: coverage/lcov.info
