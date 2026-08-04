@@ -1,4 +1,5 @@
 name: Qlty Coverage
+
 on:
   push:
     branches: [ "master" ]
@@ -18,8 +19,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install jest for CI only
+        run: npm install --save-dev jest @types/jest
+
       - name: Run coverage
-        run: npm run coverage
+        run: npx jest --coverage
 
       - name: Upload coverage to qlty.sh
         uses: qltysh/qlty-action/coverage@v2
