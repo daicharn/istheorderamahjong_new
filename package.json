@@ -16,6 +16,6 @@
   "main": "babel.config.js",
   "scripts": {
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "coverage": "jest --coverage"
   }
 }
