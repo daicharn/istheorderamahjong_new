@@ -1,0 +1,21 @@
+{
+  "name": "istheorderamahjong",
+  "version": "1.0.0",
+  "description": "mahjong",
+  "homepage": "https://github.com/daicharn/IsTheOrderaMahjong#readme",
+  "bugs": {
+    "url": "https://github.com/daicharn/IsTheOrderaMahjong/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daicharn/IsTheOrderaMahjong.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "babel.config.js",
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  }
+}
