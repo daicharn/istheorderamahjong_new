@@ -32,7 +32,8 @@ export class BlockDivider{
         if(this.hais.length > 14) return results;
 
         const dfs = (arr: number[], blocks: BlockHaisList) => {
-            if(blocks.length() === Math.floor(this.hais.length / 3) + 1 && blocks.isStandardHand(Math.floor(this.hais.length / 3))){
+            const expectedBlocks = Math.floor(this.hais.length / 3);
+            if(blocks.length() === expectedBlocks + 1 && blocks.isStandardHand(expectedBlocks)){
                 results.push(blocks.clone());
                 return;
             }
@@ -51,7 +52,9 @@ export class BlockDivider{
                     blocks.pop();
                 }
                 //順子の処理
-                if(arr[j] > 0 && arr[j + 1] > 0 && arr[j + 2] > 0 && hai.isNumberHai() && hai.num <= 7){
+                const hasTiles = arr[j] > 0 && arr[j + 1] > 0 && arr[j + 2] > 0;
+                const isShuntsuCandidate = hai.isNumberHai() && hai.num <= 7;
+                if(isShuntsuCandidate && hasTiles){
                     const h2 = new Hai(j + 2);
                     const h3 = new Hai(j + 3);
 
