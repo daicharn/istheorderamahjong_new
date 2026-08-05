@@ -12,5 +12,7 @@ export type TehaiCase = {
     isTsumo: boolean,
     melds: MeldSpec[],
     hais: number[],
+    playerWind?: "E" | "S" | "W" | "N",
+    roundWind?: "E" | "S" | "W" | "N",
     expected: Map<number, Map<string, number>>
 };
