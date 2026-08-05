@@ -164,13 +164,4 @@ export abstract class YakuCheckerBase {
 
         return hais;
     }
-
-    //清一色
-    protected isChinitsu() {
-        const allTiles = this.getAllTiles();
-        if(allTiles.length === 0) return false;
-        const suitType = allTiles[0].type;
-        
-        return allTiles.every(h => h.type === suitType);
-    }
 }

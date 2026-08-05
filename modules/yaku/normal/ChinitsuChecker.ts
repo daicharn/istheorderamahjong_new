@@ -12,6 +12,14 @@ export class ChinitsuChecker extends YakuCheckerBase{
     }
 
     protected isSatisfied(): boolean {
-        return this.isChinitsu();
+        const allTiles = this.getAllTiles();
+        if(allTiles.length === 0) return false;
+        const suitType = allTiles[0].type;
+        
+        return allTiles.every(h => h.type === suitType);
+    }
+
+    public isChinitsu(): boolean {
+        return this.isSatisfied();
     }
 }

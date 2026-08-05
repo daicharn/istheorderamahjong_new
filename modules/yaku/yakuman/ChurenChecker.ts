@@ -1,5 +1,6 @@
 import { YakuContext } from '../YakuContext';
 import { YakuCheckerBase } from '../YakuCheckerBase';
+import { ChinitsuChecker } from '../normal/ChinitsuChecker';
 
 
 export class ChurenChecker extends YakuCheckerBase{
@@ -10,7 +11,8 @@ export class ChurenChecker extends YakuCheckerBase{
     }
 
     protected isSatisfied(): boolean {
-        if(!this.isChinitsu()) return false;
+        const chinitsuChecker = new ChinitsuChecker(this.context);
+        if(!chinitsuChecker.isChinitsu()) return false;
         if(!this.isMenzen()) return false;
         
         const count = new Array(9).fill(0);
