@@ -13,8 +13,7 @@ export class JunchanChecker extends YakuCheckerBase{
     }
 
     protected isSatisfied(): boolean {
-        const allMentsu: IMentsu[] = [...this.context.block, ...this.context.melds];
-
+        const allMentsu: IMentsu[] = this.getAllMentsu();
         return allMentsu.every(mentsu => mentsu.hasRoutouHai());
     }
 }

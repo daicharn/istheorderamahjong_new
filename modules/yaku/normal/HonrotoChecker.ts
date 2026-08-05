@@ -13,8 +13,7 @@ export class HonrotoChecker extends YakuCheckerBase{
     }
 
     protected isSatisfied(): boolean {
-        const allMentsu: IMentsu[] = [...this.context.block, ...this.context.melds];
-
+        const allMentsu: IMentsu[] = this.getAllMentsu();
         const allYaochu = allMentsu.every(mentsu => (mentsu.hasRoutouHai() || mentsu.hasJihai()));
         const allNotShuntsu = allMentsu.every(mentsu => !mentsu.isShuntsu());
 

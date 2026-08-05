@@ -28,6 +28,18 @@ export abstract class YakuCheckerBase {
         return this.yakuName;
     }
 
+    //手牌と鳴き牌を含めた面子のコピー配列を作成
+    protected getAllMentsu(): IMentsu[] {
+        return [...this.context.block, ...this.context.melds];
+    }
+
+    //手牌と鳴き牌を含めた牌のコピー配列を作成
+    protected getAllTiles(): Hai[] {
+        const hais = this.context.hais.map(h => h.clone());
+        const meldHais = this.context.melds.flatMap(m => m.getHais().map(h => h.clone()));
+        return [...hais, ...meldHais];
+    }
+
     //全く同じ順子のグループ数を数える
     protected countSameShuntsuGroups(): number {
         const groups = this.getGroupsMentsu(
@@ -48,7 +60,7 @@ export abstract class YakuCheckerBase {
         filter: (m: IMentsu) => boolean,
         keySelector: (m: IMentsu) => string
     ): Map<string, IMentsu[]> {
-        const mentsuList: IMentsu[] = [...this.context.block.getBlockHais(), ...this.context.melds];
+        const mentsuList: IMentsu[] = this.getAllMentsu();
         const filteredMentsu = mentsuList.filter(filter);
         const groups = new Map<string, IMentsu[]>();
         for(const mentsu of filteredMentsu){
@@ -145,15 +157,10 @@ export abstract class YakuCheckerBase {
 
     //清一色
     protected isChinitsu() {
-        const hais = this.context.hais;
-        const allTiles = [
-            ...hais,
-            ...this.context.melds.flatMap(m => m.getHais())
-        ];
-
-        if(hais.length === 0) return false;
-        const suit = hais[0];
+        const allTiles = this.getAllTiles();
+        if(allTiles.length === 0) return false;
+        const suitType = allTiles[0].type;
         
-        return allTiles.every(h => h.type === suit.type);
+        return allTiles.every(h => h.type === suitType);
     }
 }

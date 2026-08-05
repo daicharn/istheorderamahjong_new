@@ -13,11 +13,7 @@ export class HonitsuChecker extends YakuCheckerBase{
     }
 
     protected isSatisfied(): boolean {
-        const allTiles = [
-            ...this.context.hais,
-            ...this.context.melds.flatMap(m => m.getHais())
-        ];
-
+        const allTiles = this.getAllTiles();
         const suits = new Set(allTiles.map(h => h.type));
         return suits.size === 2 && suits.has(HaiType.JIHAI);   
     }

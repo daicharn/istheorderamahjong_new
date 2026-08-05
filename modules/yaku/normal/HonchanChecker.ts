@@ -11,10 +11,9 @@ export class HonchanChecker extends YakuCheckerBase{
     constructor(context: YakuContext){
         super(context);
     }
-
+    
     protected isSatisfied(): boolean {
-        const allMentsu: IMentsu[] = [...this.context.block, ...this.context.melds];
-
+        const allMentsu: IMentsu[] = this.getAllMentsu();
         const allYaochu = allMentsu.every(mentsu => (mentsu.hasRoutouHai() || mentsu.hasJihai()));
         const hasShuntsu = allMentsu.some(mentsu => mentsu.isShuntsu());
         const hasJihai = allMentsu.some(mentsu => mentsu.hasJihai());

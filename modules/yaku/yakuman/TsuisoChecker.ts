@@ -12,11 +12,7 @@ export class TsuisoChecker extends YakuCheckerBase{
     }
 
     protected isSatisfied(): boolean {
-        const allTiles = [
-            ...this.context.hais,
-            ...this.context.melds.flatMap(m => m.getHais())
-        ];
-
+        const allTiles = this.getAllTiles();
         return allTiles.every(h => h.isJihai());
     }
 }
