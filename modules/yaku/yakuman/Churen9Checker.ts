@@ -1,7 +1,6 @@
 import { YakuContext } from '../YakuContext';
 import { YakuCheckerBase } from '../YakuCheckerBase';
 import { ChurenChecker } from './ChurenChecker';
-import { MachiCalculator } from '../../MachiCalculator';
 
 export class Churen9Checker extends YakuCheckerBase{
     protected yakuName: string = "純正九蓮宝燈";

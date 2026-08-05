@@ -1,6 +1,5 @@
 import { YakuContext } from '../YakuContext';
 import { YakuCheckerBase } from '../YakuCheckerBase';
-import { IMentsu } from '../../IMentsu';
 
 
 export class ToitoiChecker extends YakuCheckerBase{
