@@ -23,6 +23,35 @@ export class BlockDivider{
         return [...unique.values()];
     }
 
+    //七対子の判定
+    private getBlockHaisChitoi(counts: number[]): BlockHaisList{
+        const haiNumsSet = [...new Set(this.hais.map(h => h.getId()))];
+        const blockhaischitoi: BlockHaisList = new BlockHaisList();
+        
+        if(haiNumsSet.length === 7 && haiNumsSet.every(n => counts[n - 1] === 2)){
+            for(const num of haiNumsSet){
+                blockhaischitoi.push(new BlockHais([new Hai(num), new Hai(num)], BlockType.JANTO));
+            }
+        }
+
+        return blockhaischitoi;
+    }
+
+    //国士無双の判定
+    private getBlockHaisKokushi(): BlockHaisList{
+        const haiNumsSet = [...new Set(this.hais.map(h => h.getId()))];
+        const blockhaiskokushi: BlockHaisList = new BlockHaisList();
+        if(this.hais.every(h => h.isYaochuHai()) && this.hais.length === 14 && haiNumsSet.length === 13){
+            const haiskokushi: Hai[] = [];
+            for(const hai of this.hais){
+                haiskokushi.push(hai);
+            }
+            blockhaiskokushi.push(new BlockHais(haiskokushi, BlockType.KOKUSHI));
+        }
+
+        return blockhaiskokushi;
+    }
+
     divide(): BlockHaisList[]{
         const results: BlockHaisList[] = [];
         const blockhaislist: BlockHaisList = new BlockHaisList();
@@ -87,28 +116,13 @@ export class BlockDivider{
             }
         }
 
-        //手牌から重複をなくしたものを用意
-        const haiNumsSet = [...new Set(this.hais.map(h => h.getId()))];
         //七対子の判定
-        if(haiNumsSet.length === 7 && haiNumsSet.every(n => counts[n - 1] === 2)){
-            const blockhaischitoi: BlockHaisList = new BlockHaisList();
-            for(const num of haiNumsSet){
-                blockhaischitoi.push(new BlockHais([new Hai(num), new Hai(num)], BlockType.JANTO));
-            }
-
-            results.push(blockhaischitoi)
-        }
+        const blockhaischitoi = this.getBlockHaisChitoi(counts);
+        if(blockhaischitoi.length() > 0) results.push(blockhaischitoi);
+        
         //国士無双の判定
-        if(this.hais.every(h => h.isYaochuHai()) && this.hais.length === 14 && haiNumsSet.length === 13){
-            const blockhaiskokushi: BlockHaisList = new BlockHaisList();
-            const haiskokushi: Hai[] = [];
-            for(const hai of this.hais){
-                haiskokushi.push(hai);
-            }
-
-            blockhaiskokushi.push(new BlockHais(haiskokushi, BlockType.KOKUSHI));
-            results.push(blockhaiskokushi);
-        }
+        const blockhaiskokushi = this.getBlockHaisKokushi();
+        if(blockhaiskokushi.length() > 0) results.push(blockhaiskokushi);
 
         return this.dedupeBlockHais(results);
     }
