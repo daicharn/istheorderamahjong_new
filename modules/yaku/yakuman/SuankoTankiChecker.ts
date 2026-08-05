@@ -1,4 +1,3 @@
-import { YakuContext } from '../YakuContext';
 import { YakuCheckerBase } from '../YakuCheckerBase';
 import { BlockType } from '../../MahjongConsts';
 import { SuankoChecker } from './SuankoChecker';
@@ -6,10 +5,6 @@ import { SuankoChecker } from './SuankoChecker';
 
 export class SuankoTankiChecker extends YakuCheckerBase{
     protected yakuName: string = "四暗刻単騎";
-
-    constructor(context: YakuContext){
-        super(context);
-    }
 
     protected isSatisfied(): boolean {
         const base = new SuankoChecker(this.context)

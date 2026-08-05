@@ -1,14 +1,9 @@
-import { YakuContext } from '../YakuContext';
 import { YakuCheckerBase } from '../YakuCheckerBase';
 import { ChinitsuChecker } from '../normal/ChinitsuChecker';
 
 
 export class ChurenChecker extends YakuCheckerBase{
     protected yakuName: string = "九蓮宝燈";
-
-    constructor(context: YakuContext){
-        super(context);
-    }
 
     protected isSatisfied(): boolean {
         const chinitsuChecker = new ChinitsuChecker(this.context);
