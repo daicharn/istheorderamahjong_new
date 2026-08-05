@@ -3,12 +3,11 @@ import { YakuCheckerBase } from '../YakuCheckerBase';
 
 
 export class IipekoChecker extends YakuCheckerBase{
-    protected hanMenzen: number = 1;
-    protected hanFuro: number = 0;
     protected yakuName: string = "一盃口";
 
     constructor(context: YakuContext){
         super(context);
+        this.hanMenzen = 1;
     }
 
     protected isSatisfied(): boolean {

@@ -4,12 +4,12 @@ import { IMentsu } from '../../IMentsu';
 
 
 export class HonrotoChecker extends YakuCheckerBase{
-    protected hanMenzen: number = 2;
-    protected hanFuro: number = 2;
     protected yakuName: string = "混老頭";
 
     constructor(context: YakuContext){
         super(context);
+        this.hanMenzen = 2;
+        this.hanFuro = 2;
     }
 
     protected isSatisfied(): boolean {

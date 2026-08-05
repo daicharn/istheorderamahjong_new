@@ -4,12 +4,12 @@ import { HaiType } from '../../MahjongConsts';
 
 
 export class HonitsuChecker extends YakuCheckerBase{
-    protected hanMenzen: number = 3;
-    protected hanFuro: number = 2;
     protected yakuName: string = "混一色";
 
     constructor(context: YakuContext){
         super(context);
+        this.hanMenzen = 3;
+        this.hanFuro = 2;
     }
 
     protected isSatisfied(): boolean {

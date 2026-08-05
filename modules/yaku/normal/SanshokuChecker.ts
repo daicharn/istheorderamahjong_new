@@ -5,12 +5,12 @@ import { HaiType } from '../../MahjongConsts';
 
 
 export class SanshokuChecker extends YakuCheckerBase{
-    protected hanMenzen: number = 2;
-    protected hanFuro: number = 1;
     protected yakuName: string = "三色同順";
 
     constructor(context: YakuContext){
         super(context);
+        this.hanMenzen = 2;
+        this.hanFuro = 1;
     }
 
     protected isSatisfied(): boolean {

@@ -4,12 +4,11 @@ import { BlockType } from '../../MahjongConsts';
 
 
 export class ChitoitsuChecker extends YakuCheckerBase{
-    protected hanMenzen: number = 2;
-    protected hanFuro: number = 0;
     protected yakuName: string = "七対子";
 
     constructor(context: YakuContext){
         super(context);
+        this.hanMenzen = 2;
     }
 
     protected isSatisfied(): boolean {

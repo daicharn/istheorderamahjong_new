@@ -4,8 +4,6 @@ import { MachiCalculator } from '../../MachiCalculator';
 import { KokushiChecker } from './KokushiChecker';
 
 export class Kokushi13Checker extends YakuCheckerBase{
-    protected hanMenzen: number = 0;
-    protected hanFuro: number = 0;
     protected yakuName: string = "国士無双13面待ち";
 
     constructor(context: YakuContext){

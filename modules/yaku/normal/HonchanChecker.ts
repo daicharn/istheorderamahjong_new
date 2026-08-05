@@ -4,12 +4,12 @@ import { IMentsu } from '../../IMentsu';
 
 
 export class HonchanChecker extends YakuCheckerBase{
-    protected hanMenzen: number = 2;
-    protected hanFuro: number = 1;
     protected yakuName: string = "混全帯么九";
 
     constructor(context: YakuContext){
         super(context);
+        this.hanMenzen = 2;
+        this.hanFuro = 1;
     }
     
     protected isSatisfied(): boolean {

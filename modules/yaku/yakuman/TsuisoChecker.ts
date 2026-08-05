@@ -3,8 +3,6 @@ import { YakuCheckerBase } from '../YakuCheckerBase';
 
 
 export class TsuisoChecker extends YakuCheckerBase{
-    protected hanMenzen: number = 0;
-    protected hanFuro: number = 0;
     protected yakuName: string = "字一色";
 
     constructor(context: YakuContext){

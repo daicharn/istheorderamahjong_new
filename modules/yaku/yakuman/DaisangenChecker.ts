@@ -3,8 +3,6 @@ import { YakuCheckerBase } from '../YakuCheckerBase';
 
 
 export class DaisangenChecker extends YakuCheckerBase{
-    protected hanMenzen: number = 0;
-    protected hanFuro: number = 0;
     protected yakuName: string = "大三元";
 
     constructor(context: YakuContext){

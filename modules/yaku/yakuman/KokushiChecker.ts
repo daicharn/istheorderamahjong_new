@@ -3,8 +3,6 @@ import { YakuCheckerBase } from '../YakuCheckerBase';
 import { BlockType } from '../../MahjongConsts';
 
 export class KokushiChecker extends YakuCheckerBase{
-    protected hanMenzen: number = 0;
-    protected hanFuro: number = 0;
     protected yakuName: string = "国士無双";
 
     constructor(context: YakuContext){

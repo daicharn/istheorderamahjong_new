@@ -3,8 +3,6 @@ import { YakuCheckerBase } from '../YakuCheckerBase';
 
 
 export class RyuisoChecker extends YakuCheckerBase{
-    protected hanMenzen: number = 0;
-    protected hanFuro: number = 0;
     protected yakuName: string = "緑一色";
 
     constructor(context: YakuContext){

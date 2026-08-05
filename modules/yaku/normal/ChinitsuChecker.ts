@@ -3,12 +3,12 @@ import { YakuCheckerBase } from '../YakuCheckerBase';
 
 
 export class ChinitsuChecker extends YakuCheckerBase{
-    protected hanMenzen: number = 6;
-    protected hanFuro: number = 5;
     protected yakuName: string = "清一色";
 
     constructor(context: YakuContext){
         super(context);
+        this.hanMenzen = 6;
+        this.hanFuro = 5;
     }
 
     protected isSatisfied(): boolean {

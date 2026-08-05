@@ -4,8 +4,6 @@ import { ChurenChecker } from './ChurenChecker';
 import { MachiCalculator } from '../../MachiCalculator';
 
 export class Churen9Checker extends YakuCheckerBase{
-    protected hanMenzen: number = 0;
-    protected hanFuro: number = 0;
     protected yakuName: string = "純正九蓮宝燈";
 
     constructor(context: YakuContext){
