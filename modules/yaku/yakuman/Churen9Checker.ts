@@ -14,9 +14,7 @@ export class Churen9Checker extends YakuCheckerBase{
         const base = new ChurenChecker(this.context);
         if(!base.isChuren()) return false;
 
-        const haisWithoutAgari = this.getHaisWithoutAgariHai();
-        const machi = new MachiCalculator(haisWithoutAgari).calculate();
-
-        return machi.length === 9;
+        const machiCount = this.calculateMachiCount();
+        return machiCount === 9;
     }
 }

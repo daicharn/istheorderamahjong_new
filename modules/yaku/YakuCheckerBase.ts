@@ -1,6 +1,7 @@
 import { Hai } from '../Hai';
 import { YakuContext } from './YakuContext';
 import { BlockHaisList } from '../BlockHaisList';
+import { MachiCalculator } from '../MachiCalculator';
 import { IMentsu } from '../IMentsu';
 import { BlockType, MeldType } from '../MahjongConsts';
 
@@ -28,6 +29,13 @@ export abstract class YakuCheckerBase {
 
     public getName(): string {
         return this.yakuName;
+    }
+
+    //アガリ牌を除いた手牌の待ちの数を計算する
+    protected calculateMachiCount(): number {
+        const haisWithoutAgari = this.getHaisWithoutAgariHai();
+        const machi = new MachiCalculator(haisWithoutAgari).calculate();
+        return machi.length;
     }
 
     //手牌と鳴き牌を含めた面子のコピー配列を作成
