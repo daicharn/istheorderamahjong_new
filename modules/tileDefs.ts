@@ -6,16 +6,15 @@ export const TILE = {
     JIHAI: [28,29,30,31,32,33,34],
 
     WIND: {
-        EAST: 28,
-        SOUTH: 29,
-        WEST: 30,
-        NORTH: 31
+        EAST: { id: 28, name: "東" },
+        SOUTH: { id: 29, name: "南" },
+        WEST: { id: 30, name: "西" },
+        NORTH: { id: 31, name: "北" }
     },
-
     DRAGON: {
-        WHITE: 32,
-        GREEN: 33,
-        RED: 34
+        WHITE: { id: 32, name: "白" },
+        GREEN: { id: 33, name: "發" },
+        RED: { id: 34, name: "中" }
     },
 
     BACK: 100,
