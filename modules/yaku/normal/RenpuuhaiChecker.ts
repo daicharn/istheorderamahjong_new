@@ -2,7 +2,7 @@ import { YakuContext } from '../YakuContext';
 import { YakuCheckerBase } from '../YakuCheckerBase';
 import { IMentsu } from '../../IMentsu';
 
-export class RenpuhaiChecker extends YakuCheckerBase{
+export class RenpuuhaiChecker extends YakuCheckerBase{
     protected yakuName: string;
 
     constructor(context: YakuContext){
