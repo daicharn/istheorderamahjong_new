@@ -10,7 +10,6 @@ export class JifuuhaiChecker extends YakuCheckerBase{
         this.hanMenzen = 1;
         this.hanFuro = 1;
         this.yakuName = `自風牌:${this.context.ctx.playerWind.name}`;
-        
     }
 
     protected isSatisfied(): boolean {

@@ -10,7 +10,6 @@ export class BafuuhaiChecker extends YakuCheckerBase{
         this.hanMenzen = 1;
         this.hanFuro = 1;
         this.yakuName = `場風牌:${this.context.ctx.roundWind.name}`;
-        
     }
 
     protected isSatisfied(): boolean {
