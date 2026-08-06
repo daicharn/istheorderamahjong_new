@@ -1,10 +1,11 @@
 import { Hai } from "./Hai";
+import { Wind } from "./tileDefs";
 
 interface UserOptions {
     agariHai: Hai
     isTsumo: boolean;
-    playerWind: "E" | "S" | "W" | "N";
-    roundWind: "E" | "S" | "W" | "N";
+    playerWind: Wind;
+    roundWind: Wind;
     tenho?: boolean;
     chiho?: boolean;
     riichi?: boolean;
@@ -19,8 +20,8 @@ interface UserOptions {
 export class PlayerContext{
     agariHai: Hai;
     isTsumo: boolean;
-    playerWind: "E" | "S" | "W" | "N";
-    roundWind: "E" | "S" | "W" | "N";
+    playerWind: Wind;
+    roundWind: Wind;
     tenho: boolean;
     chiho: boolean;
     riichi: boolean;

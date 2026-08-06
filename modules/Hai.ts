@@ -1,5 +1,5 @@
 import { HaiType } from "./MahjongConsts";
-import {MANZU, PINZU, SOUZU, JIHAI, BACK} from "./tileDefs";
+import { TILE } from "./tileDefs";
 
 export class Hai{
     private readonly id: number;
@@ -9,10 +9,10 @@ export class Hai{
     }
 
     get type(): HaiType{
-        if(MANZU.includes(this.id)) return HaiType.MANZU;
-        if(PINZU.includes(this.id)) return HaiType.PINZU;
-        if(SOUZU.includes(this.id)) return HaiType.SOUZU;
-        if(JIHAI.includes(this.id)) return HaiType.JIHAI;
+        if((TILE.MANZU as readonly number[]).includes(this.id)) return HaiType.MANZU;
+        if((TILE.PINZU as readonly number[]).includes(this.id)) return HaiType.PINZU;
+        if((TILE.SOUZU as readonly number[]).includes(this.id)) return HaiType.SOUZU;
+        if((TILE.JIHAI as readonly number[]).includes(this.id)) return HaiType.JIHAI;
         return HaiType.BACK;
     }
 
@@ -21,7 +21,7 @@ export class Hai{
         if(this.type == HaiType.PINZU) return this.id - 9;
         if(this.type == HaiType.SOUZU) return this.id - 18;
         if(this.type == HaiType.JIHAI) return this.id;
-        return BACK;
+        return TILE.BACK;
     }
 
     get imageUrl(): string{
