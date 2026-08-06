@@ -1,5 +1,6 @@
 import { MeldSpec, TehaiCase } from '../testConsts';
 import { MeldType } from "../../modules/MahjongConsts";
+import { TILE } from "../../modules/tileDefs"
 
 export const casesNormal: TehaiCase[] = [
   {
@@ -52,7 +53,7 @@ export const casesNormal: TehaiCase[] = [
         {hai: 10, type: MeldType.CHI},
         {hai: 15, type: MeldType.PON},
     ] as MeldSpec[],
-    hais: [28,28,28,29,29,29,30,30],
+    hais: [29,29,29,30,30,30,31,31],
     expected: new Map([[0, new Map([["混一色", 2]])]])
   },
   {
@@ -65,7 +66,7 @@ export const casesNormal: TehaiCase[] = [
         {hai: 22, type: MeldType.CHI},
         {hai: 25, type: MeldType.PON},
     ] as MeldSpec[],
-    hais: [19,19,28,28,28],
+    hais: [19,19,29,29,29],
     expected: new Map([[0, new Map([["混一色", 2]])]])
   },
   {
@@ -95,7 +96,7 @@ export const casesNormal: TehaiCase[] = [
     agariHai: 1,
     isTsumo: false,
     melds: [] as MeldSpec[],
-    hais: [1,1,1,9,9,9,10,11,12,28,28,28,29,29],
+    hais: [1,1,1,9,9,9,10,11,12,29,29,29,30,30],
     expected: new Map([[0, new Map([["混全帯么九", 2]])]])
   },
   {
@@ -286,7 +287,7 @@ export const casesNormal: TehaiCase[] = [
         {hai: 4, type: MeldType.PON},
         {hai: 5, type: MeldType.PON},
         {hai: 12, type: MeldType.PON},
-        {hai: 28, type: MeldType.PON},
+        {hai: 29, type: MeldType.PON},
     ] as MeldSpec[],
     hais: [1,1],
     expected: new Map([[0, new Map([["対々和", 2]])]])
@@ -381,8 +382,65 @@ export const casesNormal: TehaiCase[] = [
     agariHai: 1,
     isTsumo: false,
     melds: [] as MeldSpec[],
-    hais: [1,2,3,10,11,12,19,20,21,26,26,28,28,28],
+    hais: [1,2,3,10,11,12,19,20,21,26,26,29,29,29],
     expected: new Map([[0, new Map([["三色同順", 2]])]])
+  },
+  {
+    name: "renpuhai_1",
+    desc: "連風牌",
+    agariHai: 28,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    playerWind: TILE.WIND.EAST,
+    roundWind: TILE.WIND.EAST,
+    hais: [1,2,3,5,6,7,12,13,14,28,28,28,29,29],
+    expected: new Map([[0, new Map([["連風牌:東", 2]])]])
+  },
+  {
+    name: "renpuhai_2",
+    desc: "連風牌",
+    agariHai: 29,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    playerWind: TILE.WIND.SOUTH,
+    roundWind: TILE.WIND.SOUTH,
+    hais: [1,2,3,5,6,7,12,13,14,28,28,29,29,29],
+    expected: new Map([[0, new Map([["連風牌:南", 2]])]])
+  },
+  {
+    name: "renpuhai_3",
+    desc: "連風牌",
+    agariHai: 28,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    playerWind: TILE.WIND.WEST,
+    roundWind: TILE.WIND.WEST,
+    hais: [1,2,3,5,6,7,12,13,14,28,28,30,30,30],
+    expected: new Map([[0, new Map([["連風牌:西", 2]])]])
+  },
+  {
+    name: "renpuhai_4",
+    desc: "連風牌",
+    agariHai: 31,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    playerWind: TILE.WIND.NORTH,
+    roundWind: TILE.WIND.NORTH,
+    hais: [1,2,3,5,6,7,12,13,14,28,28,31,31,31],
+    expected: new Map([[0, new Map([["連風牌:北", 2]])]])
+  },
+  {
+    name: "renpuhai_5",
+    desc: "連風牌",
+    agariHai: 1,
+    isTsumo: false,
+    melds: [
+      {hai: 28, type: MeldType.PON},
+    ] as MeldSpec[],
+    playerWind: TILE.WIND.EAST,
+    roundWind: TILE.WIND.EAST,
+    hais: [1,2,3,5,6,7,12,13,14,17,17],
+    expected: new Map([[0, new Map([["連風牌:東", 2]])]])
   },
   {
     name: "yakuhai_1",
