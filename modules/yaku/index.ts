@@ -28,6 +28,8 @@ import { ShosangenChecker } from './normal/ShosangenChecker';
 import { SanshokuChecker } from './normal/SanshokuChecker';
 import { RenpuuhaiChecker } from './normal/RenpuuhaiChecker';
 import { YakuhaiChecker } from './normal/YakuhaiChecker';
+import { JifuuhaiChecker } from './normal/JifuuhaiChecker';
+import { BafuuhaiChecker } from './normal/BafuuhaiChecker';
 
 export type YakuCheckerFactory =
     (context: YakuContext) => YakuCheckerBase;
@@ -62,6 +64,8 @@ export const NormalYakuCheckers: YakuCheckerFactory[] = [
     ctx => new ShosangenChecker(ctx),
     ctx => new SanshokuChecker(ctx),
     ctx => new RenpuuhaiChecker(ctx),
+    ctx => new JifuuhaiChecker(ctx),
+    ctx => new BafuuhaiChecker(ctx),
     ctx => new YakuhaiChecker(ctx, 32, "白"),
     ctx => new YakuhaiChecker(ctx, 33, "發"),
     ctx => new YakuhaiChecker(ctx, 34, "中"),
