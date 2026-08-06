@@ -386,6 +386,80 @@ export const casesNormal: TehaiCase[] = [
     expected: new Map([[0, new Map([["三色同順", 2]])]])
   },
   {
+    name: "ittsuu_1",
+    desc: "一気通貫",
+    agariHai: 14,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    hais: [1,2,3,4,5,6,7,8,9,14,14,14,23,23],
+    expected: new Map([[0, new Map([["一気通貫", 2]])]])
+  },
+  {
+    name: "ittsuu_2",
+    desc: "一気通貫",
+    agariHai: 20,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    hais: [10,11,12,13,14,15,16,17,18,20,20,20,23,23],
+    expected: new Map([[0, new Map([["一気通貫", 2]])]])
+  },
+  {
+    name: "ittsuu_3",
+    desc: "一気通貫",
+    agariHai: 1,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    hais: [1,1,1,19,20,21,22,23,24,25,26,27,29,29],
+    expected: new Map([[0, new Map([["一気通貫", 2]])]])
+  },
+  {
+    name: "ittsuu_4",
+    desc: "一気通貫",
+    agariHai: 1,
+    isTsumo: false,
+    melds: [
+        {hai: 4, type: MeldType.CHI},
+    ] as MeldSpec[],
+    hais: [1,2,3,7,8,9,14,14,14,23,23],
+    expected: new Map([[0, new Map([["一気通貫", 1]])]])
+  },
+  {
+    name: "ittsuu_5",
+    desc: "一気通貫",
+    agariHai: 14,
+    isTsumo: false,
+    melds: [
+        {hai: 1, type: MeldType.CHI},
+        {hai: 7, type: MeldType.CHI},
+    ] as MeldSpec[],
+    hais: [4,5,6,14,14,14,23,23],
+    expected: new Map([[0, new Map([["一気通貫", 1]])]])
+  },
+  {
+    name: "ittsuu_6",
+    desc: "一気通貫",
+    agariHai: 14,
+    isTsumo: false,
+    melds: [
+        {hai: 1, type: MeldType.CHI},
+        {hai: 4, type: MeldType.CHI},
+        {hai: 7, type: MeldType.CHI},
+    ] as MeldSpec[],
+    hais: [14,14,14,23,23],
+    expected: new Map([[0, new Map([["一気通貫", 1]])]])
+  },
+  {
+    name: "ittsuu_7",
+    desc: "一気通貫",
+    agariHai: 28,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    playerWind: TILE.WIND.SOUTH,
+    roundWind: TILE.WIND.SOUTH,
+    hais: [1,2,3,12,12,28,28,28,31,31,31,34,34,34],
+    expected: new Map([[0, new Map([["中", 1]])]])
+  },
+  {
     name: "renpuuhai_1",
     desc: "連風牌",
     agariHai: 28,
