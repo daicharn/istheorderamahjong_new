@@ -307,7 +307,7 @@ export const casesNormal: TehaiCase[] = [
     agariHai: 2,
     isTsumo: false,
     melds: [] as MeldSpec[],
-    hais: [2,2,3,3,4,4,5,5,5,6,6,6,8,8],
+    hais: [2,2,3,3,4,4,5,5,5,6,6,6,9,9],
     expected: new Map([[0, new Map([["清一色", 6],["一盃口", 1]])]])
   },
   {
@@ -458,6 +458,55 @@ export const casesNormal: TehaiCase[] = [
     roundWind: TILE.WIND.SOUTH,
     hais: [1,2,3,12,12,28,28,28,31,31,31,34,34,34],
     expected: new Map([[0, new Map([["中", 1]])]])
+  },
+  {
+    name: "tanyao_1",
+    desc: "断么九",
+    agariHai: 14,
+    isTsumo: false,
+    kuitan: false,
+    melds: [] as MeldSpec[],
+    hais: [2,3,4,5,6,7,12,12,12,21,21,24,25,26],
+    expected: new Map([[0, new Map([["断么九", 1]])]])
+  },
+  {
+    name: "tanyao_2",
+    desc: "断么九",
+    agariHai: 14,
+    isTsumo: false,
+    kuitan: true,
+    melds: [
+      {hai: 5, type: MeldType.CHI},
+      {hai: 12, type: MeldType.PON},
+    ] as MeldSpec[],
+    hais: [2,3,4,21,21,24,25,26],
+    expected: new Map([[0, new Map([["断么九", 1]])]])
+  },
+  {
+    name: "tanyao_3",
+    desc: "断么九",
+    agariHai: 14,
+    isTsumo: false,
+    kuitan: false,
+    melds: [
+      {hai: 5, type: MeldType.CHI},
+      {hai: 12, type: MeldType.PON},
+    ] as MeldSpec[],
+    hais: [2,3,4,21,21,24,25,26],
+    expected: new Map()
+  },
+  {
+    name: "tanyao_aa",
+    desc: "断么九",
+    agariHai: 5,
+    isTsumo: true,
+    kuitan: false,
+    melds: [] as MeldSpec[],
+    hais: [2,3,4,2,3,4,2,3,4,11,11,11,5,5],
+    expected: new Map([[0, new Map([["断么九", 1],["一盃口", 1]])],
+      [1, new Map([["四暗刻単騎", 0]])],
+      [2, new Map([["断么九", 1],["一盃口", 1]])]
+    ])
   },
   {
     name: "renpuuhai_1",

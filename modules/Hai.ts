@@ -54,6 +54,10 @@ export class Hai{
         return this.isRoutouHai() || this.isJihai();
     }
 
+    isChuchanHai(): boolean {
+        return !this.isYaochuHai();
+    }
+
     getId(): number {
         return this.id;
     }

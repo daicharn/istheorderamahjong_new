@@ -15,5 +15,6 @@ export type TehaiCase = {
     hais: number[],
     playerWind?: Wind,
     roundWind?: Wind,
+    kuitan?: boolean,
     expected: Map<number, Map<string, number>>
 };

@@ -15,6 +15,7 @@ interface UserOptions {
     chankan?: boolean;
     haitei?: boolean;
     houtei?: boolean;
+    kuitan?: boolean;
 }
 
 export class PlayerContext{
@@ -31,6 +32,7 @@ export class PlayerContext{
     chankan: boolean;
     haitei: boolean;
     houtei: boolean;
+    kuitan: boolean;
 
     constructor(options: UserOptions) {
         this.agariHai = options.agariHai;
@@ -46,5 +48,6 @@ export class PlayerContext{
         this.chankan =  options.chankan ?? false;
         this.haitei =  options.haitei ?? false;
         this.houtei =  options.houtei ?? false;
+        this.kuitan =  options.kuitan ?? false;
     }
 }
