@@ -20,10 +20,7 @@ export class SanshokuChecker extends YakuCheckerBase{
         );
 
         for(const group of shuntsuGroups.values()){
-            const types = new Set(group.map(m => m.minHai.type));
-            if(types.has(HaiType.MANZU) && types.has(HaiType.PINZU) && types.has(HaiType.SOUZU)){
-                return true;
-            }
+            if(this.hasThreeTypes(group)) return true;
         }
 
         return false;

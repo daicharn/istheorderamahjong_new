@@ -3,7 +3,7 @@ import { YakuContext } from './YakuContext';
 import { BlockHaisList } from '../BlockHaisList';
 import { MachiCalculator } from '../MachiCalculator';
 import { IMentsu } from '../IMentsu';
-import { BlockType, MeldType } from '../MahjongConsts';
+import { BlockType, MeldType, HaiType } from '../MahjongConsts';
 
 export abstract class YakuCheckerBase {
     protected readonly context: YakuContext;
@@ -29,6 +29,12 @@ export abstract class YakuCheckerBase {
 
     public getName(): string {
         return this.yakuName;
+    }
+
+    //マンズ、ピンズ、ソーズすべてが含まれているかどうかを調べる
+    protected hasThreeTypes(mentsuList: IMentsu[]): boolean {
+        const types = new Set(mentsuList.map(m => m.minHai.type));
+        return types.has(HaiType.MANZU) && types.has(HaiType.PINZU) && types.has(HaiType.SOUZU);
     }
 
     //アガリ牌を除いた手牌の待ちの数を計算する
