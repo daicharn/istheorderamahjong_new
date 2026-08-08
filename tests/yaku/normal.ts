@@ -118,7 +118,7 @@ export const casesNormal: TehaiCase[] = [
     isTsumo: false,
     melds: [] as MeldSpec[],
     hais: [1,1,1,10,10,10,19,19,19,29,29,29,30,30],
-    expected: new Map([[0, new Map([["混老頭", 2],["三暗刻", 2], ["対々和", 2]])]])
+    expected: new Map([[0, new Map([["混老頭", 2],["三暗刻", 2], ["対々和", 2],["三色同刻", 2]])]])
   },
   {
     name: "honroto_2",
@@ -384,6 +384,39 @@ export const casesNormal: TehaiCase[] = [
     melds: [] as MeldSpec[],
     hais: [1,2,3,10,11,12,19,20,21,26,26,29,29,29],
     expected: new Map([[0, new Map([["三色同順", 2]])]])
+  },
+  {
+    name: "doukou_1",
+    desc: "三色同刻",
+    agariHai: 2,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    hais: [2,2,2,11,11,11,20,20,20,22,23,24,29,29],
+    expected: new Map([[0, new Map([["三色同刻", 2]])]])
+  },
+  {
+    name: "doukou_2",
+    desc: "三色同刻",
+    agariHai: 2,
+    isTsumo: false,
+    melds: [
+      {hai: 14, type: MeldType.PON},
+    ] as MeldSpec[],
+    hais: [5,5,5,23,23,23,22,23,24,29,29],
+    expected: new Map([[0, new Map([["三色同刻", 2]])]])
+  },
+  {
+    name: "doukou_3",
+    desc: "三色同刻",
+    agariHai: 2,
+    isTsumo: false,
+    melds: [
+      {hai: 9, type: MeldType.PON},
+      {hai: 18, type: MeldType.PON},
+      {hai: 27, type: MeldType.MINKAN},
+    ] as MeldSpec[],
+    hais: [23,24,25,29,29],
+    expected: new Map([[0, new Map([["三色同刻", 2]])]])
   },
   {
     name: "ittsuu_1",

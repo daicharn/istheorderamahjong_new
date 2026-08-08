@@ -26,6 +26,7 @@ import { ToitoiChecker } from './normal/ToitoiChecker';
 import { IipekoChecker } from './normal/IipekoChecker';
 import { ShosangenChecker } from './normal/ShosangenChecker';
 import { SanshokuChecker } from './normal/SanshokuChecker';
+import { DoukouChecker } from './normal/DoukouChecker';
 import { IttsuuChecker } from './normal/IttsuuChecker';
 import { TanyaoChecker } from './normal/TanyaoChecker';
 import { RenpuuhaiChecker } from './normal/RenpuuhaiChecker';
@@ -65,6 +66,7 @@ export const NormalYakuCheckers: YakuCheckerFactory[] = [
     ctx => new IipekoChecker(ctx),
     ctx => new ShosangenChecker(ctx),
     ctx => new SanshokuChecker(ctx),
+    ctx => new DoukouChecker(ctx),
     ctx => new IttsuuChecker(ctx),
     ctx => new TanyaoChecker(ctx),
     ctx => new RenpuuhaiChecker(ctx),
