@@ -31,10 +31,13 @@ export abstract class YakuCheckerBase {
         return this.yakuName;
     }
 
-    //マンズ、ピンズ、ソーズすべてが含まれているかどうかを調べる
-    protected hasThreeTypes(mentsuList: IMentsu[]): boolean {
-        const types = new Set(mentsuList.map(m => m.minHai.type));
-        return types.has(HaiType.MANZU) && types.has(HaiType.PINZU) && types.has(HaiType.SOUZU);
+    //グループ内にマンズ、ピンズ、ソーズすべてが含まれているかどうかを調べる
+    protected hasThreeTypesInGroups(groups: Map<string, IMentsu[]>): boolean {
+        for(const group of groups.values()){
+            const types = new Set(group.map(m => m.minHai.type));
+            if(types.has(HaiType.MANZU) && types.has(HaiType.PINZU) && types.has(HaiType.SOUZU)) return true;
+        }
+        return false;
     }
 
     //アガリ牌を除いた手牌の待ちの数を計算する

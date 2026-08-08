@@ -1,8 +1,5 @@
 import { YakuContext } from '../YakuContext';
 import { YakuCheckerBase } from '../YakuCheckerBase';
-import { HaiType } from '../../MahjongConsts';
-
-
 
 export class SanshokuChecker extends YakuCheckerBase{
     protected yakuName: string = "三色同順";
@@ -19,10 +16,6 @@ export class SanshokuChecker extends YakuCheckerBase{
             (m) => `${m.minHai.num}-${m.maxHai.num}`
         );
 
-        for(const group of shuntsuGroups.values()){
-            if(this.hasThreeTypes(group)) return true;
-        }
-
-        return false;
+        return this.hasThreeTypesInGroups(shuntsuGroups);
     }
 }
