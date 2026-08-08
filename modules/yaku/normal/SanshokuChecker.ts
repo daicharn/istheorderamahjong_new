@@ -11,6 +11,6 @@ export class SanshokuChecker extends YakuCheckerBase{
     }
 
     protected isSatisfied(): boolean {
-        return this.checkSanshoku((m) => m.isShuntsu(), (m) => `${m.minHai.num}-${m.maxHai.num}`);
+        return this.checkSanshoku((m) => m.isShuntsu());
     }
 }

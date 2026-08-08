@@ -42,10 +42,9 @@ export abstract class YakuCheckerBase {
 
     //三色関係の判定
     protected checkSanshoku(
-        filter: (m: IMentsu) => boolean,
-        keySelector: (m: IMentsu) => string
+        filter: (m: IMentsu) => boolean
     ): boolean {
-        const groups = this.getGroupsMentsu(filter, keySelector);
+        const groups = this.getGroupsMentsu(filter, (m) => `${m.minHai.num}-${m.maxHai.num}`);
         return this.hasThreeTypesInGroups(groups);
     }
 

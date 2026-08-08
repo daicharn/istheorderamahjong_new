@@ -11,6 +11,6 @@ export class DoukouChecker extends YakuCheckerBase{
     }
 
     protected isSatisfied(): boolean {
-        return this.checkSanshoku((m) => m.isKotsuOrKantsu(), (m) => `${m.minHai.num}-${m.maxHai.num}`);
+        return this.checkSanshoku((m) => m.isKotsuOrKantsu());
     }
 }
