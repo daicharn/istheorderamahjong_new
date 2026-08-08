@@ -40,6 +40,15 @@ export abstract class YakuCheckerBase {
         return false;
     }
 
+    //三色関係の判定
+    protected checkSanshoku(
+        filter: (m: IMentsu) => boolean,
+        keySelector: (m: IMentsu) => string
+    ): boolean {
+        const groups = this.getGroupsMentsu(filter, keySelector);
+        return this.hasThreeTypesInGroups(groups);
+    }
+
     //アガリ牌を除いた手牌の待ちの数を計算する
     protected calculateMachiCount(): number {
         const haisWithoutAgari = this.getHaisWithoutAgariHai();

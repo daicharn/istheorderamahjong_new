@@ -11,11 +11,6 @@ export class SanshokuChecker extends YakuCheckerBase{
     }
 
     protected isSatisfied(): boolean {
-        const shuntsuGroups = this.getGroupsMentsu(
-            (m) => m.isShuntsu(),
-            (m) => `${m.minHai.num}-${m.maxHai.num}`
-        );
-
-        return this.hasThreeTypesInGroups(shuntsuGroups);
+        return this.checkSanshoku((m) => m.isShuntsu(), (m) => `${m.minHai.num}-${m.maxHai.num}`);
     }
 }
