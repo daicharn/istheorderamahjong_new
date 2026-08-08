@@ -542,6 +542,45 @@ export const casesNormal: TehaiCase[] = [
     ])
   },
   {
+    name: "sankantsu_1",
+    desc: "三槓子",
+    agariHai: 14,
+    isTsumo: false,
+    melds: [
+        {hai: 1, type: MeldType.MINKAN},
+        {hai: 2, type: MeldType.ANKAN},
+        {hai: 3, type: MeldType.ANKAN},
+    ] as MeldSpec[],
+    hais: [14,15,16,23,23],
+    expected: new Map([[0, new Map([["三槓子", 2]])]])
+  },
+  {
+    name: "sankantsu_2",
+    desc: "三槓子",
+    agariHai: 14,
+    isTsumo: false,
+    melds: [
+        {hai: 1, type: MeldType.ANKAN},
+        {hai: 2, type: MeldType.ANKAN},
+        {hai: 3, type: MeldType.ANKAN},
+    ] as MeldSpec[],
+    hais: [14,14,14,23,23],
+    expected: new Map([[0, new Map([["三槓子", 2],["三暗刻", 2],["対々和", 2]])]])
+  },
+  {
+    name: "sankantsu_3",
+    desc: "三槓子",
+    agariHai: 5,
+    isTsumo: false,
+    melds: [
+        {hai: 1, type: MeldType.ANKAN},
+        {hai: 2, type: MeldType.ANKAN},
+        {hai: 4, type: MeldType.PON},
+    ] as MeldSpec[],
+    hais: [5,5,5,23,23],
+    expected: new Map([[0, new Map([["対々和", 2]])]])
+  },
+  {
     name: "renpuuhai_1",
     desc: "連風牌",
     agariHai: 28,
