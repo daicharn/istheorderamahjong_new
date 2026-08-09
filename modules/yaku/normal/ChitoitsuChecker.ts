@@ -15,6 +15,6 @@ export class ChitoitsuChecker extends YakuCheckerBase{
         if(!this.isMenzen()) return false;
 
         return this.context.block.getBlockHais().length === 7 
-            && this.context.block.getBlockHais().every(block => block.getType() ===  BlockType.JANTO);
+            && this.context.block.getBlockHais().every(block => block.getType() ===  BlockType.CHITOI);
     }
 }

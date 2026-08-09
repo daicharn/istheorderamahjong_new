@@ -23,5 +23,6 @@ export enum BlockType{
     JANTO,
     KOTSU,
     SHUNTSU,
+    CHITOI,
     KOKUSHI
 }

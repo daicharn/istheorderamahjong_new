@@ -30,7 +30,7 @@ export class BlockDivider{
         
         if(haiNumsSet.length === 7 && haiNumsSet.every(n => counts[n - 1] === 2)){
             for(const num of haiNumsSet){
-                blockhaischitoi.push(new BlockHais([new Hai(num), new Hai(num)], BlockType.JANTO));
+                blockhaischitoi.push(new BlockHais([new Hai(num), new Hai(num)], BlockType.CHITOI));
             }
         }
 
