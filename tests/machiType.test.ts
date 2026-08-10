@@ -31,6 +31,18 @@ test("ryanmen_1", () => {
     const expected = new Set([MachiType.RYANMEN]);
     expect(resultMachiType).toEqual(expected);
 });
+test("ryanmen_2", () => {
+    const resultMachiType = getMachiTypeSet([1,2,3,4,5,6,7,8,9,10,10,10,12,12], 4);
+
+    const expected = new Set([MachiType.RYANMEN]);
+    expect(resultMachiType).toEqual(expected);
+});
+test("ryanmen_3", () => {
+    const resultMachiType = getMachiTypeSet([1,2,3,4,5,6,7,8,9,10,10,10,12,12], 6);
+
+    const expected = new Set([MachiType.RYANMEN]);
+    expect(resultMachiType).toEqual(expected);
+});
 test("penchan_1", () => {
     const resultMachiType = getMachiTypeSet([1,2,3,4,5,6,7,8,9,10,10,10,12,12], 3);
 
@@ -47,5 +59,35 @@ test("kanchan_1", () => {
     const resultMachiType = getMachiTypeSet([1,2,3,4,5,6,7,8,9,10,10,10,12,12], 5);
 
     const expected = new Set([MachiType.KANCHAN]);
+    expect(resultMachiType).toEqual(expected);
+});
+test("complex_1", () => {
+    const resultMachiType = getMachiTypeSet([1,2,2,2,3,4,5,6,7,8,9,10,10,10], 2);
+
+    const expected = new Set([MachiType.KANCHAN, MachiType.TANKI]);
+    expect(resultMachiType).toEqual(expected);
+});
+test("complex_2", () => {
+    const resultMachiType = getMachiTypeSet([1,2,2,2,2,3,4,5,6,7,8,9,10,10], 2);
+
+    const expected = new Set([MachiType.SHANPON, MachiType.KANCHAN]);
+    expect(resultMachiType).toEqual(expected);
+});
+test("complex_3", () => {
+    const resultMachiType = getMachiTypeSet([1,1,1,2,3,4,5,6,7,8,9,11,11,11], 1);
+
+    const expected = new Set([MachiType.RYANMEN, MachiType.TANKI]);
+    expect(resultMachiType).toEqual(expected);
+});
+test("multi_1", () => {
+    const resultMachiType = getMachiTypeSet([1,1,2,2,3,3,5,5,5,6,6,6,7,7], 2);
+
+    const expected = new Set([MachiType.KANCHAN]);
+    expect(resultMachiType).toEqual(expected);
+});
+test("multi_2", () => {
+    const resultMachiType = getMachiTypeSet([1,1,2,3,4,4,5,6,7,8,9,11,11,11], 4);
+
+    const expected = new Set([MachiType.RYANMEN]);
     expect(resultMachiType).toEqual(expected);
 });
