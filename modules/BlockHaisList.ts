@@ -1,4 +1,5 @@
-import {BlockHais} from './BlockHais';
+import { Hai } from './Hai';
+import { BlockHais } from './BlockHais';
 import { BlockType, MachiType } from './MahjongConsts';
 
 export class BlockHaisList {
@@ -9,6 +10,10 @@ export class BlockHaisList {
     }
 
     [Symbol.iterator]() { return this.blocks[Symbol.iterator](); }
+
+    private isTanki(haiId: number){
+
+    }
 
     push(b: BlockHais) {
          this.blocks.push(b);
@@ -52,6 +57,17 @@ export class BlockHaisList {
         });
     }
 
+    private calcShuntsuMachiType(block: BlockHais, haiId: number): MachiType {
+        const minId = block.minHai.getId()
+        const distance = haiId - minId;
+
+        const isPenchan = (distance === 0 && block.minHai.num === 7) || (distance === 2 && block.minHai.num === 1);
+        if(isPenchan) return MachiType.PENCHAN;
+        if(distance === 1) return MachiType.KANCHAN;
+        
+        return MachiType.RYANMEN;
+    }
+
     calcMachiType(haiId: number): Set<MachiType> {
         const machiTypeSet = new Set<MachiType>();
         for(const block of this.blocks){
@@ -68,20 +84,7 @@ export class BlockHaisList {
                     break;
                 
                 case BlockType.SHUNTSU:
-                    const min = block.minHai;
-                    const max = block.maxHai;
-                    const haiNum = haiId % 9;
-
-                    if((min.num === 1 && haiNum === 3)|| (min.num === 7 && haiNum === 7)){
-                        machiTypeSet.add(MachiType.PENCHAN);
-                        continue;
-                    }
-                    if(haiId === min.getId() + 1){
-                        machiTypeSet.add(MachiType.KANCHAN);
-                        continue;
-                    }
-                    if(haiId === min.getId() || haiId === max.getId()) machiTypeSet.add(MachiType.RYANMEN);
-                    
+                    machiTypeSet.add(this.calcShuntsuMachiType(block, haiId));
                     break;
             }
         }
