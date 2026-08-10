@@ -26,3 +26,11 @@ export enum BlockType{
     CHITOI,
     KOKUSHI
 }
+//待ちのタイプ
+export enum MachiType{
+    TANKI,
+    SHANPON,
+    RYANMEN,
+    KANCHAN,
+    PENCHAN,
+}

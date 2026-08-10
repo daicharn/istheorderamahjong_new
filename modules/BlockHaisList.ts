@@ -1,5 +1,5 @@
 import {BlockHais} from './BlockHais';
-import { BlockType } from './MahjongConsts';
+import { BlockType, MachiType } from './MahjongConsts';
 
 export class BlockHaisList {
     private readonly blocks: BlockHais[] = [];
@@ -50,6 +50,42 @@ export class BlockHaisList {
 
             return aIds.length - bIds.length;
         });
+    }
+
+    calcMachiType(haiId: number): Set<MachiType> {
+        const machiTypeSet = new Set<MachiType>();
+        for(const block of this.blocks){
+            if(!block.containsHai(haiId)) continue;
+
+            switch(block.getType()){
+
+                case BlockType.JANTO:
+                    machiTypeSet.add(MachiType.TANKI);
+                    break;
+
+                case BlockType.KOTSU:
+                    machiTypeSet.add(MachiType.SHANPON);
+                    break;
+                
+                case BlockType.SHUNTSU:
+                    const min = block.minHai;
+                    const max = block.maxHai;
+                    const haiNum = haiId % 9;
+
+                    if((min.num === 1 && haiNum === 3)|| (min.num === 7 && haiNum === 7)){
+                        machiTypeSet.add(MachiType.PENCHAN);
+                        continue;
+                    }
+                    if(haiId === min.getId() + 1){
+                        machiTypeSet.add(MachiType.KANCHAN);
+                        continue;
+                    }
+                    if(haiId === min.getId() || haiId === max.getId()) machiTypeSet.add(MachiType.RYANMEN);
+                    
+                    break;
+            }
+        }
+        return machiTypeSet;
     }
 
     getBlockHais(): BlockHais[] {
