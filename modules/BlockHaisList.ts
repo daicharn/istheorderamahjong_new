@@ -1,4 +1,3 @@
-import { Hai } from './Hai';
 import { BlockHais } from './BlockHais';
 import { BlockType, MachiType } from './MahjongConsts';
 
@@ -10,10 +9,6 @@ export class BlockHaisList {
     }
 
     [Symbol.iterator]() { return this.blocks[Symbol.iterator](); }
-
-    private isTanki(haiId: number){
-
-    }
 
     push(b: BlockHais) {
          this.blocks.push(b);
