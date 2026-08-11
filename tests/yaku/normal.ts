@@ -150,7 +150,7 @@ export const casesNormal: TehaiCase[] = [
   {
     name: "ryanpeko_1",
     desc: "二盃口",
-    agariHai: 1,
+    agariHai: 2,
     isTsumo: false,
     melds: [] as MeldSpec[],
     hais: [1,1,2,2,3,3,12,12,13,13,14,14,17,17],
@@ -168,11 +168,11 @@ export const casesNormal: TehaiCase[] = [
   {
     name: "ryanpeko_3",
     desc: "二盃口",
-    agariHai: 1,
+    agariHai: 2,
     isTsumo: false,
     melds: [] as MeldSpec[],
     hais: [1,1,2,2,3,3,4,4,5,5,6,6,7,7],
-    expected: new Map([[0, new Map([["清一色", 6],["二盃口", 3]])],
+    expected: new Map([[0, new Map([["清一色", 6],["二盃口", 3],["平和", 1]])],
       [1, new Map([["清一色", 6],["二盃口", 3]])],
       [2, new Map([["清一色", 6],["二盃口", 3]])],
       [3, new Map([["清一色", 6],["七対子", 2]])]
@@ -181,7 +181,7 @@ export const casesNormal: TehaiCase[] = [
   {
     name: "ryanpeko_4",
     desc: "二盃口",
-    agariHai: 1,
+    agariHai: 3,
     isTsumo: true,
     melds: [] as MeldSpec[],
     hais: [1,1,1,1,2,2,2,2,3,3,3,3,4,4],
@@ -346,7 +346,7 @@ export const casesNormal: TehaiCase[] = [
   {
     name: "sanshoku_1",
     desc: "三色同順",
-    agariHai: 1,
+    agariHai: 2,
     isTsumo: false,
     melds: [] as MeldSpec[],
     hais: [1,2,3,10,11,12,19,19,20,20,21,21,23,23],
@@ -610,6 +610,133 @@ export const casesNormal: TehaiCase[] = [
     ] as MeldSpec[],
     hais: [1,2,3,3,4,5,11,12,13,22,22],
     expected: new Map()
+  },
+  {
+    name: "pinfu_success",
+    desc: "平和",
+    agariHai: 1,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    hais: [1,2,3,3,4,5,11,12,13,15,16,17,22,22],
+    expected: new Map([[0, new Map([["平和", 1]])]])
+  },
+  {
+    name: "pinfu_kanchan",
+    desc: "平和",
+    agariHai: 2,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    hais: [1,2,3,3,4,5,11,12,13,15,16,17,22,22],
+    expected: new Map()
+  },
+  {
+    name: "pinfu_penchan",
+    desc: "平和",
+    agariHai: 3,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    hais: [1,2,3,4,5,6,11,12,13,15,16,17,22,22],
+    expected: new Map()
+  },
+  {
+    name: "pinfu_tanki",
+    desc: "平和",
+    agariHai: 22,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    hais: [1,2,3,3,4,5,11,12,13,15,16,17,22,22],
+    expected: new Map()
+  },
+  {
+    name: "pinfu_shanpon",
+    desc: "平和",
+    agariHai: 15,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    hais: [1,2,3,3,4,5,11,12,13,15,15,15,22,22],
+    expected: new Map()
+  },
+  {
+    name: "pinfu_naki",
+    desc: "平和",
+    agariHai: 3,
+    isTsumo: false,
+    melds: [
+        {hai: 1, type: MeldType.CHI},
+    ] as MeldSpec[],
+    hais: [3,4,5,11,12,13,15,16,17,22,22],
+    expected: new Map()
+  },
+  {
+    name: "pinfu_haku",
+    desc: "平和",
+    agariHai: 1,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    hais: [1,2,3,3,4,5,11,12,13,15,16,17,32,32],
+    expected: new Map()
+  },
+  {
+    name: "pinfu_hatsu",
+    desc: "平和",
+    agariHai: 1,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    hais: [1,2,3,3,4,5,11,12,13,15,16,17,33,33],
+    expected: new Map()
+  },
+  {
+    name: "pinfu_chun",
+    desc: "平和",
+    agariHai: 1,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    hais: [1,2,3,3,4,5,11,12,13,15,16,17,34,34],
+    expected: new Map()
+  },
+  {
+    name: "pinfu_dabuton",
+    desc: "平和",
+    agariHai: 1,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    playerWind: TILE.WIND.EAST,
+    roundWind: TILE.WIND.EAST,
+    hais: [1,2,3,3,4,5,11,12,13,15,16,17,28,28],
+    expected: new Map()
+  },
+  {
+    name: "pinfu_jikaze",
+    desc: "平和",
+    agariHai: 1,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    playerWind: TILE.WIND.SOUTH,
+    roundWind: TILE.WIND.EAST,
+    hais: [1,2,3,3,4,5,11,12,13,15,16,17,29,29],
+    expected: new Map()
+  },
+  {
+    name: "pinfu_bakaze",
+    desc: "平和",
+    agariHai: 1,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    playerWind: TILE.WIND.EAST,
+    roundWind: TILE.WIND.NORTH,
+    hais: [1,2,3,3,4,5,11,12,13,15,16,17,31,31],
+    expected: new Map()
+  },
+  {
+    name: "pinfu_kazenasi",
+    desc: "平和",
+    agariHai: 1,
+    isTsumo: false,
+    melds: [] as MeldSpec[],
+    playerWind: TILE.WIND.SOUTH,
+    roundWind: TILE.WIND.SOUTH,
+    hais: [1,2,3,3,4,5,11,12,13,15,16,17,28,28],
+    expected: new Map([[0, new Map([["平和", 1]])]])
   },
   {
     name: "renpuuhai_1",

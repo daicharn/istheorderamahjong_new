@@ -27,6 +27,10 @@ export class BlockHais implements IMentsu {
         return this.hais.some(h => h.isJihai());
     }
 
+    isJanto(): boolean {
+        return this.type === BlockType.JANTO;
+    }
+
     isShuntsu(): boolean {
         return this.type === BlockType.SHUNTSU;
     }

@@ -31,6 +31,7 @@ import { IttsuuChecker } from './normal/IttsuuChecker';
 import { TanyaoChecker } from './normal/TanyaoChecker';
 import { SankantsuChecker } from './normal/SankantsuChecker';
 import { MenzenTsumoChecker } from './normal/MenzenTsumoChecker';
+import { PinfuChecker } from './normal/PinfuChecker';
 import { RenpuuhaiChecker } from './normal/RenpuuhaiChecker';
 import { YakuhaiChecker } from './normal/YakuhaiChecker';
 import { JifuuhaiChecker } from './normal/JifuuhaiChecker';
@@ -73,6 +74,7 @@ export const NormalYakuCheckers: YakuCheckerFactory[] = [
     ctx => new TanyaoChecker(ctx),
     ctx => new SankantsuChecker(ctx),
     ctx => new MenzenTsumoChecker(ctx),
+    ctx => new PinfuChecker(ctx),
     ctx => new RenpuuhaiChecker(ctx),
     ctx => new JifuuhaiChecker(ctx),
     ctx => new BafuuhaiChecker(ctx),
