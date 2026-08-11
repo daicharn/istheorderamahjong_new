@@ -1,3 +1,4 @@
+import { Hai } from '../../Hai';
 import { YakuContext } from '../YakuContext';
 import { YakuCheckerBase } from '../YakuCheckerBase';
 
@@ -12,6 +13,6 @@ export class JifuuhaiChecker extends YakuCheckerBase{
     }
 
     protected isSatisfied(): boolean {
-        return this.hasPlayerWindMentsu((m) => m.isKotsuOrKantsu());
+        return this.hasHaisMentsu((m) => m.isKotsuOrKantsu(), [new Hai(this.context.ctx.playerWind.id)], [new Hai(this.context.ctx.roundWind.id)]);
     }
 }

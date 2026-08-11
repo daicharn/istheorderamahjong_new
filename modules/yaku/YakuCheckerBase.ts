@@ -32,23 +32,17 @@ export abstract class YakuCheckerBase {
         return this.yakuName;
     }
 
-    //指定された面子が連風牌かどうかを調べる
-    protected hasRenpuuMentsu(
-        filter: (m: IMentsu) => boolean
+    //指定された面子に牌が含まれるかどうかを調べる
+    protected hasHaisMentsu(
+        filter: (m: IMentsu) => boolean,
+        required: Hai[],
+        forbidden: Hai[] = []
     ): boolean {
-        return this.getAllMentsu().some(mentsu => filter(mentsu) && mentsu.containsHai(this.context.ctx.playerWind.id) && mentsu.containsHai(this.context.ctx.roundWind.id));
-    }
-    //指定された面子が風牌かどうかを調べる
-    protected hasPlayerWindMentsu(
-        filter: (m: IMentsu) => boolean
-    ): boolean {
-        return this.getAllMentsu().some(mentsu => filter(mentsu) && mentsu.containsHai(this.context.ctx.playerWind.id) && !mentsu.containsHai(this.context.ctx.roundWind.id));
-    }
-    //指定された面子が場風牌かどうかを調べる
-    protected hasRoundWindMentsu(
-        filter: (m: IMentsu) => boolean
-    ): boolean {
-        return this.getAllMentsu().some(mentsu => filter(mentsu) && !mentsu.containsHai(this.context.ctx.playerWind.id) && mentsu.containsHai(this.context.ctx.roundWind.id));
+        return this.getAllMentsu().some(mentsu =>
+            filter(mentsu) &&
+            required.every(h => mentsu.containsHai(h.getId())) &&
+            forbidden.every(h => !mentsu.containsHai(h.getId()))
+        );
     }
     //指定された面子が三元牌かどうかを調べる
     protected hasDragonMentsu(
@@ -60,7 +54,10 @@ export abstract class YakuCheckerBase {
     protected hasYakuhaiMentsu(
         filter: (m: IMentsu) => boolean
     ): boolean {
-        return this.hasRenpuuMentsu(filter) || this.hasPlayerWindMentsu(filter) || this.hasRoundWindMentsu(filter) || this.hasDragonMentsu(filter);
+        return this.hasHaisMentsu(filter, [new Hai(this.context.ctx.playerWind.id)], [new Hai(this.context.ctx.roundWind.id)]) ||
+               this.hasHaisMentsu(filter, [new Hai(this.context.ctx.roundWind.id)], [new Hai(this.context.ctx.playerWind.id)]) ||
+               this.hasHaisMentsu(filter, [new Hai(this.context.ctx.playerWind.id), new Hai(this.context.ctx.roundWind.id)]) ||
+               this.hasDragonMentsu(filter);
     }
 
     //グループ内にマンズ、ピンズ、ソーズすべてが含まれているかどうかを調べる
