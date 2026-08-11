@@ -13,7 +13,6 @@ export class RenpuuhaiChecker extends YakuCheckerBase{
     }
 
     protected isSatisfied(): boolean {
-        const allMentsu: IMentsu[] = this.getAllMentsu();
-        return allMentsu.some(mentsu => mentsu.isKotsuOrKantsu() && mentsu.containsHai(this.context.ctx.playerWind.id) && mentsu.containsHai(this.context.ctx.roundWind.id));
+        return this.hasRenpuuMentsu((m) => m.isKotsuOrKantsu());
     }
 }
