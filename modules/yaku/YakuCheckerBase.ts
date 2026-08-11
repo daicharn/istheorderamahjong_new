@@ -4,6 +4,7 @@ import { BlockHaisList } from '../BlockHaisList';
 import { MachiCalculator } from '../MachiCalculator';
 import { IMentsu } from '../IMentsu';
 import { BlockType, MeldType, HaiType } from '../MahjongConsts';
+import { TILE } from '../tileDefs';
 
 export abstract class YakuCheckerBase {
     protected readonly context: YakuContext;
@@ -42,6 +43,18 @@ export abstract class YakuCheckerBase {
         filter: (m: IMentsu) => boolean
     ): boolean {
         return this.getAllMentsu().some(mentsu => filter(mentsu) && !mentsu.containsHai(this.context.ctx.playerWind.id) && mentsu.containsHai(this.context.ctx.roundWind.id));
+    }
+    //指定された面子が三元牌かどうかを調べる
+    protected hasDragonMentsu(
+        filter: (m: IMentsu) => boolean
+    ): boolean {
+        return this.getAllMentsu().some(mentsu => filter(mentsu) && mentsu.containsHai(TILE.DRAGON.WHITE.id, TILE.DRAGON.GREEN.id, TILE.DRAGON.RED.id));
+    }
+    //指定された面子が役牌かどうかを調べる
+    protected hasYakuhaiMentsu(
+        filter: (m: IMentsu) => boolean
+    ): boolean {
+        return this.hasPlayerWindMentsu(filter) && this.hasRoundWindMentsu(filter) && this.hasDragonMentsu(filter)
     }
 
     //グループ内にマンズ、ピンズ、ソーズすべてが含まれているかどうかを調べる
