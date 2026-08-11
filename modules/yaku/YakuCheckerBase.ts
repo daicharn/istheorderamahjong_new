@@ -31,6 +31,19 @@ export abstract class YakuCheckerBase {
         return this.yakuName;
     }
 
+    //指定された面子が自風牌かどうかを調べる
+    protected hasPlayerWindMentsu(
+        filter: (m: IMentsu) => boolean
+    ): boolean {
+        return this.getAllMentsu().some(mentsu => filter(mentsu) && mentsu.containsHai(this.context.ctx.playerWind.id) && !mentsu.containsHai(this.context.ctx.roundWind.id));
+    }
+    //指定された面子が場風牌かどうかを調べる
+    protected hasRoundWindMentsu(
+        filter: (m: IMentsu) => boolean
+    ): boolean {
+        return this.getAllMentsu().some(mentsu => filter(mentsu) && !mentsu.containsHai(this.context.ctx.playerWind.id) && mentsu.containsHai(this.context.ctx.roundWind.id));
+    }
+
     //グループ内にマンズ、ピンズ、ソーズすべてが含まれているかどうかを調べる
     protected hasThreeTypesInGroups(groups: Map<string, IMentsu[]>): boolean {
         for(const group of groups.values()){

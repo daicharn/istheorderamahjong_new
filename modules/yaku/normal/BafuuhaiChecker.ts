@@ -1,6 +1,5 @@
 import { YakuContext } from '../YakuContext';
 import { YakuCheckerBase } from '../YakuCheckerBase';
-import { IMentsu } from '../../IMentsu';
 
 export class BafuuhaiChecker extends YakuCheckerBase{
     protected yakuName: string;
@@ -13,7 +12,6 @@ export class BafuuhaiChecker extends YakuCheckerBase{
     }
 
     protected isSatisfied(): boolean {
-        const allMentsu: IMentsu[] = this.getAllMentsu();
-        return allMentsu.some(mentsu => mentsu.isKotsuOrKantsu() && !mentsu.containsHai(this.context.ctx.playerWind.id) && mentsu.containsHai(this.context.ctx.roundWind.id));
+        return this.hasRoundWindMentsu((m) => m.isKotsuOrKantsu());
     }
 }
