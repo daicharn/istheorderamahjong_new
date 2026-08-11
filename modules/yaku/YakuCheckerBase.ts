@@ -38,7 +38,7 @@ export abstract class YakuCheckerBase {
     ): boolean {
         return this.getAllMentsu().some(mentsu => filter(mentsu) && mentsu.containsHai(this.context.ctx.playerWind.id) && mentsu.containsHai(this.context.ctx.roundWind.id));
     }
-    //指定された面子が自風牌かどうかを調べる
+    //指定された面子が風牌かどうかを調べる
     protected hasPlayerWindMentsu(
         filter: (m: IMentsu) => boolean
     ): boolean {
@@ -60,7 +60,7 @@ export abstract class YakuCheckerBase {
     protected hasYakuhaiMentsu(
         filter: (m: IMentsu) => boolean
     ): boolean {
-        return this.hasPlayerWindMentsu(filter) || this.hasRenpuuMentsu(filter) || this.hasRoundWindMentsu(filter) || this.hasDragonMentsu(filter);
+        return this.hasRenpuuMentsu(filter) || this.hasPlayerWindMentsu(filter) || this.hasRoundWindMentsu(filter) || this.hasDragonMentsu(filter);
     }
 
     //グループ内にマンズ、ピンズ、ソーズすべてが含まれているかどうかを調べる
