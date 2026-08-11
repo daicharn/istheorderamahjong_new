@@ -54,7 +54,7 @@ export abstract class YakuCheckerBase {
     protected hasYakuhaiMentsu(
         filter: (m: IMentsu) => boolean
     ): boolean {
-        return this.hasPlayerWindMentsu(filter) && this.hasRoundWindMentsu(filter) && this.hasDragonMentsu(filter)
+        return this.hasPlayerWindMentsu(filter) || this.hasRoundWindMentsu(filter) || this.hasDragonMentsu(filter)
     }
 
     //グループ内にマンズ、ピンズ、ソーズすべてが含まれているかどうかを調べる
