@@ -34,3 +34,13 @@ export enum MachiType{
     KANCHAN,
     PENCHAN,
 }
+//アガリ時に付随する条件式の役
+export enum WinEvent{
+    NONE,
+    TENHO,
+    CHIHO,
+    RINSHAN,
+    CHANKAN,
+    HAITEI,
+    HOUTEI
+}

@@ -1,4 +1,4 @@
-import { MeldType } from "../modules/MahjongConsts";
+import { MeldType, WinEvent } from "../modules/MahjongConsts";
 import { Wind } from "../modules/tileDefs";
 
 export type MeldSpec = {
@@ -13,8 +13,12 @@ export type TehaiCase = {
     isTsumo: boolean,
     melds: MeldSpec[],
     hais: number[],
+    event?: WinEvent,
     playerWind?: Wind,
     roundWind?: Wind,
+    riichi?: boolean,
+    daburii?: boolean,
+    ippatsu?: boolean,
     kuitan?: boolean,
     expected: Map<number, Map<string, number>>
 };

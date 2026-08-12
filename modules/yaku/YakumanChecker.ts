@@ -1,3 +1,4 @@
+import { WinEvent } from '../MahjongConsts';
 import { YakuContext } from './YakuContext';
 import { YakumanCheckers } from './index';
 
@@ -25,8 +26,8 @@ export class YakumanChecker{
             if(yaku_map.has(main)) yaku_map.delete(sub);
         }
 
-        if(this.context.ctx.tenho) yaku_map.set("天和", 0);
-        if(this.context.ctx.chiho) yaku_map.set("地和", 0);
+        if(this.context.ctx.event === WinEvent.TENHO) yaku_map.set("天和", 0);
+        if(this.context.ctx.event === WinEvent.CHIHO) yaku_map.set("地和", 0);
 
         return yaku_map;
     }

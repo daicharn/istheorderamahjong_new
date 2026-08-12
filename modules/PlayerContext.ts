@@ -1,4 +1,5 @@
 import { Hai } from "./Hai";
+import { WinEvent } from "./MahjongConsts";
 import { Wind } from "./tileDefs";
 
 interface UserOptions {
@@ -6,15 +7,10 @@ interface UserOptions {
     isTsumo: boolean;
     playerWind: Wind;
     roundWind: Wind;
-    tenho?: boolean;
-    chiho?: boolean;
+    event?: WinEvent;
     riichi?: boolean;
     daburii?: boolean;
     ippatsu?: boolean;
-    rinshan?: boolean;
-    chankan?: boolean;
-    haitei?: boolean;
-    houtei?: boolean;
     kuitan?: boolean;
 }
 
@@ -23,15 +19,10 @@ export class PlayerContext{
     isTsumo: boolean;
     playerWind: Wind;
     roundWind: Wind;
-    tenho: boolean;
-    chiho: boolean;
+    event: WinEvent;
     riichi: boolean;
     daburii: boolean;
     ippatsu: boolean;
-    rinshan: boolean;
-    chankan: boolean;
-    haitei: boolean;
-    houtei: boolean;
     kuitan: boolean;
 
     constructor(options: UserOptions) {
@@ -39,15 +30,10 @@ export class PlayerContext{
         this.isTsumo = options.isTsumo;
         this.playerWind = options.playerWind;
         this.roundWind = options.roundWind;
-        this.tenho = options.tenho ?? false;
-        this.chiho =  options.chiho ?? false;
+        this.event = options.event ?? WinEvent.NONE;
         this.riichi =  options.riichi ?? false;
         this.daburii =  options.daburii ?? false;
         this.ippatsu =  options.ippatsu ?? false;
-        this.rinshan =  options.rinshan ?? false;
-        this.chankan =  options.chankan ?? false;
-        this.haitei =  options.haitei ?? false;
-        this.houtei =  options.houtei ?? false;
         this.kuitan =  options.kuitan ?? false;
     }
 }
