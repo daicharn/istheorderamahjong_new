@@ -34,8 +34,7 @@ import { MenzenTsumoChecker } from './normal/MenzenTsumoChecker';
 import { PinfuChecker } from './normal/PinfuChecker';
 import { RenpuuhaiChecker } from './normal/RenpuuhaiChecker';
 import { YakuhaiChecker } from './normal/YakuhaiChecker';
-import { JifuuhaiChecker } from './normal/JifuuhaiChecker';
-import { BafuuhaiChecker } from './normal/BafuuhaiChecker';
+import { KazehaiChecker } from './normal/KazehaiChecker';
 
 export type YakuCheckerFactory =
     (context: YakuContext) => YakuCheckerBase;
@@ -76,8 +75,8 @@ export const NormalYakuCheckers: YakuCheckerFactory[] = [
     ctx => new MenzenTsumoChecker(ctx),
     ctx => new PinfuChecker(ctx),
     ctx => new RenpuuhaiChecker(ctx),
-    ctx => new JifuuhaiChecker(ctx),
-    ctx => new BafuuhaiChecker(ctx),
+    ctx => new KazehaiChecker(ctx, "自風牌", [ctx.ctx.playerWind], [ctx.ctx.roundWind]),
+    ctx => new KazehaiChecker(ctx, "場風牌", [ctx.ctx.roundWind], [ctx.ctx.playerWind]),
     ctx => new YakuhaiChecker(ctx, 32, "白"),
     ctx => new YakuhaiChecker(ctx, 33, "發"),
     ctx => new YakuhaiChecker(ctx, 34, "中"),
