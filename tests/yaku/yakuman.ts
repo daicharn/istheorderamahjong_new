@@ -1,5 +1,5 @@
 import { MeldSpec, TehaiCase } from '../testConsts';
-import { MeldType } from "../../modules/MahjongConsts";
+import { MeldType, WinEvent } from "../../modules/MahjongConsts";
 
 export const casesYakuman: TehaiCase[] = [
   {
@@ -343,5 +343,25 @@ export const casesYakuman: TehaiCase[] = [
     ] as MeldSpec[],
     hais: [32,32],
     expected: new Map([[0, new Map([["大四喜", 0],["字一色", 0],["四槓子", 0],["四暗刻単騎", 0]])]])
+  },
+  {
+    name: "tenho_1",
+    desc: "天和",
+    agariHai: 1,
+    isTsumo: true,
+    event: WinEvent.TENHO,
+    melds: [] as MeldSpec[],
+    hais: [1,2,3,4,5,6,7,8,9,10,11,12,13,13],
+    expected: new Map([[0, new Map([["天和", 0]])]])
+  },
+  {
+    name: "chiho_1",
+    desc: "地和",
+    agariHai: 1,
+    isTsumo: true,
+    event: WinEvent.CHIHO,
+    melds: [] as MeldSpec[],
+    hais: [1,2,3,4,5,6,7,8,9,10,11,12,13,13],
+    expected: new Map([[0, new Map([["地和", 0]])]])
   },
 ];

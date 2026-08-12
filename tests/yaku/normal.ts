@@ -1,5 +1,5 @@
 import { MeldSpec, TehaiCase } from '../testConsts';
-import { MeldType } from "../../modules/MahjongConsts";
+import { MeldType, WinEvent } from "../../modules/MahjongConsts";
 import { TILE } from "../../modules/tileDefs"
 
 export const casesNormal: TehaiCase[] = [
@@ -938,5 +938,100 @@ export const casesNormal: TehaiCase[] = [
     ] as MeldSpec[],
     hais: [1,2,3,4,5,6,10,10],
     expected: new Map([[0, new Map([["白", 1],["發", 1]])]])
+  },
+  {
+    name: "riichi_1",
+    desc: "立直",
+    agariHai: 1,
+    isTsumo: false,
+    riichi: true,
+    melds: [] as MeldSpec[],
+    hais: [1,2,3,5,5,5,12,13,14,16,16,16,22,22],
+    expected: new Map([[0, new Map([["立直", 1]])]])
+  },
+  {
+    name: "riichi_2",
+    desc: "立直",
+    agariHai: 1,
+    isTsumo: true,
+    riichi: true,
+    melds: [] as MeldSpec[],
+    hais: [1,2,3,5,5,5,12,13,14,16,16,16,22,22],
+    expected: new Map([[0, new Map([["立直", 1],["門前清自摸和", 1]])]])
+  },
+  {
+    name: "daburii_1",
+    desc: "ダブル立直",
+    agariHai: 1,
+    isTsumo: false,
+    daburii: true,
+    melds: [] as MeldSpec[],
+    hais: [1,2,3,5,5,5,12,13,14,16,16,16,22,22],
+    expected: new Map([[0, new Map([["ダブル立直", 2]])]])
+  },
+  {
+    name: "ippatsu_1",
+    desc: "一発",
+    agariHai: 1,
+    isTsumo: false,
+    riichi: true,
+    ippatsu: true,
+    melds: [] as MeldSpec[],
+    hais: [1,2,3,5,5,5,12,13,14,16,16,16,22,22],
+    expected: new Map([[0, new Map([["立直", 1],["一発", 1]])]])
+  },
+  {
+    name: "rinshan_1",
+    desc: "嶺上開花",
+    agariHai: 1,
+    isTsumo: true,
+    event: WinEvent.RINSHAN,
+    melds: [
+      {hai: 16, type: MeldType.MINKAN},
+    ] as MeldSpec[],
+    hais: [1,2,3,5,5,5,12,13,14,22,22],
+    expected: new Map([[0, new Map([["嶺上開花", 1]])]])
+  },
+  {
+    name: "rinshan_2",
+    desc: "嶺上開花",
+    agariHai: 1,
+    isTsumo: true,
+    event: WinEvent.RINSHAN,
+    melds: [
+      {hai: 16, type: MeldType.ANKAN},
+    ] as MeldSpec[],
+    hais: [1,2,3,5,5,5,12,13,14,22,22],
+    expected: new Map([[0, new Map([["嶺上開花", 1],["門前清自摸和", 1]])]])
+  },
+  {
+    name: "chankan_1",
+    desc: "槍槓",
+    agariHai: 1,
+    isTsumo: false,
+    event: WinEvent.CHANKAN,
+    melds: [] as MeldSpec[],
+    hais: [1,2,3,5,5,5,12,13,14,16,16,16,22,22],
+    expected: new Map([[0, new Map([["槍槓", 1]])]])
+  },
+  {
+    name: "haitei_1",
+    desc: "海底摸月",
+    agariHai: 1,
+    isTsumo: true,
+    event: WinEvent.HAITEI,
+    melds: [] as MeldSpec[],
+    hais: [1,2,3,5,5,5,12,13,14,16,16,16,22,22],
+    expected: new Map([[0, new Map([["海底摸月", 1],["門前清自摸和", 1]])]])
+  },
+  {
+    name: "houtei_1",
+    desc: "河底撈魚",
+    agariHai: 1,
+    isTsumo: false,
+    event: WinEvent.HOUTEI,
+    melds: [] as MeldSpec[],
+    hais: [1,2,3,5,5,5,12,13,14,16,16,16,22,22],
+    expected: new Map([[0, new Map([["河底撈魚", 1]])]])
   },
 ];
