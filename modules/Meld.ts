@@ -11,6 +11,18 @@ export class Meld implements IMentsu {
         this.type = type;
     }
 
+    static from(haiId: number, type: MeldType): Meld {
+        const hai = new Hai(haiId);
+        if(type === MeldType.PON){
+            return new Meld([hai.clone(), hai.clone(), hai.clone()], type);
+        }
+        if(type === MeldType.CHI){
+            return new Meld([hai.clone(), new Hai(haiId + 1), new Hai(haiId + 2)], type);
+        }
+        else
+            return new Meld([hai.clone(), hai.clone(), hai.clone(), hai.clone()], type);
+    }
+
     getHais(): Hai[] {
         return this.hais;
     }

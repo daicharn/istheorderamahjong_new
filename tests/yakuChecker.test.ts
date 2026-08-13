@@ -15,17 +15,6 @@ function makeYaku(hais: number[], melds: Meld[] = [], ctx: PlayerContext = ctx_d
     const hand = new PlayerHand(hais.map(n => new Hai(n)), melds);
     return new YakuChecker(hand, ctx);
 };
-function makeNaki(hainum: number, type: MeldType): Meld {
-    const hai = new Hai(hainum);
-    if(type === MeldType.PON){
-        return new Meld([hai, hai, hai], type);
-    }
-    if(type === MeldType.CHI){
-        return new Meld([hai, new Hai(hainum + 1), new Hai(hainum + 2)], type);
-    }
-    else
-        return new Meld([hai, hai, hai, hai], type);
-};
 
 const testcases: TehaiCase[] = [];
 casesYakuman.forEach(caseyakuman => testcases.push(caseyakuman));
@@ -44,7 +33,7 @@ testcases.forEach(testcase => {
                 ippatsu: testcase.ippatsu ?? false,
                 kuitan: testcase.kuitan ?? false});
             const melds = new Melds();
-            testcase.melds.forEach(m => melds.add(makeNaki(m.hai, m.type)));
+            testcase.melds.forEach(m => melds.add(Meld.from(m.hai, m.type)));
             const yaku = makeYaku(testcase.hais, [...melds], ctx);
             expect(yaku.check()).toEqual(testcase.expected);
         });
