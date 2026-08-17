@@ -14,7 +14,7 @@ export class YakuChecker {
     constructor(hand: PlayerHand, ctx: PlayerContext){
         this.hand = hand;
         this.ctx = ctx;
-        this.blocks = this.blocks = new BlockDivider(hand.getTehai()).divide();
+        this.blocks = new BlockDivider(hand.getTehai()).divide();
     }
 
     check(): Map<number, Map<string, number>> {
