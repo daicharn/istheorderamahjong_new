@@ -20,17 +20,19 @@ export class YakuChecker {
     check(): Map<number, Map<string, number>> {
         const yaku_maps: Map<number, Map<string, number>> = new Map<number, Map<string, number>>();
 
-        this.blocks.forEach((_, index) => {
+        this.blocks.forEach((block, index) => {
             //手牌と鳴き（カンを考慮して鳴き一つを3と数える）が計14枚かどうか確認する
             const tehai_num = this.hand.getTehai().length;
             const furo_num = this.hand.getFuro().length;
 
             if(tehai_num + furo_num * 3 !== 14) return;
 
-            const yakuman_map = new YakumanChecker(new YakuContext(this.hand, this.ctx, this.blocks[index])).check();
+            const context = new YakuContext(this.hand, this.ctx, block);
+
+            const yakuman_map = new YakumanChecker(context).check();
 
             if(yakuman_map.size === 0){
-                const normal_map = new NormalYakuChecker(new YakuContext(this.hand, this.ctx, this.blocks[index])).check();
+                const normal_map = new NormalYakuChecker(context).check();
                 if(normal_map.size !== 0) yaku_maps.set(index, normal_map);
             }
             else{
