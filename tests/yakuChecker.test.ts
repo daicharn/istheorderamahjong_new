@@ -10,15 +10,7 @@ import { casesYakuman } from './yaku/yakuman';
 import { casesNormal } from './yaku/normal';
 import { TehaiCase } from './testConsts';
 import { BlockDivider } from "../modules/BlockDivider";
-import { BlockHaisList } from '../modules/BlockHaisList';
 import { YakuContext } from '../modules/yaku/YakuContext';
-
-const ctx_default: PlayerContext = new PlayerContext({agariHai: new Hai(TILE.BACK), isTsumo: false, playerWind: TILE.WIND.EAST, roundWind: TILE.WIND.EAST});
-function makeYaku(hais: number[], melds: Meld[] = [], ctx: PlayerContext = ctx_default, block: BlockHaisList): YakuChecker {
-    const hand = new PlayerHand(hais.map(n => new Hai(n)), melds);
-    const context = new YakuContext(hand, ctx, block);
-    return new YakuChecker(context);
-};
 
 const testcases: TehaiCase[] = [];
 casesYakuman.forEach(caseyakuman => testcases.push(caseyakuman));
@@ -41,9 +33,13 @@ testcases.forEach(testcase => {
             testcase.melds.forEach(m => melds.add(Meld.from(m.hai, m.type)));
 
             const yaku_maps: Map<number, Map<string, number>> = new Map<number, Map<string, number>>();
-            const blocks = new BlockDivider(testcase.hais.map(n => new Hai(n))).divide();
+            const hais = testcase.hais.map(n => new Hai(n));
+            const hand = new PlayerHand(hais, [...melds]);
+            
+            const blocks = new BlockDivider(hais).divide();
             blocks.forEach((block, index) => {
-                const yaku_map = makeYaku(testcase.hais, [...melds], ctx, block).check();
+                const context = new YakuContext(hand, ctx, block);
+                const yaku_map = new YakuChecker(context).check();
                 if(yaku_map.size > 0) yaku_maps.set(index, yaku_map);
             })
 
