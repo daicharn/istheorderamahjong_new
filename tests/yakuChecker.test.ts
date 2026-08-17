@@ -4,16 +4,18 @@ import { PlayerHand } from "../modules/PlayerHand";
 import { PlayerContext } from "../modules/PlayerContext";
 import { YakuChecker } from "../modules/yaku/YakuChecker";
 import { Meld } from "../modules/Meld";
-import { MeldType, WinEvent } from "../modules/MahjongConsts";
+import { WinEvent } from "../modules/MahjongConsts";
 import { TILE } from '../modules/tileDefs';
 import { casesYakuman } from './yaku/yakuman';
 import { casesNormal } from './yaku/normal';
 import { TehaiCase } from './testConsts';
+import { BlockDivider } from "../modules/BlockDivider";
+import { BlockHaisList } from '../modules/BlockHaisList';
 
 const ctx_default: PlayerContext = new PlayerContext({agariHai: new Hai(TILE.BACK), isTsumo: false, playerWind: TILE.WIND.EAST, roundWind: TILE.WIND.EAST});
-function makeYaku(hais: number[], melds: Meld[] = [], ctx: PlayerContext = ctx_default): YakuChecker {
+function makeYaku(hais: number[], melds: Meld[] = [], ctx: PlayerContext = ctx_default, block: BlockHaisList): YakuChecker {
     const hand = new PlayerHand(hais.map(n => new Hai(n)), melds);
-    return new YakuChecker(hand, ctx);
+    return new YakuChecker(hand, ctx, block);
 };
 
 const testcases: TehaiCase[] = [];
@@ -32,10 +34,18 @@ testcases.forEach(testcase => {
                 daburii: testcase.daburii ?? false,
                 ippatsu: testcase.ippatsu ?? false,
                 kuitan: testcase.kuitan ?? false});
+
             const melds = new Melds();
             testcase.melds.forEach(m => melds.add(Meld.from(m.hai, m.type)));
-            const yaku = makeYaku(testcase.hais, [...melds], ctx);
-            expect(yaku.check()).toEqual(testcase.expected);
+
+            const yaku_maps: Map<number, Map<string, number>> = new Map<number, Map<string, number>>();
+            const blocks = new BlockDivider(testcase.hais.map(n => new Hai(n))).divide();
+            blocks.forEach((block, index) => {
+                const yaku_map = makeYaku(testcase.hais, [...melds], ctx, block).check();
+                if(yaku_map.size > 0) yaku_maps.set(index, yaku_map);
+            })
+
+            expect(yaku_maps).toEqual(testcase.expected);
         });
     });
 });
