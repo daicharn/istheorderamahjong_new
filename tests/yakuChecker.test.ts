@@ -11,11 +11,13 @@ import { casesNormal } from './yaku/normal';
 import { TehaiCase } from './testConsts';
 import { BlockDivider } from "../modules/BlockDivider";
 import { BlockHaisList } from '../modules/BlockHaisList';
+import { YakuContext } from '../modules/yaku/YakuContext';
 
 const ctx_default: PlayerContext = new PlayerContext({agariHai: new Hai(TILE.BACK), isTsumo: false, playerWind: TILE.WIND.EAST, roundWind: TILE.WIND.EAST});
 function makeYaku(hais: number[], melds: Meld[] = [], ctx: PlayerContext = ctx_default, block: BlockHaisList): YakuChecker {
     const hand = new PlayerHand(hais.map(n => new Hai(n)), melds);
-    return new YakuChecker(hand, ctx, block);
+    const context = new YakuContext(hand, ctx, block);
+    return new YakuChecker(context);
 };
 
 const testcases: TehaiCase[] = [];
