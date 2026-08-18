@@ -13,14 +13,20 @@ export class TehaiCaseRunner {
     private readonly testCase: TehaiCase;
     private readonly hais: Hai[];
     private readonly melds: Melds;
-    
+    public readonly hand: PlayerHand;
+    public readonly ctx: PlayerContext;
+    public readonly blocks: BlockHaisList[];
+
     constructor(testcase: TehaiCase){
         this.testCase = testcase;
         this.hais = this.testCase.hais.map(n => new Hai(n));
         this.melds = this.makeMelds();
+        this.hand = this.makeHand();
+        this.ctx = this.makeContext();
+        this.blocks = this.divideBlocks();
     }
 
-    makeContext(): PlayerContext{
+    private makeContext(): PlayerContext{
         const ctx = new PlayerContext({agariHai: new Hai(this.testCase.agariHai), 
             isTsumo: this.testCase.isTsumo, 
             playerWind: this.testCase.playerWind ?? TILE.WIND.EAST,
@@ -35,17 +41,17 @@ export class TehaiCaseRunner {
         return ctx;
     }
 
-    makeMelds(): Melds{
+    private makeMelds(): Melds{
         const melds = new Melds();
         this.testCase.melds.forEach(m => melds.add(Meld.from(m.hai, m.type)));
         return melds;
     }
 
-    makeHand(): PlayerHand{
+    private makeHand(): PlayerHand{
         return new PlayerHand(this.hais, [...this.melds]);
     }
 
-    divideBlocks(): BlockHaisList[]{
+    private divideBlocks(): BlockHaisList[]{
         return new BlockDivider(this.hais).divide();
     }
 }

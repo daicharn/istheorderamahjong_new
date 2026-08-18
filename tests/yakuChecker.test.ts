@@ -14,9 +14,9 @@ testcases.forEach(testcase => {
         test(testcase.name, () => {
             const yaku_maps: Map<number, Map<string, number>> = new Map<number, Map<string, number>>();
             const runner: TehaiCaseRunner = new TehaiCaseRunner(testcase);
-            const blocks = runner.divideBlocks();
+            const blocks = runner.blocks;
             blocks.forEach((block, index) => {
-                const context = new YakuContext(runner.makeHand(), runner.makeContext(), block);
+                const context = new YakuContext(runner.hand, runner.ctx, block);
                 const yaku_map = new YakuChecker(context).check();
                 if(yaku_map.size > 0) yaku_maps.set(index, yaku_map);
             })
