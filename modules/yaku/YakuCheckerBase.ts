@@ -91,9 +91,7 @@ export abstract class YakuCheckerBase {
 
     //手牌と鳴き牌を含めた牌のコピー配列を作成
     protected getAllTiles(): Hai[] {
-        const hais = this.context.hais.map(h => h.clone());
-        const meldHais = this.context.melds.flatMap(m => m.getHais().map(h => h.clone()));
-        return [...hais, ...meldHais];
+        return this.context.hand.getAllTiles();
     }
 
     //全く同じ順子のグループ数を数える
@@ -187,7 +185,7 @@ export abstract class YakuCheckerBase {
     }
 
     //槓子の数を数える
-    protected countKantsu() {
+    protected countKantsu(): number {
         let kantsuCount = 0;
         for(const meld of this.context.melds){
             if(meld.getType() === MeldType.ANKAN || meld.getType() === MeldType.MINKAN) kantsuCount++;
@@ -197,8 +195,8 @@ export abstract class YakuCheckerBase {
     }
 
     //面前かどうか
-    protected isMenzen() {
-        return this.context.melds.every(meld => meld.getType() === MeldType.ANKAN);
+    protected isMenzen(): boolean {
+        return this.context.hand.isMenzen();
     }
 
     //アガリ牌を除いた手牌のコピーを作成
