@@ -621,6 +621,15 @@ export const casesNormal: TehaiCase[] = [
     expected: new Map([[0, new Map([["平和", 1]])]])
   },
   {
+    name: "pinfu_tsumo",
+    desc: "平和",
+    agariHai: 1,
+    isTsumo: true,
+    melds: [] as MeldSpec[],
+    hais: [1,2,3,3,4,5,11,12,13,15,16,17,22,22],
+    expected: new Map([[0, new Map([["平和", 1],["門前清自摸和", 1]])]])
+  },
+  {
     name: "pinfu_kanchan",
     desc: "平和",
     agariHai: 2,
