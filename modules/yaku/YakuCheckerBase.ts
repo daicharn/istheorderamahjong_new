@@ -4,7 +4,7 @@ import { BlockHaisList } from '../BlockHaisList';
 import { MachiCalculator } from '../MachiCalculator';
 import { IMentsu } from '../IMentsu';
 import { BlockType, MeldType, HaiType } from '../MahjongConsts';
-import { TILE } from '../tileDefs';
+import { MentsuAnalyzer } from '../MentsuAnalyzer';
 
 export abstract class YakuCheckerBase {
     protected readonly context: YakuContext;
@@ -56,11 +56,6 @@ export abstract class YakuCheckerBase {
         return machi.length;
     }
 
-    //手牌と鳴き牌を含めた面子のコピー配列を作成
-    protected getAllMentsu(): IMentsu[] {
-        return [...this.context.block, ...this.context.melds];
-    }
-
     //手牌と鳴き牌を含めた牌のコピー配列を作成
     protected getAllTiles(): Hai[] {
         return this.context.hand.getAllTiles();
@@ -86,7 +81,7 @@ export abstract class YakuCheckerBase {
         filter: (m: IMentsu) => boolean,
         keySelector: (m: IMentsu) => string
     ): Map<string, IMentsu[]> {
-        const mentsuList: IMentsu[] = this.getAllMentsu();
+        const mentsuList: IMentsu[] = new MentsuAnalyzer(this.context.block.getBlockHais(), this.context.melds).getAll();
         const filteredMentsu = mentsuList.filter(filter);
         const groups = new Map<string, IMentsu[]>();
         for(const mentsu of filteredMentsu){

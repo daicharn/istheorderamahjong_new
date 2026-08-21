@@ -13,7 +13,7 @@ export class RenpuuhaiChecker extends YakuCheckerBase{
     }
 
     protected isSatisfied(): boolean {
-        const analyzer = new MentsuAnalyzer(this.getAllMentsu());
+        const analyzer = new MentsuAnalyzer(this.context.block.getBlockHais(), this.context.melds);
         const pw = this.context.ctx.playerWind;
         const rw = this.context.ctx.roundWind;
         return analyzer.hasDoubleWindMentsu(m => m.isKotsuOrKantsu(), pw, rw);

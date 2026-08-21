@@ -1,6 +1,7 @@
 import { YakuContext } from '../YakuContext';
 import { YakuCheckerBase } from '../YakuCheckerBase';
 import { IMentsu } from '../../IMentsu';
+import { MentsuAnalyzer } from '../../MentsuAnalyzer';
 
 
 export class JunchanChecker extends YakuCheckerBase{
@@ -13,7 +14,7 @@ export class JunchanChecker extends YakuCheckerBase{
     }
 
     protected isSatisfied(): boolean {
-        const allMentsu: IMentsu[] = this.getAllMentsu();
+        const allMentsu: IMentsu[] = new MentsuAnalyzer(this.context.block.getBlockHais(), this.context.melds).getAll();
         return allMentsu.every(mentsu => mentsu.hasRoutouHai());
     }
 }

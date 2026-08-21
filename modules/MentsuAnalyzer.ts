@@ -2,9 +2,13 @@ import { IMentsu } from './IMentsu';
 import { Wind } from './tileDefs';
 
 export class MentsuAnalyzer {
-    private readonly mentsuList: IMentsu[];
-    constructor(mentsuList: IMentsu[]){
-        this.mentsuList = mentsuList;
+    private readonly allMentsu: IMentsu[];
+    constructor(block: IMentsu[], melds: IMentsu[]){
+        this.allMentsu = [...block, ...melds];
+    }
+
+    getAll(): IMentsu[]{
+        return this.allMentsu;
     }
 
     hasSingleWindMentsu(
@@ -12,7 +16,7 @@ export class MentsuAnalyzer {
         requiredWind: Wind,
         forbiddenWind: Wind
     ): boolean {
-        return this.mentsuList.some(m => filter(m) && m.isSingleWind(requiredWind) && !m.isSingleWind(forbiddenWind));
+        return this.allMentsu.some(m => filter(m) && m.isSingleWind(requiredWind) && !m.isSingleWind(forbiddenWind));
     }
 
     hasDoubleWindMentsu(
@@ -20,7 +24,7 @@ export class MentsuAnalyzer {
         playerWind: Wind,
         roundWind: Wind
     ): boolean {
-        return this.mentsuList.some(m => filter(m) && m.isDoubleWind(playerWind, roundWind));
+        return this.allMentsu.some(m => filter(m) && m.isDoubleWind(playerWind, roundWind));
     }
 
     hasYakuhaiMentsu(
@@ -28,6 +32,6 @@ export class MentsuAnalyzer {
         playerWind: Wind,
         roundWind: Wind
     ): boolean {
-        return this.mentsuList.some(m => filter(m) && m.isYakuhai(playerWind, roundWind));
+        return this.allMentsu.some(m => filter(m) && m.isYakuhai(playerWind, roundWind));
     }
 }

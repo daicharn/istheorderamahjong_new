@@ -13,12 +13,12 @@ export class PinfuChecker extends YakuCheckerBase{
     }
 
     protected isSatisfied(): boolean {
-        const analyzer = new MentsuAnalyzer(this.getAllMentsu());
+        const analyzer = new MentsuAnalyzer(this.context.block.getBlockHais(), this.context.melds);
         const pw = this.context.ctx.playerWind;
         const rw = this.context.ctx.roundWind;
         if(!this.isMenzen()) return false;
         if(analyzer.hasYakuhaiMentsu(m => m instanceof BlockHais && m.isJanto(), pw, rw)) return false;
-        if(!this.getAllMentsu().every(m => m.isShuntsu() || (m instanceof BlockHais && m.isJanto()))) return false;
+        if(!analyzer.getAll().every(m => m.isShuntsu() || (m instanceof BlockHais && m.isJanto()))) return false;
         if(!this.context.block.calcMachiType(this.context.ctx.agariHai.getId()).has(MachiType.RYANMEN)) return false;
         
         return true;

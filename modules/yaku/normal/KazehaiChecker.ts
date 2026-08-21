@@ -19,7 +19,7 @@ export class KazehaiChecker extends YakuCheckerBase{
     }
 
     protected isSatisfied(): boolean {
-        const analyzer = new MentsuAnalyzer(this.getAllMentsu());
+        const analyzer = new MentsuAnalyzer(this.context.block.getBlockHais(), this.context.melds);
         return analyzer.hasSingleWindMentsu(m => m.isKotsuOrKantsu(), this.requiredWind, this.forbiddenWind);
     }
 }
