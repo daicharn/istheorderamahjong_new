@@ -32,16 +32,6 @@ export abstract class YakuCheckerBase {
         return this.yakuName;
     }
 
-    //指定された面子が役牌かどうかを調べる
-    protected hasYakuhaiMentsu(
-        filter: (m: IMentsu) => boolean
-    ): boolean {
-        const pw = this.context.ctx.playerWind;
-        const rw = this.context.ctx.roundWind;
-
-        return this.getAllMentsu().some(m => filter(m) && m.isYakuhai(pw, rw));
-    }
-
     //グループ内にマンズ、ピンズ、ソーズすべてが含まれているかどうかを調べる
     protected hasThreeTypesInGroups(groups: Map<string, IMentsu[]>): boolean {
         for(const group of groups.values()){

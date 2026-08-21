@@ -1,6 +1,8 @@
 import { YakuContext } from '../YakuContext';
 import { YakuCheckerBase } from '../YakuCheckerBase';
+import { MentsuAnalyzer } from '../../MentsuAnalyzer';
 import { Wind } from '../../tileDefs';
+
 
 export class KazehaiChecker extends YakuCheckerBase{
     protected yakuName: string;
@@ -17,6 +19,7 @@ export class KazehaiChecker extends YakuCheckerBase{
     }
 
     protected isSatisfied(): boolean {
-        return this.getAllMentsu().some(m => m.isKotsuOrKantsu() && m.isSingleWind(this.requiredWind) && !m.isSingleWind(this.forbiddenWind));
+        const analyzer = new MentsuAnalyzer(this.getAllMentsu());
+        return analyzer.hasSingleWindMentsu(m => m.isKotsuOrKantsu(), this.requiredWind, this.forbiddenWind);
     }
 }

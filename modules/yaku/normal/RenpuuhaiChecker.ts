@@ -1,5 +1,6 @@
 import { YakuContext } from '../YakuContext';
 import { YakuCheckerBase } from '../YakuCheckerBase';
+import { MentsuAnalyzer } from '../../MentsuAnalyzer';
 
 export class RenpuuhaiChecker extends YakuCheckerBase{
     protected yakuName: string;
@@ -12,8 +13,9 @@ export class RenpuuhaiChecker extends YakuCheckerBase{
     }
 
     protected isSatisfied(): boolean {
+        const analyzer = new MentsuAnalyzer(this.getAllMentsu());
         const pw = this.context.ctx.playerWind;
         const rw = this.context.ctx.roundWind;
-        return this.getAllMentsu().some(m => m.isKotsuOrKantsu() && m.isDoubleWind(pw, rw));
+        return analyzer.hasDoubleWindMentsu(m => m.isKotsuOrKantsu(), pw, rw);
     }
 }
