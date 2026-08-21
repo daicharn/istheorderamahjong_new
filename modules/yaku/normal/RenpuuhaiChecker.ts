@@ -1,4 +1,3 @@
-import { Hai } from '../../Hai';
 import { YakuContext } from '../YakuContext';
 import { YakuCheckerBase } from '../YakuCheckerBase';
 
@@ -13,6 +12,8 @@ export class RenpuuhaiChecker extends YakuCheckerBase{
     }
 
     protected isSatisfied(): boolean {
-        return this.hasHaisMentsu((m) => m.isKotsuOrKantsu(), [new Hai(this.context.ctx.playerWind.id), new Hai(this.context.ctx.roundWind.id)]);
+        const pw = this.context.ctx.playerWind;
+        const rw = this.context.ctx.roundWind;
+        return this.getAllMentsu().some(m => m.isKotsuOrKantsu() && m.isDoubleWind(pw, rw));
     }
 }

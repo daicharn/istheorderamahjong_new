@@ -32,32 +32,14 @@ export abstract class YakuCheckerBase {
         return this.yakuName;
     }
 
-    //指定された面子に牌が含まれるかどうかを調べる
-    protected hasHaisMentsu(
-        filter: (m: IMentsu) => boolean,
-        required: Hai[],
-        forbidden: Hai[] = []
-    ): boolean {
-        return this.getAllMentsu().some(mentsu =>
-            filter(mentsu) &&
-            required.every(h => mentsu.containsHai(h.getId())) &&
-            forbidden.every(h => !mentsu.containsHai(h.getId()))
-        );
-    }
-    //指定された面子が三元牌かどうかを調べる
-    protected hasDragonMentsu(
-        filter: (m: IMentsu) => boolean
-    ): boolean {
-        return this.getAllMentsu().some(mentsu => filter(mentsu) && mentsu.containsHai(TILE.DRAGON.WHITE.id, TILE.DRAGON.GREEN.id, TILE.DRAGON.RED.id));
-    }
     //指定された面子が役牌かどうかを調べる
     protected hasYakuhaiMentsu(
         filter: (m: IMentsu) => boolean
     ): boolean {
-        return this.hasHaisMentsu(filter, [new Hai(this.context.ctx.playerWind.id)], [new Hai(this.context.ctx.roundWind.id)]) ||
-               this.hasHaisMentsu(filter, [new Hai(this.context.ctx.roundWind.id)], [new Hai(this.context.ctx.playerWind.id)]) ||
-               this.hasHaisMentsu(filter, [new Hai(this.context.ctx.playerWind.id), new Hai(this.context.ctx.roundWind.id)]) ||
-               this.hasDragonMentsu(filter);
+        const pw = this.context.ctx.playerWind;
+        const rw = this.context.ctx.roundWind;
+
+        return this.getAllMentsu().some(m => filter(m) && m.isYakuhai(pw, rw));
     }
 
     //グループ内にマンズ、ピンズ、ソーズすべてが含まれているかどうかを調べる

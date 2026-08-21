@@ -1,6 +1,7 @@
 import { Hai } from './Hai';
 import { MeldType } from './MahjongConsts';
 import { IMentsu } from './IMentsu';
+import { TILE, Wind } from "./tileDefs";
 
 export class Meld implements IMentsu {
     private readonly hais: Hai[];
@@ -45,6 +46,25 @@ export class Meld implements IMentsu {
 
     isKotsuOrKantsu(): boolean {
         return this.type === MeldType.PON || this.type === MeldType.ANKAN || this.type === MeldType.MINKAN;
+    }
+
+    isDragon(): boolean {
+        return this.containsHai(TILE.DRAGON.WHITE.id, TILE.DRAGON.GREEN.id, TILE.DRAGON.RED.id);
+    }
+
+    isSingleWind(targetWind: Wind): boolean {
+        return this.containsHai(targetWind.id);
+    }
+
+    isDoubleWind(playerWind: Wind, roundWind: Wind): boolean {
+        return this.isSingleWind(playerWind) && this.isSingleWind(roundWind);
+    }
+
+    isYakuhai(playerWind: Wind, roundWind: Wind): boolean {
+        return this.isDragon() ||
+               this.isSingleWind(playerWind) ||
+               this.isSingleWind(roundWind) ||
+               this.isDoubleWind(playerWind, roundWind);
     }
 
     containsHai(...haiIds: number[]): boolean {

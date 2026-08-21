@@ -1,6 +1,7 @@
-import {Hai} from "./Hai";
+import { Hai } from "./Hai";
 import { BlockType } from "./MahjongConsts";
 import { IMentsu } from "./IMentsu";
+import { TILE, Wind } from "./tileDefs";
 
 export class BlockHais implements IMentsu {
     private readonly type: BlockType;
@@ -37,6 +38,25 @@ export class BlockHais implements IMentsu {
 
     isKotsuOrKantsu(): boolean {
         return this.type === BlockType.KOTSU;
+    }
+
+    isDragon(): boolean {
+        return this.containsHai(TILE.DRAGON.WHITE.id, TILE.DRAGON.GREEN.id, TILE.DRAGON.RED.id);
+    }
+
+    isSingleWind(targetWind: Wind): boolean {
+        return this.containsHai(targetWind.id);
+    }
+
+    isDoubleWind(playerWind: Wind, roundWind: Wind): boolean {
+        return this.isSingleWind(playerWind) && this.isSingleWind(roundWind);
+    }
+
+    isYakuhai(playerWind: Wind, roundWind: Wind): boolean {
+        return this.isDragon() ||
+               this.isSingleWind(playerWind) ||
+               this.isSingleWind(roundWind) ||
+               this.isDoubleWind(playerWind, roundWind);
     }
 
     containsHai(...haiIds: number[]): boolean {
