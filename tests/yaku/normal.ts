@@ -2,7 +2,7 @@ import { MeldSpec, TehaiCase } from '../testConsts';
 import { MeldType, WinEvent } from "../../modules/MahjongConsts";
 import { TILE } from "../../modules/tileDefs"
 
-export const casesNormal: TehaiCase[] = [
+export const casesNormal: TehaiCase<Map<number, Map<string, number>>>[] = [
   {
     name: "chinitsu_1",
     desc: "清一色",

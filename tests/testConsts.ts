@@ -1,4 +1,5 @@
 import { MeldType, WinEvent } from "../modules/MahjongConsts";
+import { FuDetail } from "../modules/tensuu/FuDetail";
 import { Wind } from "../modules/tileDefs";
 
 export type MeldSpec = {
@@ -6,7 +7,7 @@ export type MeldSpec = {
     type: MeldType;
 };
 
-export type TehaiCase = {
+export type TehaiCase<T> = {
     name: string,
     desc: string,
     agariHai: number,
@@ -20,5 +21,5 @@ export type TehaiCase = {
     daburii?: boolean,
     ippatsu?: boolean,
     kuitan?: boolean,
-    expected: Map<number, Map<string, number>>
-};
+    expected: T
+}

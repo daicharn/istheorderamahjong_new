@@ -1,7 +1,7 @@
 import { MeldSpec, TehaiCase } from '../testConsts';
 import { MeldType, WinEvent } from "../../modules/MahjongConsts";
 
-export const casesYakuman: TehaiCase[] = [
+export const casesYakuman: TehaiCase<Map<number, Map<string, number>>>[] = [
   {
     name: "tsuiso_1",
     desc: "字一色",

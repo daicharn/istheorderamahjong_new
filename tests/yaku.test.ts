@@ -5,7 +5,7 @@ import { TehaiCase } from './testConsts';
 import { YakuContext } from '../modules/yaku/YakuContext';
 import { TehaiCaseRunner } from './tehaiCaseRunner';
 
-const testcases: TehaiCase[] = [];
+const testcases: TehaiCase<Map<number, Map<string, number>>>[] = [];
 casesYakuman.forEach(caseyakuman => testcases.push(caseyakuman));
 casesNormal.forEach(casenormal => testcases.push(casenormal));
 
