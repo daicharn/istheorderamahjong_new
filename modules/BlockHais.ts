@@ -12,6 +12,21 @@ export class BlockHais implements IMentsu {
         this.hais = hais;
     }
 
+    static from(haiId: number, type: BlockType): BlockHais {
+        const hai = new Hai(haiId);
+        if(type === BlockType.JANTO){
+            return new BlockHais([hai.clone(), hai.clone()], type);
+        }
+        if(type === BlockType.KOTSU){
+            return new BlockHais([hai.clone(), hai.clone(), hai.clone()], type);
+        }
+        if(type === BlockType.SHUNTSU){
+            return new BlockHais([hai.clone(), new Hai(haiId + 1), new Hai(haiId + 2)], type);
+        }
+
+        return new BlockHais([hai.clone()], type);
+    }
+
     getType(): BlockType {
         return this.type;
     }
