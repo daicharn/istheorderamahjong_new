@@ -1,5 +1,12 @@
+import { IMentsu } from "../modules/IMentsu";
 import { MeldType, WinEvent } from "../modules/MahjongConsts";
 import { Wind } from "../modules/tileDefs";
+
+export type FuSpec = {
+    readonly name: string;
+    readonly fu: number;
+    readonly mentsu?: IMentsu;
+}
 
 export type MeldSpec = {
     hai: number,
