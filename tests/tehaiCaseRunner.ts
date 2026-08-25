@@ -9,15 +9,15 @@ import { PlayerHand } from "../modules/PlayerHand";
 import { TILE } from "../modules/tileDefs";
 import { TehaiCase } from "./testConsts";
 
-export class TehaiCaseRunner {
-    private readonly testCase: TehaiCase<any>;
+export class TehaiCaseRunner<T> {
+    private readonly testCase: TehaiCase<T>;
     private readonly hais: Hai[];
     private readonly melds: Melds;
     public readonly hand: PlayerHand;
     public readonly ctx: PlayerContext;
     public readonly blocks: BlockHaisList[];
 
-    constructor(testcase: TehaiCase<any>){
+    constructor(testcase: TehaiCase<T>){
         this.testCase = testcase;
         this.hais = this.testCase.hais.map(n => new Hai(n));
         this.melds = this.makeMelds();

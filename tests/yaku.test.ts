@@ -5,15 +5,17 @@ import { TehaiCase } from './testConsts';
 import { YakuContext } from '../modules/yaku/YakuContext';
 import { TehaiCaseRunner } from './tehaiCaseRunner';
 
-const testcases: TehaiCase<Map<number, Map<string, number>>>[] = [];
+type yakuMaps = Map<number, Map<string, number>>;
+
+const testcases: TehaiCase<yakuMaps>[] = [];
 casesYakuman.forEach(caseyakuman => testcases.push(caseyakuman));
 casesNormal.forEach(casenormal => testcases.push(casenormal));
 
 testcases.forEach(testcase => {
     describe(testcase.desc, () => {
         test(testcase.name, () => {
-            const yakuMaps: Map<number, Map<string, number>> = new Map<number, Map<string, number>>();
-            const runner: TehaiCaseRunner = new TehaiCaseRunner(testcase);
+            const yakuMaps: yakuMaps = new Map<number, Map<string, number>>();
+            const runner: TehaiCaseRunner<yakuMaps> = new TehaiCaseRunner(testcase);
             const blocks = runner.blocks;
             blocks.forEach((block, index) => {
                 const context = new YakuContext(runner.hand, runner.ctx, block);

@@ -6,7 +6,9 @@ import { FuCalculator } from "../modules/tensuu/FuCalculator";
 import { caseFu } from './tensuu/fu';
 import { FuDetail } from "../modules/tensuu/FuDetail";
 
-function sortFuspecs(specs: FuSpec[][]): FuSpec[][] {
+type fuList = FuSpec[][];
+
+function sortFuspecs(specs: fuList): FuSpec[][] {
     const sortedSpecs: FuSpec[][] = [];
     for(const spec of specs){
         sortedSpecs.push([...spec].sort((a, b) => a.name.localeCompare(b.name)));
@@ -14,14 +16,14 @@ function sortFuspecs(specs: FuSpec[][]): FuSpec[][] {
     return sortedSpecs;
 }
 
-const testcases: TehaiCase<FuSpec[][]>[] = [];
+const testcases: TehaiCase<fuList>[] = [];
 caseFu.forEach(casefu => testcases.push(casefu));
 
 testcases.forEach(testcase => {
     describe(testcase.desc, () => {
         test(testcase.name, () => {
             const fuList: FuDetail[][] = [];
-            const runner: TehaiCaseRunner = new TehaiCaseRunner(testcase);
+            const runner: TehaiCaseRunner<fuList> = new TehaiCaseRunner(testcase);
             const blocks = runner.blocks;
             blocks.forEach((block) => {
                 const context = new YakuContext(runner.hand, runner.ctx, block);
