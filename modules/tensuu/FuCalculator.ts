@@ -4,9 +4,34 @@ import { MentsuAnalyzer } from '../MentsuAnalyzer';
 import { YakuContext } from '../yaku/YakuContext';
 import { FuDetail } from './FuDetail';
 
+type MentsuFuSpec = {
+    yaochu: {name: string, fu: number};
+    chuchan: {name: string, fu: number};
+};
+
+const MENTSU_FU_TABLE: Record<string, MentsuFuSpec> = {
+        [BlockType.KOTSU]: {
+            yaochu: {name: "么九牌暗刻", fu: 8},
+            chuchan: {name: "中張牌暗刻", fu: 4}
+        },
+        [MeldType.PON]: {
+            yaochu: {name: "么九牌明刻", fu: 4},
+            chuchan: {name: "中張牌明刻", fu: 2}
+        },
+        [MeldType.MINKAN]: {
+            yaochu: {name: "么九牌明槓", fu: 16},
+            chuchan: {name: "中張牌明槓", fu: 8}
+        },
+        [MeldType.ANKAN]: {
+            yaochu: {name: "么九牌暗槓", fu: 32},
+            chuchan: {name: "中張牌暗槓", fu: 16}
+        }
+    } as const;
+
 export class FuCalculator{
     private readonly context: YakuContext;
     private readonly yaku: Map<string, number>;
+
     constructor(context: YakuContext, yaku: Map<string, number>){
         this.context = context;
         this.yaku = yaku;
@@ -60,36 +85,13 @@ export class FuCalculator{
         const MentsuFu: FuDetail[] = [];
 
         for(const m of analyzer.getAll()){
-            const isYaochu = m.minHai.isYaochuHai();
+            const table = MENTSU_FU_TABLE[m.getType()];
+            if(!table) continue;
 
-            if(m.getType() === BlockType.KOTSU){
-                MentsuFu.push(new FuDetail(
-                    isYaochu ? "么九牌暗刻" : "中張牌暗刻",
-                    isYaochu ? 8 : 4,
-                    m
-                ));
-            }
-            if(m.getType() === MeldType.PON){
-                MentsuFu.push(new FuDetail(
-                    isYaochu ? "么九牌明刻" : "中張牌明刻",
-                    isYaochu ? 4 : 2,
-                    m
-                ));
-            }
-            if(m.getType() === MeldType.MINKAN){
-                MentsuFu.push(new FuDetail(
-                    isYaochu ? "么九牌明槓" : "中張牌明槓",
-                    isYaochu ? 16 : 8,
-                    m
-                ));
-            }
-            if(m.getType() === MeldType.ANKAN){
-                MentsuFu.push(new FuDetail(
-                    isYaochu ? "么九牌暗槓" : "中張牌暗槓",
-                    isYaochu ? 32 : 16,
-                    m
-                ));
-            }
+            const key = m.minHai.isYaochuHai() ? "yaochu" : "chuchan";
+            const spec = table[key];
+            
+            MentsuFu.push(new FuDetail(spec.name, spec.fu, m));
         }
 
         return MentsuFu;
