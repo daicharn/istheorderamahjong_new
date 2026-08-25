@@ -1,21 +1,16 @@
-import { YakuCheckerBase } from '../YakuCheckerBase';
+import { ExtendedYakumanChecker } from './ExtendedYakumanChecker';
 import { YakuContext } from '../YakuContext';
 import { KokushiChecker } from './KokushiChecker';
+import { YakuCheckerBase } from '../YakuCheckerBase';
 
-export class Kokushi13Checker extends YakuCheckerBase{
+export class Kokushi13Checker extends ExtendedYakumanChecker{
     protected yakuName: string = "国士無双13面待ち";
+    protected baseChecker: YakuCheckerBase;
+    protected requiredMachiCount: number;
 
     constructor(context: YakuContext){
         super(context);
-        this.hanMenzen = 26;
-        this.hanFuro = 26
-    }
-
-    public isSatisfied(): boolean {
-        const base = new KokushiChecker(this.context);
-        if(!base.isKokushi()) return false;
-
-        const machiCount = this.calculateMachiCount();
-        return machiCount === 13;
+        this.baseChecker = new KokushiChecker(context);
+        this.requiredMachiCount = 13;
     }
 }

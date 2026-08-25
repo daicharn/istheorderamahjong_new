@@ -1,21 +1,16 @@
-import { YakuCheckerBase } from '../YakuCheckerBase';
+import { ExtendedYakumanChecker } from './ExtendedYakumanChecker';
 import { YakuContext } from '../YakuContext';
 import { ChurenChecker } from './ChurenChecker';
+import { YakuCheckerBase } from '../YakuCheckerBase';
 
-export class Churen9Checker extends YakuCheckerBase{
+export class Churen9Checker extends ExtendedYakumanChecker{
     protected yakuName: string = "純正九蓮宝燈";
+    protected baseChecker: YakuCheckerBase;
+    protected requiredMachiCount: number;
 
     constructor(context: YakuContext){
         super(context);
-        this.hanMenzen = 26;
-        this.hanFuro = 26
-    }
-
-    protected isSatisfied(): boolean {
-        const base = new ChurenChecker(this.context);
-        if(!base.isChuren()) return false;
-
-        const machiCount = this.calculateMachiCount();
-        return machiCount === 9;
+        this.baseChecker = new ChurenChecker(context);
+        this.requiredMachiCount = 9;
     }
 }
