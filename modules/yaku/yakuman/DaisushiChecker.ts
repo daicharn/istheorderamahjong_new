@@ -8,7 +8,7 @@ export class DaisushiChecker extends YakuCheckerBase{
     constructor(context: YakuContext){
         super(context);
         this.hanMenzen = 26;
-        this.hanFuro = 26
+        this.hanFuro = 26;
     }
     
     protected isSatisfied(): boolean {
