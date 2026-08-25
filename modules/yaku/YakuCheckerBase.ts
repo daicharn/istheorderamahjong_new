@@ -11,11 +11,13 @@ export abstract class YakuCheckerBase {
     protected hanMenzen: number;
     protected hanFuro: number;
     protected abstract yakuName: string;
+    protected isYakuman: boolean;
     
     constructor(context: YakuContext){
         this.context = context;
-        this.hanMenzen = 0;
-        this.hanFuro = 0;
+        this.hanMenzen = 13;
+        this.hanFuro = 13;
+        this.isYakuman = false;
     }
 
     protected abstract isSatisfied(): boolean;

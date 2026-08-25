@@ -537,7 +537,7 @@ export const casesNormal: TehaiCase<Map<number, Map<string, number>>>[] = [
     melds: [] as MeldSpec[],
     hais: [2,3,4,2,3,4,2,3,4,11,11,11,5,5],
     expected: new Map([[0, new Map([["断么九", 1],["一盃口", 1],["門前清自摸和", 1]])],
-      [1, new Map([["四暗刻単騎", 0]])],
+      [1, new Map([["四暗刻単騎", 26]])],
       [2, new Map([["断么九", 1],["一盃口", 1],["門前清自摸和", 1]])]
     ])
   },

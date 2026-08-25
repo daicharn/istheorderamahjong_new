@@ -1,8 +1,15 @@
 import { YakuCheckerBase } from '../YakuCheckerBase';
+import { YakuContext } from '../YakuContext';
 
 
 export class DaisushiChecker extends YakuCheckerBase{
     protected yakuName: string = "大四喜";
+
+    constructor(context: YakuContext){
+        super(context);
+        this.hanMenzen = 26;
+        this.hanFuro = 26
+    }
     
     protected isSatisfied(): boolean {
         const {foundTargets, mentsuCount, jantoCount} = this.countTargetBlocks(this.context.block, [28,29,30,31]);

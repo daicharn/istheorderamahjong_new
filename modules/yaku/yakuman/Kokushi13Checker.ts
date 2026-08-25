@@ -1,8 +1,15 @@
 import { YakuCheckerBase } from '../YakuCheckerBase';
+import { YakuContext } from '../YakuContext';
 import { KokushiChecker } from './KokushiChecker';
 
 export class Kokushi13Checker extends YakuCheckerBase{
     protected yakuName: string = "国士無双13面待ち";
+
+    constructor(context: YakuContext){
+        super(context);
+        this.hanMenzen = 26;
+        this.hanFuro = 26
+    }
 
     public isSatisfied(): boolean {
         const base = new KokushiChecker(this.context);
