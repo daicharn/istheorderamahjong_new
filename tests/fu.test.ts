@@ -2,7 +2,7 @@ import { YakuChecker } from "../modules/yaku/YakuChecker";
 import { FuSpec, TehaiCase } from './testConsts';
 import { YakuContext } from '../modules/yaku/YakuContext';
 import { TehaiCaseRunner } from './tehaiCaseRunner';
-import { FuCalculator } from "../modules/tensuu/Fucalculator";
+import { FuCalculator } from "../modules/tensuu/FuCalculator";
 import { caseFu } from './tensuu/fu';
 import { FuDetail } from "../modules/tensuu/FuDetail";
 
