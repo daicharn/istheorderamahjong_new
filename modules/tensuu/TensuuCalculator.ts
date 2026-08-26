@@ -1,16 +1,7 @@
-import { YakuContext } from '../yaku/YakuContext';
-import { FuCalculator } from './FuCalculator';
 import { TensuuResult } from './TensuuResult';
 
 export class TensuuCalculator{
-    private readonly context: YakuContext;
-    private readonly yaku: Map<string, number>;
-    constructor(context: YakuContext, yaku: Map<string, number>){
-        this.context = context;
-        this.yaku = yaku;
-    }
-
-    private readonly BASE_LIMITS = [
+    static readonly BASE_LIMITS = [
         {han: 26, base: 16000 },
         {han: 13, base: 8000 },
         {han: 11, base: 6000 },
@@ -19,19 +10,19 @@ export class TensuuCalculator{
         {han: 5,  base: 2000 },
     ];
 
-    calcBaseTensuu(han: number, fu: number): number{
+    static calcBaseTensuu(han: number, fu: number): number{
         return Math.min(fu * Math.pow(2, han + 2), 2000);
     }
 
-    calcRonTensuu(base: number, multi: number): number{
+    static calcRonTensuu(base: number, multi: number): number{
         return Math.ceil(base * multi / 100) * 100;
     }
 
-    calcdividedTensuu(ronTensuu: number, divide: number){
+    static calcdividedTensuu(ronTensuu: number, divide: number){
         return Math.ceil(Math.floor(ronTensuu / divide) / 100) * 100;
     }
 
-    calcTensuuFromBase(base: number): TensuuResult{
+    static calcTensuuFromBase(base: number): TensuuResult{
         const ronOya = this.calcRonTensuu(base, 6);
         const ronKo = this.calcRonTensuu(base, 4);
         const tsumoOya = this.calcdividedTensuu(ronOya, 3);
@@ -40,19 +31,10 @@ export class TensuuCalculator{
         return new TensuuResult(base, ronOya, ronKo, tsumoOya, tsumoKo);
     }
 
-    calcTensuu(han: number, fu: number): TensuuResult{
+    static calcTensuu(han: number, fu: number): TensuuResult{
         for(const limit of this.BASE_LIMITS){
             if(han >= limit.han) return this.calcTensuuFromBase(limit.base);
         }
         return this.calcTensuuFromBase(this.calcBaseTensuu(han, fu));
-    }
-
-    calc(){
-        //const han = this.calcHonsuu();
-        //const fu = new FuCalculator(this.context, this.yaku);
-    }
-
-    private calcHonsuu(): number{
-        return [...this.yaku.values()].reduce((sum, val) => sum + val, 0);
-    }
+    } 
 }
