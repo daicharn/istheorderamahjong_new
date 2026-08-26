@@ -10,6 +10,15 @@ export class TensuuCalculator{
         this.yaku = yaku;
     }
 
+    private readonly BASE_LIMITS = [
+        {han: 26, base: 16000 },
+        {han: 13, base: 8000 },
+        {han: 11, base: 6000 },
+        {han: 8,  base: 4000 },
+        {han: 6,  base: 3000 },
+        {han: 5,  base: 2000 },
+    ];
+
     calcBaseTensuu(han: number, fu: number): number{
         return Math.min(fu * Math.pow(2, han + 2), 2000);
     }
@@ -22,14 +31,20 @@ export class TensuuCalculator{
         return Math.ceil(Math.floor(ronTensuu / divide) / 100) * 100;
     }
 
-    calcTensuuFromFu(han: number, fu: number): TensuuResult{
-        const base = this.calcBaseTensuu(han, fu);
+    calcTensuuFromBase(base: number): TensuuResult{
         const ronOya = this.calcRonTensuu(base, 6);
         const ronKo = this.calcRonTensuu(base, 4);
         const tsumoOya = this.calcdividedTensuu(ronOya, 3);
         const tsumoKo = {oya: this.calcdividedTensuu(ronKo, 2), ko: this.calcdividedTensuu(ronKo, 4)};
 
         return new TensuuResult(base, ronOya, ronKo, tsumoOya, tsumoKo);
+    }
+
+    calcTensuu(han: number, fu: number): TensuuResult{
+        for(const limit of this.BASE_LIMITS){
+            if(han >= limit.han) return this.calcTensuuFromBase(limit.base);
+        }
+        return this.calcTensuuFromBase(this.calcBaseTensuu(han, fu));
     }
 
     calc(){

@@ -22,7 +22,7 @@ testcases.forEach(testcase => {
     describe(testcase.desc, () => {
         test(testcase.name, () => {
             const calc = new TensuuCalculator(contextStub, yakuStub);
-            const expected = calc.calcTensuuFromFu(testcase.honsuu, testcase.fusuu);
+            const expected = calc.calcTensuu(testcase.honsuu, testcase.fusuu);
             expect(testcase.expected).toEqual(expected);
         });
     });
