@@ -19,11 +19,11 @@ export const casesScore: TehaiCase<Score[]>[] = [
     agariHai: 14,
     isTsumo: true,
     melds: [
-      {hai: 1, type: MeldType.PON},
-      {hai: 8, type: MeldType.PON},
-      {hai: 29, type: MeldType.PON},
+      {hai: 3, type: MeldType.PON},
+      {hai: 9, type: MeldType.PON},
+      {hai: 30, type: MeldType.PON},
     ] as MeldSpec[],
-    hais: [14,14,14,16,16],
+    hais: [15,15,15,16,16],
     expected: [
       {han: 2, fuBasic: 36, fuCeiled: 40}
     ]
@@ -32,7 +32,7 @@ export const casesScore: TehaiCase<Score[]>[] = [
     name: "sankantsu_1",
     desc: "三槓子",
     agariHai: 14,
-    isTsumo: true,
+    isTsumo: false,
     melds: [
       {hai: 1, type: MeldType.ANKAN},
       {hai: 8, type: MeldType.ANKAN},
@@ -40,7 +40,7 @@ export const casesScore: TehaiCase<Score[]>[] = [
     ] as MeldSpec[],
     hais: [14,15,16,18,18],
     expected: [
-      {han: 2, fuBasic: 86, fuCeiled: 90}
+      {han: 2, fuBasic: 84, fuCeiled: 90}
     ]
   },
 ];
