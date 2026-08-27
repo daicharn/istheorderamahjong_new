@@ -38,3 +38,5 @@ export type TensuuNumCase = {
     fusuu: number
     expected: TensuuResult;
 }
+
+export type Score = {han: number, fuBasic: number, fuCeiled: number};

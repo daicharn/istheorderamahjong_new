@@ -2,6 +2,7 @@ import { YakuContext } from '../yaku/YakuContext';
 import { TensuuCalculator } from './TensuuCalculator';
 import { FuCalculator } from './FuCalculator';
 import { FuDetail } from './FuDetail';
+import { ScoreResult } from './ScoreResult';
 
 export class ScoreResolver{
     private readonly context: YakuContext;
@@ -19,12 +20,16 @@ export class ScoreResolver{
         return detail.reduce((sum, val) => sum + val.fu, 0);
     }
 
+    private ceilFusuu(fu: number): number{
+        return Math.ceil(fu / 10) * 10;
+    }
+
     resolve(){
         const han = this.calcHonsuu();
         const fuDetail = new FuCalculator(this.context, this.yaku).calcFu();
-        const fu = this.countFusuu(fuDetail);
-        const tensuu = TensuuCalculator.calcTensuu(han, fu);
-
-        return {han, fu, tensuu, fuDetail};
+        const fuBasic = this.countFusuu(fuDetail);
+        const fuCeiled = this.ceilFusuu(fuBasic);
+        const tensuu = TensuuCalculator.calcTensuu(han, fuCeiled);
+        return new ScoreResult(han, fuBasic, fuCeiled, tensuu, fuDetail);
     }
 }
