@@ -16,7 +16,7 @@ export const casesScore: TehaiCase<Score[]>[] = [
   {
     name: "toitoi_1",
     desc: "対々和",
-    agariHai: 14,
+    agariHai: 15,
     isTsumo: true,
     melds: [
       {hai: 3, type: MeldType.PON},
