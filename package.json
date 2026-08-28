@@ -12,7 +12,8 @@
   },
   "license": "ISC",
   "author": "",
-  "main": "babel.config.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
     "coverage": "jest --coverage"

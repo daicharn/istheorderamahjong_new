@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "ES2022",
+    "module": "CommonJS",
     "target": "ES2022",
     "moduleResolution": "bundler",
 
@@ -9,7 +9,8 @@
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
-
+    "outDir": "dist",
+    "rootDir": "modules",
     "strict": true,
     "jsx": "react-jsx",
     "isolatedModules": true,
@@ -18,5 +19,5 @@
     "esModuleInterop": true
   },
 
-  "include": ["src", "tests"]
+  "include": ["modules/**/*"]
 }

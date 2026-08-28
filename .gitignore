@@ -2,3 +2,4 @@
 coverage/
 .VScodeCounter
 node_modules/
+dist
