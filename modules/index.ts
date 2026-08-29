@@ -1,4 +1,5 @@
 export { Hai } from './Hai.js';
+export { Hais } from './Hais.js';
 export { Melds } from './Melds.js';
 export { BlockDivider } from './BlockDivider.js';
 export { PlayerHand } from './PlayerHand.js';
