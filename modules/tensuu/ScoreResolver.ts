@@ -21,7 +21,7 @@ export class ScoreResolver{
     }
 
     private ceilFusuu(fu: number): number{
-        return Math.ceil(fu / 10) * 10;
+        return fu === 25 ? 25 : Math.ceil(fu / 10) * 10;
     }
 
     resolve(){
