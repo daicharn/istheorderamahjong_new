@@ -25,17 +25,16 @@ export class Hai{
     }
 
     get imageUrl(): string{
-        let base: string = "../images/";
         //萬子
-        if(this.type === HaiType.MANZU) return `${base}m_${this.num}.png`;
+        if(this.type === HaiType.MANZU) return `m_${this.num}.png`;
         //筒子
-        if(this.type === HaiType.PINZU) return `${base}p_${this.num}.png`;
+        if(this.type === HaiType.PINZU) return `p_${this.num}.png`;
         //索子
-        if(this.type === HaiType.SOUZU) return `${base}s_${this.num}.png`;
+        if(this.type === HaiType.SOUZU) return `s_${this.num}.png`;
         //字牌
-        if(this.type === HaiType.JIHAI) return `${base}j_${this.num - 27}.png`;
+        if(this.type === HaiType.JIHAI) return `j_${this.num - 27}.png`;
         
-        return `${base}back.png`;
+        return `back.png`;
     }
 
     isRoutouHai(): boolean {
