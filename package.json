@@ -16,7 +16,9 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "build": "npx tsc && npm run copy-assets",
+    "copy-assets": "xcopy images dist\\images /E /I /Y"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
