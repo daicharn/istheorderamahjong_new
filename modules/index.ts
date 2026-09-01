@@ -9,3 +9,4 @@ export { YakuContext } from './yaku/YakuContext.js';
 export { YakuChecker } from './yaku/YakuChecker.js';
 export { TILE } from './tileDefs.js';
 export { ScoreResult } from './tensuu/ScoreResult.js';
+export { MachiCalculator } from './MachiCalculator.js';
