@@ -1,6 +1,6 @@
 {
   "name": "mahjong_engine",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "mahjong",
   "homepage": "https://github.com/daicharn/IsTheOrderaMahjong#readme",
   "bugs": {
@@ -15,7 +15,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "publish-public": "npm publish --access public",
+    "publish-public": "npx tsc && npm publish --access public",
     "test": "jest",
     "coverage": "jest --coverage",
     "build": "npx tsc && npm run copy-assets",

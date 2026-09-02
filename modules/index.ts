@@ -1,5 +1,6 @@
 export { Hai } from './Hai.js';
 export { Hais } from './Hais.js';
+export { Meld } from './Meld.js';
 export { Melds } from './Melds.js';
 export { BlockDivider } from './BlockDivider.js';
 export { PlayerHand } from './PlayerHand.js';
@@ -10,3 +11,4 @@ export { YakuChecker } from './yaku/YakuChecker.js';
 export { TILE } from './tileDefs.js';
 export { ScoreResult } from './tensuu/ScoreResult.js';
 export { MachiCalculator } from './MachiCalculator.js';
+export * from './MahjongConsts.js';
